@@ -32,7 +32,7 @@ public class TestHomePage {
 	 */
 	@Test
 	public void testHomePageIsOpened() {
-		HomePage homePage = new HomePage(new ChromeDriver());
+		homePage = new HomePage(new ChromeDriver());
 		homePage.open();
 		new WebDriverWait(homePage.driver, 5)
 				.until(ExpectedConditions.visibilityOfElementLocated(homePage.contactButtons));
