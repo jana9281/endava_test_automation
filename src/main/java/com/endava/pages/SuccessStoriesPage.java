@@ -21,7 +21,7 @@ public class SuccessStoriesPage extends BasePage {
 	}
 
 	public Boolean findSSRCG() {
-		if (driver.getPageSource().contains("Success Story | Retail and Consumer Goods"))
+		if (driver.getTitle().contains("Success Story | Retail and Consumer Goods"))
 			return true;
 		else
 			return false;

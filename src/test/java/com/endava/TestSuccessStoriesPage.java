@@ -1,3 +1,6 @@
+/**
+ * 
+ */
 package com.endava;
 
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -9,17 +12,18 @@ import org.testng.annotations.Test;
 
 import com.endava.pages.HomePage;
 import com.endava.pages.MenuPage;
+import com.endava.pages.SuccessStoriesPage;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 /**
- * @author jana.djordjevic@endava.com
+ * @author Radovan.Olujic
  *
  */
-public class TestHomePage {
-
+public class TestSuccessStoriesPage {
 	private HomePage homePage;
 	private MenuPage menuPage;
+	private SuccessStoriesPage succesStoriesPage;
 
 	@BeforeTest
 	public void setUp() {
@@ -39,7 +43,7 @@ public class TestHomePage {
 	}
 
 	@Test
-	public void testOpenMenu() {
+	public void testSuccessStoriesPage() {
 		homePage = new HomePage(new ChromeDriver());
 		homePage.open();
 		new WebDriverWait(homePage.driver, 5)
@@ -48,6 +52,11 @@ public class TestHomePage {
 		new WebDriverWait(menuPage.driver, 5)
 				.until(ExpectedConditions.visibilityOfElementLocated(menuPage.navigationList));
 
+		succesStoriesPage = menuPage.openSuccessStories();
+		new WebDriverWait(succesStoriesPage.driver, 5)
+				.until(ExpectedConditions.visibilityOfElementLocated(succesStoriesPage.pageTitle));
+
+		succesStoriesPage.findSSRCG();
 	}
 
 	@AfterMethod
