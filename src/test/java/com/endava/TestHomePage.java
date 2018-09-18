@@ -1,14 +1,14 @@
 package com.endava;
 
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.annotations.AfterTest;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import com.endava.pages.HomePage;
+import com.endava.pages.MenuPage;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
@@ -18,7 +18,8 @@ import io.github.bonigarcia.wdm.WebDriverManager;
  */
 public class TestHomePage {
 
-	private WebDriver driver;
+	private HomePage homePage;
+	private MenuPage menuPage;
 
 	@BeforeTest
 	public void setUp() {
@@ -31,15 +32,26 @@ public class TestHomePage {
 	 */
 	@Test
 	public void testHomePageIsOpened() {
-		driver = new ChromeDriver();
-		HomePage homePage = new HomePage(driver);
+		homePage = new HomePage(new ChromeDriver());
 		homePage.open();
-		new WebDriverWait(driver, 5).until(ExpectedConditions.visibilityOfElementLocated(homePage.contactButtons));
+		new WebDriverWait(homePage.driver, 5)
+				.until(ExpectedConditions.visibilityOfElementLocated(homePage.contactButtons));
 	}
 
-	@AfterTest
-	public void cleanUp() {
-		driver.quit();
+	@Test
+	public void testOpenMenu() {
+		homePage = new HomePage(new ChromeDriver());
+		homePage.open();
+		new WebDriverWait(homePage.driver, 5)
+				.until(ExpectedConditions.visibilityOfElementLocated(homePage.contactButtons));
+		menuPage = homePage.openMenu();
+		new WebDriverWait(menuPage.driver, 5)
+				.until(ExpectedConditions.visibilityOfElementLocated(menuPage.navigationList));
+	}
+
+	@AfterMethod
+	public void tearDown() {
+		homePage.quit();
 	}
 
 }

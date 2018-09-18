@@ -7,20 +7,24 @@ import org.openqa.selenium.WebDriver;
  * @author jana.djordjevic@endava.com
  *
  */
-public class HomePage {
+public class HomePage extends BasePage {
 
-	private WebDriver driver = null;
 	private final String ENDAVA_URL = "http://www.endava.com";
 
 	public By contactButtons = By.id("contact-buttons");
+	public By burgerMenu = By.id("menu-toggle");
 
 	public HomePage(WebDriver driver) {
-		this.driver = driver;
+		super(driver);
 	}
 
-	public HomePage open() {
+	public void open() {
 		driver.get(ENDAVA_URL);
 		driver.manage().window().maximize();
-		return null;
+	}
+
+	public MenuPage openMenu() {
+		driver.findElement(this.burgerMenu).click();
+		return new MenuPage(driver);
 	}
 }
