@@ -9,6 +9,7 @@ import org.testng.annotations.Test;
 
 import com.endava.pages.HomePage;
 import com.endava.pages.MenuPage;
+import com.endava.pages.ServicesPage;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
@@ -20,6 +21,7 @@ public class TestHomePage {
 
 	private HomePage homePage;
 	private MenuPage menuPage;
+	private ServicesPage servicesPage;
 
 	@BeforeTest
 	public void setUp() {
@@ -30,16 +32,32 @@ public class TestHomePage {
 	 * Test validates that home page is opened by checking if contact buttons are
 	 * visible on the page
 	 */
-	@Test
-	public void testHomePageIsOpened() {
-		homePage = new HomePage(new ChromeDriver());
-		homePage.open();
-		new WebDriverWait(homePage.driver, 5)
-				.until(ExpectedConditions.visibilityOfElementLocated(homePage.contactButtons));
-	}
+//	@Test
+//	public void testHomePageIsOpened() {
+//		homePage = new HomePage(new ChromeDriver());
+//		homePage.open();
+//		new WebDriverWait(homePage.driver, 5)
+//				.until(ExpectedConditions.visibilityOfElementLocated(homePage.contactButtons));
+//	}
+//
+//	@Test
+//	public void testOpenMenu() {
+//		homePage = new HomePage(new ChromeDriver());
+//		homePage.open();
+//		new WebDriverWait(homePage.driver, 5)
+//				.until(ExpectedConditions.visibilityOfElementLocated(homePage.contactButtons));
+//		menuPage = homePage.openMenu();
+//		new WebDriverWait(menuPage.driver, 5)
+//				.until(ExpectedConditions.visibilityOfElementLocated(menuPage.navigationList));
+//	}
+
+	/**
+	 * Open "burger" menu option Click on "Services" Validate STRATEGY menu option
+	 * is shown
+	 */
 
 	@Test
-	public void testOpenMenu() {
+	public void testStrategyMenuIsShown() {
 		homePage = new HomePage(new ChromeDriver());
 		homePage.open();
 		new WebDriverWait(homePage.driver, 5)
@@ -47,6 +65,9 @@ public class TestHomePage {
 		menuPage = homePage.openMenu();
 		new WebDriverWait(menuPage.driver, 5)
 				.until(ExpectedConditions.visibilityOfElementLocated(menuPage.navigationList));
+
+		servicesPage = menuPage.openServices();
+		servicesPage.strategyIsShown();
 	}
 
 	@AfterMethod
