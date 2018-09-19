@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.endava.pages;
 
 import org.openqa.selenium.By;

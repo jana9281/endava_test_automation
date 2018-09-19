@@ -13,6 +13,14 @@ import com.endava.pages.MenuPage;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
+/**
+ * Open "burger" menu option Click on "Digital" Validate DIGITAL is selected in
+ * DIGITAL - AGILE - AUTOMATION menu options
+ * 
+ * @author Aleksandar.Zizovic
+ *
+ */
+
 public class TestDigitalPage {
 	private HomePage homePage;
 	private MenuPage menuPage;
