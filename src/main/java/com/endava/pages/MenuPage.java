@@ -10,7 +10,7 @@ import org.openqa.selenium.WebDriver;
 public class MenuPage extends BasePage {
 
 	public By navigationList = By.className("navigation");
-	public By successStories = By.xpath("//*[@id=\"mCSB_1_container\"]/div[1]/nav/ul/li[7]/a");
+	public By successStories = By.xpath("//a[text()='Success Stories']");
 
 	public MenuPage(WebDriver driver) {
 		super(driver);

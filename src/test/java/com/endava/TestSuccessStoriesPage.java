@@ -1,5 +1,7 @@
 /**
- * 
+ * Open "burger" menu option
+ * Click on "Success stories"
+ * Validate there is "Success Story | Retail and Consumer Goods"
  */
 package com.endava;
 
