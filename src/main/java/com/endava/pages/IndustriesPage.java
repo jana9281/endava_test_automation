@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriver;
 
 public class IndustriesPage extends BasePage {
 	
-	public By pageClick = By.xpath("/html/body/section[2]/div/div/div[1]/div/p/a");
+	public By finance = By.xpath("/html/body/section[2]/div/div/div[1]/div/p/a");
 	
 	public IndustriesPage(WebDriver driver) {
 		super(driver);
