@@ -34,13 +34,6 @@ public class TestSuccessStoriesPage {
 	 * Test validates that home page is opened by checking if contact buttons are
 	 * visible on the page
 	 */
-	@Test
-	public void testHomePageIsOpened() {
-		homePage = new HomePage(new ChromeDriver());
-		homePage.open();
-		new WebDriverWait(homePage.driver, 5)
-				.until(ExpectedConditions.visibilityOfElementLocated(homePage.contactButtons));
-	}
 
 	@Test
 	public void testSuccessStoriesPage() {

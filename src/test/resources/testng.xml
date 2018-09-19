@@ -4,6 +4,7 @@
   <test thread-count="5" name="TestHomePage">
   <classes>
   	<class name="com.endava.TestHomePage" />
+  	<class name="com.endava.TestSuccessStoriesPage" />
   </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->
