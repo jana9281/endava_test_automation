@@ -3,6 +3,7 @@ package com.endava;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
@@ -47,6 +48,13 @@ public class TestHomePage {
 		menuPage = homePage.openMenu();
 		new WebDriverWait(menuPage.driver, 5)
 				.until(ExpectedConditions.visibilityOfElementLocated(menuPage.navigationList));
+	}
+
+	@Test
+	public void assertEquals() {
+		homePage = new HomePage(new ChromeDriver());
+		homePage.open();
+		Assert.assertEquals(homePage.getPageTitle(), "Endava");
 	}
 
 	@AfterMethod
