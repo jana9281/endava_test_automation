@@ -48,12 +48,6 @@ public class TestHomePage {
 		menuPage = homePage.openMenu();
 		new WebDriverWait(menuPage.driver, 5)
 				.until(ExpectedConditions.visibilityOfElementLocated(menuPage.navigationList));
-	}
-
-	@Test
-	public void assertEquals() {
-		homePage = new HomePage(new ChromeDriver());
-		homePage.open();
 		Assert.assertEquals(homePage.getPageTitle(), "Endava");
 	}
 
