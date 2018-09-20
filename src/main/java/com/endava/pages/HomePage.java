@@ -1,6 +1,7 @@
 package com.endava.pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 
 /**
@@ -9,10 +10,9 @@ import org.openqa.selenium.WebDriver;
  */
 public class HomePage extends BasePage {
 
-	private final String ENDAVA_URL = "http://www.endava.com";
-
 	public By contactButtons = By.id("contact-buttons");
 	public By burgerMenu = By.id("menu-toggle");
+	public By cloud = By.xpath("//*[@id=\"footer\"]//a[text()='Cloud']");
 
 	public HomePage(WebDriver driver) {
 		super(driver);
@@ -27,4 +27,15 @@ public class HomePage extends BasePage {
 		driver.findElement(this.burgerMenu).click();
 		return new MenuPage(driver);
 	}
+
+	public void scrollDownAtTheBottomOfThePage() {
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("window.scrollTo(0, document.body.scrollHeight)");
+	}
+
+	public CloudPage openCloudPage() {
+		driver.findElement(cloud).click();
+		return new CloudPage(driver);
+	}
+
 }
