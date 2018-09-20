@@ -2,17 +2,18 @@ package com.endava.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
 
 public class IndustriesPage extends BasePage {
 	
-	public By finance = By.xpath("/html/body/section[2]/div/div/div[1]/div/p/a");
+	public String path="//a[text()='Finance']";
+	public By finance = By.xpath(path);
 	
 	public IndustriesPage(WebDriver driver) {
 		super(driver);
 	}
 	
 public void checkRead() {
-	 if(driver.getTitle().contains("/html/body/section[2]/div/div/div[1]/div/p/a"));
-		System.out.println("true");
+	Assert.assertTrue(driver.findElement(finance).isDisplayed());
 		 }
 }
