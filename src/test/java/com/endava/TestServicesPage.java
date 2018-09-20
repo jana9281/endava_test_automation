@@ -7,32 +7,33 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-import com.endava.pages.DigitalPage;
 import com.endava.pages.HomePage;
 import com.endava.pages.MenuPage;
+import com.endava.pages.ServicesPage;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 /**
- * Open "burger" menu option, click on "Digital", validate DIGITAL is selected
- * in DIGITAL - AGILE - AUTOMATION menu options
- * 
- * @author Aleksandar.Zizovic
+ * @author Denis.Selimovski
  *
  */
+public class TestServicesPage {
 
-public class TestDigitalPage {
 	private HomePage homePage;
 	private MenuPage menuPage;
-	private DigitalPage digitalPage;
+	private ServicesPage servicesPage;
 
 	@BeforeTest
 	public void setUp() {
 		WebDriverManager.chromedriver().setup();
 	}
 
+	/**
+	 * Open "burger" menu option Click on "Services" Validate STRATEGY menu option
+	 * is shown
+	 */
 	@Test
-	public void testDigitalPageIsOpened() {
+	public void testStrategyMenuIsShown() {
 		homePage = new HomePage(new ChromeDriver());
 		homePage.open();
 		new WebDriverWait(homePage.driver, 5)
@@ -40,13 +41,14 @@ public class TestDigitalPage {
 		menuPage = homePage.openMenu();
 		new WebDriverWait(menuPage.driver, 5)
 				.until(ExpectedConditions.visibilityOfElementLocated(menuPage.navigationList));
-		digitalPage = menuPage.openDigitalPage();
 
-		digitalPage.isActive();
+		servicesPage = menuPage.openServices();
+		servicesPage.strategyIsShown();
 	}
 
 	@AfterMethod
 	public void tearDown() {
 		homePage.quit();
 	}
+
 }

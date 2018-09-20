@@ -4,7 +4,11 @@
   <test thread-count="5" name="TestHomePage">
   <classes>
   	<class name="com.endava.TestHomePage" />
+<<<<<<< HEAD
   	<class name="com.endava.TestDigitalPage" />
+=======
+  	<class name="com.endava.TestServicesPage" />
+>>>>>>> origin
   </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->

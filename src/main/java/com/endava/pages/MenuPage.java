@@ -10,7 +10,9 @@ import org.openqa.selenium.WebDriver;
 public class MenuPage extends BasePage {
 
 	public By navigationList = By.className("navigation");
+	// public By digital = By.xpath("//a[@href=https://www.endava.com/en/Digital");
 	public By digital = By.xpath("//*[@id=\"mCSB_1_container\"]//a[text()='Digital']");
+	public By servicesItem = By.xpath("//a[text()='Services']");
 
 	public MenuPage(WebDriver driver) {
 		super(driver);
@@ -19,5 +21,10 @@ public class MenuPage extends BasePage {
 	public DigitalPage openDigitalPage() {
 		driver.findElement(this.digital).click();
 		return new DigitalPage(driver);
+	}
+
+	public ServicesPage openServices() {
+		driver.findElement(servicesItem).click();
+		return new ServicesPage(driver);
 	}
 }
