@@ -9,16 +9,14 @@ import org.testng.annotations.Test;
 import com.endava.pages.DigitalPage;
 import com.endava.pages.HomePage;
 import com.endava.pages.MenuPage;
-import com.endava.util.DriverWrapper;
+import com.endava.util.WebDriverUtil;
+import com.endava.util.WebDriverWrapper;
 
 /**
- * Open "burger" menu option Click on "Digital" Validate DIGITAL is selected in
- * DIGITAL - AGILE - AUTOMATION menu options
  * 
  * @author Aleksandar.Zizovic
  *
  */
-
 public class TestDigitalPage {
 	private HomePage homePage;
 	private MenuPage menuPage;
@@ -27,35 +25,26 @@ public class TestDigitalPage {
 	@BeforeTest
 	@Parameters({ "browser" })
 	public void setUp(String browser) {
-		DriverWrapper.setUpDriver(browser);
-//		homePage = new HomePage(DriverWrapper.createDriver(browser));
-//		homePage.open();
+		WebDriverWrapper.setUpDriver(browser);
 	}
 
 	@BeforeMethod
 	@Parameters({ "browser" })
 	public void openBrowser(String browser) {
-		homePage = new HomePage(DriverWrapper.createDriver(browser));
+		homePage = new HomePage(WebDriverWrapper.createDriver(browser));
 		homePage.open();
 	}
 
+	/**
+	 * Open "burger" menu option Click on "Digital" Validate DIGITAL is selected in
+	 * DIGITAL - AGILE - AUTOMATION menu options
+	 */
 	@Test
-	@Parameters({ "browser" })
-	public void testDigitalPageIsOpened(String browser) {
-//		if (browser.equalsIgnoreCase("chrome"))
-//			homePage = new HomePage(new ChromeDriver());
-//		else if (browser.equalsIgnoreCase("firefox"))
-//			homePage = new HomePage(new FirefoxDriver());
-//		else if (browser.equalsIgnoreCase("ie"))
-//			homePage = new HomePage(new InternetExplorerDriver());
-		// homePage.open();
-		DriverWrapper.waitUntilElementLocated(homePage.driver, 5, homePage.contactButtons);
-//		new WebDriverWait(homePage.driver, 5)
-//				.until(ExpectedConditions.visibilityOfElementLocated(homePage.contactButtons));
+	public void testDigitalPageIsOpened() {
+		WebDriverUtil.waitUntilElementLocated(homePage.driver, 5, homePage.contactButtons);
 		menuPage = homePage.openMenu();
-		DriverWrapper.waitUntilElementLocated(menuPage.driver, 5, menuPage.navigationList);
-//		new WebDriverWait(menuPage.driver, 5)
-//				.until(ExpectedConditions.visibilityOfElementLocated(menuPage.navigationList));
+		WebDriverUtil.waitUntilElementLocated(menuPage.driver, 5, menuPage.navigationList);
+
 		digitalPage = menuPage.openDigitalPage();
 
 		digitalPage.isActive();
