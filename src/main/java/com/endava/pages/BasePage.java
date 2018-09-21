@@ -3,11 +3,11 @@ package com.endava.pages;
 import org.openqa.selenium.WebDriver;
 
 /**
- * @author jana.djordjevic@endava.com
+ * @author nadezda.petrovic@endava.com
  *
  */
 public class BasePage {
-
+	public final String ENDAVA_URL = "http://www.endava.com";
 	public WebDriver driver;
 
 	protected BasePage(WebDriver driver) {
