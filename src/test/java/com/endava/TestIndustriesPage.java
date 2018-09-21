@@ -14,7 +14,7 @@ import com.endava.pages.MenuPage;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 /**
- * @author jana.djordjevic@endava.com
+ * @author nadezda.petrovic@endava.com
  *
  */
 public class TestIndustriesPage {
@@ -27,19 +27,10 @@ public class TestIndustriesPage {
 	public void setUp() {
 		WebDriverManager.chromedriver().setup();
 	}
-	
-	@Test
-	public void testHomePageIsOpened() {
-		homePage = new HomePage(new ChromeDriver());
-		homePage.open();
-		new WebDriverWait(homePage.driver, 5)
-				.until(ExpectedConditions.visibilityOfElementLocated(homePage.contactButtons));
-	}
 
 	@Test
 	public void testOpenIndustriesPage() {
 		homePage = new HomePage(new ChromeDriver());
-
 		homePage.open();
 		new WebDriverWait(homePage.driver, 5)
 				.until(ExpectedConditions.visibilityOfElementLocated(homePage.contactButtons));
