@@ -10,7 +10,10 @@ import org.openqa.selenium.WebDriver;
 public class MenuPage extends BasePage {
 
 	public By navigationList = By.className("navigation");
+
 	public By successStories = By.xpath("//a[text()='Success Stories']");
+
+	public By servicesItem = By.xpath("//a[text()='Services']");
 
 	public MenuPage(WebDriver driver) {
 		super(driver);
@@ -20,4 +23,10 @@ public class MenuPage extends BasePage {
 		driver.findElement(successStories).click();
 		return new SuccessStoriesPage(driver);
 	}
+
+	public ServicesPage openServices() {
+		driver.findElement(servicesItem).click();
+		return new ServicesPage(driver);
+	}
+
 }
