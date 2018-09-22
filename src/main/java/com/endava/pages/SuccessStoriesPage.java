@@ -12,20 +12,16 @@ import org.testng.Assert;
  *
  */
 public class SuccessStoriesPage extends BasePage {
-
-	public By pageTitle = By.linkText("Success Stories");
-
-	String actualString = driver.findElement(By.xpath("//p[text()='Success Story | Retail and Consumer Goods']"))
-			.getText();
+	
+	private final String setText = "Success Story | Retail and Consumer Goods";
+	public String actualText = driver.findElement(
+			By.xpath("/html/body/section[2]/div/div/div[1]/figure/figcaption/p")).getText();
 
 	protected SuccessStoriesPage(WebDriver driver) {
 		super(driver);
-
 	}
 
-	public void findSSRCG() {
-		Assert.assertTrue(actualString.equalsIgnoreCase("Success Story | Retail and Consumer Goods"));
-
+	public void validateSSRCGTitle() {
+		Assert.assertTrue(actualText.equalsIgnoreCase(setText));
 	}
-
 }

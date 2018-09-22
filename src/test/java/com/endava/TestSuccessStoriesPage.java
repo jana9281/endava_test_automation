@@ -1,8 +1,4 @@
-/**
- * Open "burger" menu option
- * Click on "Success stories"
- * Validate there is "Success Story | Retail and Consumer Goods"
- */
+
 package com.endava;
 
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -32,10 +28,11 @@ public class TestSuccessStoriesPage {
 		WebDriverManager.chromedriver().setup();
 	}
 
-	/*
-	 * Test validates that home page is opened by checking if contact buttons are
-	 * visible on the page
-	 */
+/**
+*   Open "burger" menu option
+*   Click on "Success stories"
+*   Validate there is "Success Story | Retail and Consumer Goods"
+*/
 
 	@Test
 	public void testSuccessStoriesPage() {
@@ -48,10 +45,8 @@ public class TestSuccessStoriesPage {
 				.until(ExpectedConditions.visibilityOfElementLocated(menuPage.navigationList));
 
 		succesStoriesPage = menuPage.openSuccessStories();
-		new WebDriverWait(succesStoriesPage.driver, 5)
-				.until(ExpectedConditions.visibilityOfElementLocated(succesStoriesPage.pageTitle));
-
-		succesStoriesPage.findSSRCG();
+		succesStoriesPage.validateSSRCGTitle();
+		
 	}
 
 	@AfterMethod
