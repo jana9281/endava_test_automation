@@ -1,7 +1,7 @@
 package com.endava.pages;
 
-import java.util.logging.Logger;
-
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -10,7 +10,7 @@ import org.openqa.selenium.WebDriver;
  *
  */
 public class MenuPage extends BasePage {
-	private static Logger log = Logger.getLogger(MenuPage.class.getName());
+	private static Log log = LogFactory.getLog(ServicesPage.class);
 	public By navigationList = By.className("navigation");
 	public By servicesItem = By.xpath("//a[text()='Services']");
 
@@ -19,7 +19,7 @@ public class MenuPage extends BasePage {
 	}
 
 	public ServicesPage openServices() {
-		log.info("*****   open method openServices  ***");
+		log.debug("Open method openServices");
 		driver.findElement(servicesItem).click();
 		return new ServicesPage(driver);
 	}

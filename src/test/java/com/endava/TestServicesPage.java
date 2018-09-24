@@ -25,6 +25,7 @@ public class TestServicesPage {
 	private MenuPage menuPage;
 	private ServicesPage servicesPage;
 	private static Logger log = Logger.getLogger(TestServicesPage.class.getName());
+
 	@BeforeTest
 	public void setUp() {
 		WebDriverManager.chromedriver().setup();
@@ -36,8 +37,8 @@ public class TestServicesPage {
 	 */
 	@Test
 	public void testStrategyMenuIsShown() {
-		log.info("*******************Open Test Strategy Menu***********************");
-		
+		log.info("Open Test Strategy Menu ");
+
 		homePage = new HomePage(new ChromeDriver());
 		homePage.open();
 		new WebDriverWait(homePage.driver, 5)
@@ -48,7 +49,7 @@ public class TestServicesPage {
 
 		servicesPage = menuPage.openServices();
 		servicesPage.strategyIsShown();
-		log.info("*******************Close Test Strategy Menu***********************");
+		log.info("Close Test Strategy Menu");
 	}
 
 	@AfterMethod
