@@ -36,14 +36,15 @@ public class TestTextFieldFirstLastName {
 		homePage.scrollDownAtTheBottomOfThePage();
 		cloudPage = homePage.openCloudPage();
 		cloudPage.isUrlChanged();
-		cloudPage.scrollDownToContacts();
-		cloudPage.populateFirstLastName();
-		cloudPage.isPopulatedFirstNameCorrect();
-		cloudPage.isPopulatedLastNameCorrect();
-		cloudPage.clikContactUs(cloudPage.contactUs);
-		cloudPage.isWarnningMessageExists(cloudPage.warningMessage1);
-		cloudPage.isWarnningMessageExists(cloudPage.warningMessage2);
-		cloudPage.isWarnningMessageExists(cloudPage.warningMessage3);
+		cloudPage.scrollDownToElement(cloudPage.contactUs);
+		cloudPage.populateElement(cloudPage.firstName, "Petar");
+		cloudPage.populateElement(cloudPage.lastName, "Petrovic");
+		cloudPage.isPopulatedElementCorrect(cloudPage.firstName);
+		cloudPage.isPopulatedElementCorrect(cloudPage.lastName);
+		cloudPage.clickOnElement(cloudPage.contactUs);
+		cloudPage.isElementShown(cloudPage.warningMessage1);
+		cloudPage.isElementShown(cloudPage.warningMessage2);
+		cloudPage.isElementShown(cloudPage.warningMessage3);
 	}
 
 	@AfterMethod
