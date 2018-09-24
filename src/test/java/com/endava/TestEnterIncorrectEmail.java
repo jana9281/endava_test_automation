@@ -41,14 +41,14 @@ public class TestEnterIncorrectEmail {
 		homePage.open();
 		new WebDriverWait(homePage.driver, 5)
 				.until(ExpectedConditions.visibilityOfElementLocated(homePage.contactButtons));
-		homePage.scrollDownAtTheBottomOfThePage();
+		homePage.scrollDownToElement(homePage.footer);
 		softwareEngineeringPage = homePage.openSoftwareEngineeringPage();
 		softwareEngineeringPage.isUrlChanged();
-		softwareEngineeringPage.scrollDownToContactUs();
-		softwareEngineeringPage.populateIncorrectEmailAddress();
+		softwareEngineeringPage.scrollDownToElement(softwareEngineeringPage.contactUsArea);
+		softwareEngineeringPage.populateField(softwareEngineeringPage.emailAddressField, "blahblah123");
 		softwareEngineeringPage.isEmailAddressIncorrect();
-		softwareEngineeringPage.clickOnButton(softwareEngineeringPage.submitButton);
-		softwareEngineeringPage.isWarningMessageShown();
+		softwareEngineeringPage.clickOnElement(softwareEngineeringPage.submitButton);
+		softwareEngineeringPage.isElementShown(softwareEngineeringPage.warningMessageEmail);
 	}
 
 	@AfterMethod
