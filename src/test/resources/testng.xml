@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Suite">
+<<<<<<< HEAD
   <test thread-count="5" name="TestHomePage">
   <classes>
   	<class name="com.endava.TestHomePage" />
@@ -8,4 +9,14 @@
   	<class name="com.endava.TestServicesPage" />
   </classes>
   </test> <!-- Test -->
+=======
+	<test thread-count="5" name="TestHomePage">
+		<classes>
+			<class name="com.endava.TestHomePage" />
+			<class name="com.endava.TestServicesPage" />
+			<class name="com.endava.TestIndustriesPage" />
+			<class name="com.endava.TestSuccessStoriesPage" />
+		</classes>
+	</test> <!-- Test -->
+>>>>>>> 98c292e10ed2a4b291d0d54872580b3007b3eb05
 </suite> <!-- Suite -->
