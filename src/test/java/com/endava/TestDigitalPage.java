@@ -14,9 +14,6 @@ import com.endava.pages.MenuPage;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 /**
- * Open "burger" menu option, click on "Digital", validate DIGITAL is selected
- * in DIGITAL - AGILE - AUTOMATION menu options
- * 
  * @author Aleksandar.Zizovic
  *
  */
@@ -31,6 +28,10 @@ public class TestDigitalPage {
 		WebDriverManager.chromedriver().setup();
 	}
 
+	/**
+	 * Open "burger" menu option, click on "Digital", validate DIGITAL is selected
+	 * in DIGITAL - AGILE - AUTOMATION menu options
+	 */
 	@Test
 	public void testDigitalPageIsOpened() {
 		homePage = new HomePage(new ChromeDriver());
