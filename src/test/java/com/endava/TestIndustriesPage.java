@@ -8,41 +8,32 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import com.endava.pages.HomePage;
+import com.endava.pages.IndustriesPage;
 import com.endava.pages.MenuPage;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 /**
- * @author jana.djordjevic@endava.com
+ * @author nadezda.petrovic@endava.com
  *
  */
-public class TestHomePage {
+public class TestIndustriesPage {
 
 	private HomePage homePage;
 	private MenuPage menuPage;
+	private IndustriesPage industriesPage;
 
 	@BeforeTest
 	public void setUp() {
 		WebDriverManager.chromedriver().setup();
 	}
 
-	/*
-	 * Test validates that home page is opened by checking if contact buttons are
-	 * visible on the page
+	/**
+	 * Open "burger" menu option and click on "Industries", Validate FINANCE section
+	 * is shown with "Read More" link
 	 */
 	@Test
-	public void testHomePageIsOpened() {
-		homePage = new HomePage(new ChromeDriver());
-		homePage.open();
-		new WebDriverWait(homePage.driver, 5)
-				.until(ExpectedConditions.visibilityOfElementLocated(homePage.contactButtons));
-	}
-
-	/*
-	 * Test validates that menu page can be opened from home page
-	 */
-	@Test
-	public void testOpenMenu() {
+	public void testOpenIndustriesPage() {
 		homePage = new HomePage(new ChromeDriver());
 		homePage.open();
 		new WebDriverWait(homePage.driver, 5)
@@ -50,11 +41,14 @@ public class TestHomePage {
 		menuPage = homePage.openMenu();
 		new WebDriverWait(menuPage.driver, 5)
 				.until(ExpectedConditions.visibilityOfElementLocated(menuPage.navigationList));
+		industriesPage = menuPage.openIndustriesPage();
+		new WebDriverWait(industriesPage.driver, 5)
+				.until(ExpectedConditions.visibilityOfElementLocated(industriesPage.finance));
+		industriesPage.checkRead();
 	}
 
 	@AfterMethod
 	public void tearDown() {
 		homePage.quit();
 	}
-
 }
