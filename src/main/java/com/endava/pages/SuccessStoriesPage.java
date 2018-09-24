@@ -13,8 +13,7 @@ import org.testng.Assert;
  */
 public class SuccessStoriesPage extends BasePage {
 
-	public By pageTitle = By.linkText("Success Stories");
-	public By textSSRCG = By.xpath("//p[text()='Success Story | Retail and Consumer Goods']");
+	public By textSSRCG = By.xpath("/html/body/section[2]/div/div/div[1]/figure/figcaption/p");
 
 	protected SuccessStoriesPage(WebDriver driver) {
 		super(driver);
