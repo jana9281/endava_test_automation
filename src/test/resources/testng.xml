@@ -6,6 +6,7 @@
 			<class name="com.endava.TestHomePage" />
 			<class name="com.endava.TestServicesPage" />
 			<class name="com.endava.TestSuccessStoriesPage" />
+			<class name="com.endava.TestLanguageMenu" />
 		</classes>
 	</test> <!-- Test -->
 </suite> <!-- Suite -->
