@@ -20,6 +20,7 @@ public class CloudPage extends BasePage {
 	public By warningMessage1 = By.xpath("//*[@class=\"error\"]//p[text()='Please enter Email Address']");
 	public By warningMessage2 = By.xpath("//*[@class=\"error\"]//p[text()='Please enter Company']");
 	public By warningMessage3 = By.xpath("//*[@class=\"error\"]//p[text()='Please enter Country/Region']");
+	private static final String REGEX = "^[a-zA-Z]+[\\-'\\s]?[a-zA-Z ]+$";
 
 	public CloudPage(WebDriver driver) {
 		super(driver);
@@ -44,14 +45,14 @@ public class CloudPage extends BasePage {
 
 	public void isPopulatedFirstNameCorrect() {
 		String firstName = driver.findElement(By.id("firstname")).getAttribute("value");
-		Assert.assertTrue(firstName.matches("^[a-zA-Z]+[\\-'\\s]?[a-zA-Z ]+$"));
+		Assert.assertTrue(firstName.matches(REGEX));
 		Assert.assertTrue(35 > firstName.length());
 		Assert.assertTrue(0 < firstName.length());
 	}
 
 	public void isPopulatedLastNameCorrect() {
 		String lastName = driver.findElement(By.id("lastname")).getAttribute("value");
-		Assert.assertTrue(lastName.matches("^[a-zA-Z]+[\\-'\\s]?[a-zA-Z ]+$"));
+		Assert.assertTrue(lastName.matches(REGEX));
 		Assert.assertTrue(35 > lastName.length());
 		Assert.assertTrue(0 < lastName.length());
 	}
