@@ -1,7 +1,6 @@
 package com.endava.pages;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 
 /**
@@ -26,11 +25,6 @@ public class HomePage extends BasePage {
 	public MenuPage openMenu() {
 		driver.findElement(this.burgerMenu).click();
 		return new MenuPage(driver);
-	}
-
-	public void scrollDownAtTheBottomOfThePage() {
-		JavascriptExecutor js = (JavascriptExecutor) driver;
-		js.executeScript("window.scrollTo(0, document.body.scrollHeight)");
 	}
 
 	public CloudPage openCloudPage() {

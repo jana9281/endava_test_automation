@@ -44,10 +44,10 @@ public class TestTermsAndPrivacyCheckBoxValidation {
 		homePage.scrollDownAtTheBottomOfThePage();
 		cloudPage = homePage.openCloudPage();
 		cloudPage.isUrlChanged();
-		cloudPage.scrollDownToElement();
-		cloudPage.tickCheckBox(cloudPage.termsAndConditionsLabel);
-		cloudPage.isCheckBoxTicked(cloudPage.termsAndConditionsCheckBox);
-		cloudPage.isSuggestionShown();
+		cloudPage.scrollDownToElement(cloudPage.contactUsArea);
+		cloudPage.clickOnElement(cloudPage.termsAndConditionsLabel);
+		cloudPage.isElementSelected(cloudPage.termsAndConditionsCheckBox);
+		cloudPage.isElementShown(cloudPage.suggestion);
 	}
 
 	@AfterMethod
