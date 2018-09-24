@@ -10,7 +10,7 @@ import org.testng.Assert;
  */
 public class DigitalPage extends BasePage {
 
-	public By digitalButton = By.xpath("//*[@id=\"secondary-nav\"]/ul/li[1]");
+	public By digitalButton = By.xpath("//*[@id=\"mobile-active-item\"]");
 
 	/**
 	 * @param driver - WebDriver instance
