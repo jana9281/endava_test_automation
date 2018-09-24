@@ -1,16 +1,3 @@
-/**
- * 1. Go to endava.com
- * 2.Scroll down to the page footer and from the "Services" section click on "Insights through Data"
- * 3.Validate URL has changed
- * 4. Scroll down to the "Contact us" area
- * 5.Populate First Name Field
- * 6. Populate Last Name Field
- * 7.Delete Last Name
- * 8.Validate that First Name is Correct
- * 9.Click on "Contact US" button
- * 10.Validate there is a warning message "Please enter Last Name" - mandatory field
- * 11.Validate there is no warning message "Please enter Phone Number" - non mandatory field
- */
 package com.endava;
 
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -39,8 +26,13 @@ public class TestValidateNonMandatoryFields {
 	}
 
 	/*
-	 * Test validates that home page is opened by checking if contact buttons are
-	 * visible on the page
+	 * 1. Go to endava.com 2. Scroll down to the page footer and from the "Services"
+	 * section click on "Insights through Data" 3. Validate URL has changed 4.
+	 * Scroll down to the "Contact us" area 5. Populate First Name Field 6. Populate
+	 * Last Name Field 7. Delete Last Name 8. Validate that First Name is Correct 9.
+	 * Click on "Contact US" button 9. Validate there is a warning message
+	 * "Please enter Last Name" - mandatory field 10. Validate there is no warning
+	 * message "Please enter Phone Number" - non mandatory field
 	 */
 
 	@Test
@@ -49,23 +41,17 @@ public class TestValidateNonMandatoryFields {
 		homePage.open();
 		new WebDriverWait(homePage.driver, 5)
 				.until(ExpectedConditions.visibilityOfElementLocated(homePage.contactButtons));
-		homePage.scrollDownAtTheBottomOfThePage();
+		homePage.scrollDownToElement(homePage.footer);
 		insightsThroughDataPage = homePage.openInsightsThroughDataPage();
 		insightsThroughDataPage.isUrlChanged();
-		insightsThroughDataPage.scrollDownToContactUs();
-		insightsThroughDataPage.populateFirstNameField();
-		insightsThroughDataPage.populateLastNameField();
-		insightsThroughDataPage.clearLastNameField();
+		insightsThroughDataPage.scrollDownToElement(insightsThroughDataPage.contactUsArea);
+		insightsThroughDataPage.populateField(insightsThroughDataPage.firsNameField, "Rale");
+		insightsThroughDataPage.populateField(insightsThroughDataPage.lastNameField, "BlaBla");
+		insightsThroughDataPage.clearField(insightsThroughDataPage.lastNameField);
 		insightsThroughDataPage.isFirstNameCorrect();
-		insightsThroughDataPage.clicOnButton(insightsThroughDataPage.contactUs);
-		insightsThroughDataPage.isWarningMessageShown();
+		insightsThroughDataPage.clickOnElement(insightsThroughDataPage.contactUsButton);
+		insightsThroughDataPage.isElementShown(insightsThroughDataPage.warningMessageLastName);
 		insightsThroughDataPage.isWarningMassageNotShown();
-		try {
-			Thread.sleep(3000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	}
 
 	@AfterMethod

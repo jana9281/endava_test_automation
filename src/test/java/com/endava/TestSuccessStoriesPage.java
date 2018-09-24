@@ -1,3 +1,4 @@
+
 package com.endava;
 
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -9,19 +10,18 @@ import org.testng.annotations.Test;
 
 import com.endava.pages.HomePage;
 import com.endava.pages.MenuPage;
-import com.endava.pages.ServicesPage;
+import com.endava.pages.SuccessStoriesPage;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 /**
- * @author Denis.Selimovski
+ * @author Radovan.Olujic
  *
  */
-public class TestServicesPage {
-
+public class TestSuccessStoriesPage {
 	private HomePage homePage;
 	private MenuPage menuPage;
-	private ServicesPage servicesPage;
+	private SuccessStoriesPage succesStoriesPage;
 
 	@BeforeTest
 	public void setUp() {
@@ -29,11 +29,12 @@ public class TestServicesPage {
 	}
 
 	/**
-	 * Open "burger" menu option Click on "Services" Validate STRATEGY menu option
-	 * is shown
+	 * Open "burger" menu option Click on "Success stories" Validate there is
+	 * "Success Story | Retail and Consumer Goods"
 	 */
+
 	@Test
-	public void testStrategyMenuIsShown() {
+	public void testSuccessStoriesPage() {
 		homePage = new HomePage(new ChromeDriver());
 		homePage.open();
 		new WebDriverWait(homePage.driver, 5)
@@ -42,13 +43,12 @@ public class TestServicesPage {
 		new WebDriverWait(menuPage.driver, 5)
 				.until(ExpectedConditions.visibilityOfElementLocated(menuPage.navigationList));
 
-		servicesPage = menuPage.openServices();
-		servicesPage.isElementShown(servicesPage.strategyMenuOption);
+		succesStoriesPage = menuPage.openSuccessStories();
+		succesStoriesPage.validateSSRCGTitle();
 	}
 
 	@AfterMethod
 	public void tearDown() {
 		homePage.quit();
 	}
-
 }
