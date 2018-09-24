@@ -1,3 +1,4 @@
+
 package com.endava;
 
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -8,20 +9,19 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import com.endava.pages.HomePage;
-import com.endava.pages.IndustriesPage;
 import com.endava.pages.MenuPage;
+import com.endava.pages.SuccessStoriesPage;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 /**
- * @author nadezda.petrovic@endava.com
+ * @author Radovan.Olujic
  *
  */
-public class TestIndustriesPage {
-
+public class TestSuccessStoriesPage {
 	private HomePage homePage;
 	private MenuPage menuPage;
-	private IndustriesPage industriesPage;
+	private SuccessStoriesPage succesStoriesPage;
 
 	@BeforeTest
 	public void setUp() {
@@ -29,11 +29,12 @@ public class TestIndustriesPage {
 	}
 
 	/**
-	 * Open "burger" menu option and click on "Industries", Validate FINANCE section
-	 * is shown with "Read More" link
+	 * Open "burger" menu option Click on "Success stories" Validate there is
+	 * "Success Story | Retail and Consumer Goods"
 	 */
+
 	@Test
-	public void testOpenIndustriesPage() {
+	public void testSuccessStoriesPage() {
 		homePage = new HomePage(new ChromeDriver());
 		homePage.open();
 		new WebDriverWait(homePage.driver, 5)
@@ -41,10 +42,9 @@ public class TestIndustriesPage {
 		menuPage = homePage.openMenu();
 		new WebDriverWait(menuPage.driver, 5)
 				.until(ExpectedConditions.visibilityOfElementLocated(menuPage.navigationList));
-		industriesPage = menuPage.openIndustriesPage();
-		new WebDriverWait(industriesPage.driver, 5)
-				.until(ExpectedConditions.visibilityOfElementLocated(industriesPage.finance));
-		industriesPage.checkRead();
+
+		succesStoriesPage = menuPage.openSuccessStories();
+		succesStoriesPage.validateSSRCGTitle();
 	}
 
 	@AfterMethod
