@@ -14,18 +14,15 @@ import org.testng.Assert;
 public class SuccessStoriesPage extends BasePage {
 
 	public By pageTitle = By.linkText("Success Stories");
-
-	String actualString = driver.findElement(By.xpath("//p[text()='Success Story | Retail and Consumer Goods']"))
-			.getText();
+	public By textSSRCG = By.xpath("//p[text()='Success Story | Retail and Consumer Goods']");
 
 	protected SuccessStoriesPage(WebDriver driver) {
 		super(driver);
-
 	}
 
 	public void findSSRCG() {
-		Assert.assertTrue(actualString.equalsIgnoreCase("Success Story | Retail and Consumer Goods"));
-
+		Assert.assertTrue(
+				driver.findElement(textSSRCG).getText().equalsIgnoreCase("Success Story | Retail and Consumer Goods"));
 	}
 
 }

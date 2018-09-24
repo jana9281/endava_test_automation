@@ -11,7 +11,7 @@ public class MenuPage extends BasePage {
 
 	public By navigationList = By.className("navigation");
 
-	public By successStories = By.xpath("//a[text()='Success Stories']");
+	public By successStoriesItem = By.xpath("//a[text()='Success Stories']");
 
 	public By servicesItem = By.xpath("//a[text()='Services']");
 
@@ -20,7 +20,7 @@ public class MenuPage extends BasePage {
 	}
 
 	public SuccessStoriesPage openSuccessStories() {
-		driver.findElement(successStories).click();
+		driver.findElement(successStoriesItem).click();
 		return new SuccessStoriesPage(driver);
 	}
 
