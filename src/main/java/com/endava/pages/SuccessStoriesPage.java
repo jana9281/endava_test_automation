@@ -20,9 +20,8 @@ public class SuccessStoriesPage extends BasePage {
 		super(driver);
 	}
 
-	public void findSSRCG() {
+	public void validateSSRCGTitle() {
 		Assert.assertTrue(
 				driver.findElement(textSSRCG).getText().equalsIgnoreCase("Success Story | Retail and Consumer Goods"));
 	}
-
 }
