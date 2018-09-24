@@ -37,6 +37,7 @@ public class TestHomePage {
 		homePage.open();
 		new WebDriverWait(homePage.driver, 5)
 				.until(ExpectedConditions.visibilityOfElementLocated(homePage.contactButtons));
+		Assert.assertEquals(homePage.getPageTitle(), "Endava");
 	}
 
 	@Test

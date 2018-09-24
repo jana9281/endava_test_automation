@@ -4,6 +4,7 @@ package com.endava;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
@@ -45,6 +46,7 @@ public class TestSuccessStoriesPage {
 
 		succesStoriesPage = menuPage.openSuccessStories();
 		succesStoriesPage.validateSSRCGTitle();
+		Assert.assertEquals(homePage.getPageTitle(), "Success Stories");
 	}
 
 	@AfterMethod
