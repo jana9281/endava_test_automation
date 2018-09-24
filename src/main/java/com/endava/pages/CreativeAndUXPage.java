@@ -3,6 +3,8 @@
  */
 package com.endava.pages;
 
+import java.util.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -15,81 +17,65 @@ import org.testng.Assert;
  */
 public class CreativeAndUXPage extends BasePage {
 
-	public By contactUsButton;
 	public By emailTextField = By.id("email");
 	public By countryNameTextField = By.id("countryRegion");
-	public By contactUsArea = By.xpath("/html/body/section[7]/div/div/div");
+	public By warningMessage = By.xpath("//*[contains(text(), 'Please enter')]");
 
 	/**
-	 * @param driver
+	 * @param driver - WebDriver instance
 	 */
 	protected CreativeAndUXPage(WebDriver driver) {
 		super(driver);
 	}
 
-	/**
-	 * 
-	 */
 	public void isUrlChanged() {
 		Assert.assertFalse(driver.getCurrentUrl().equals(ENDAVA_URL));
 	}
 
-	/**
-	 * 
-	 */
 	public void scrollDownToContactUsArea() {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
-		WebElement element = driver.findElement(this.contactUsArea);
+		WebElement element = driver.findElement(this.emailTextField);
 		js.executeScript("arguments[0].scrollIntoView();", element);
 
 	}
 
-	/**
-	 * @param emailTextField2
-	 */
 	public void populateEmailTextField() {
-		driver.findElement(this.emailTextField).sendKeys("Aleksandar.Zizovic@endava");
+		driver.findElement(this.emailTextField).sendKeys("Aleksandar.Zizovic@endava.com");
 	}
 
-	/**
-	 * @param countryNameTextField2
-	 */
 	public void populateCountryNameTextField() {
 		driver.findElement(this.countryNameTextField).sendKeys("Serbia");
 
 	}
 
-	/**
-	 * 
-	 */
 	public void isEmailValid() {
 		Assert.assertTrue(driver.findElement(emailTextField).getAttribute("value")
 				.matches("^\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*$"));
 
 	}
 
-	/**
-	 * 
-	 */
 	public void isCountryNameValid() {
-		// TODO Auto-generated method stub
+		Assert.assertTrue(driver.findElement(countryNameTextField).getAttribute("value")
+				.matches("[a-zA-Z]+[\\-'\\s]?[a-zA-Z ]+$"));
 
 	}
 
 	/**
-	 * 
+	 * @param button - By instance
 	 */
-	public void clickOnContactUsButton() {
-		// TODO Auto-generated method stub
+	public void clickOnButton(By button) {
+		driver.findElement(button).click();
+	}
+
+	public List<WebElement> getWarningMessages() {
+		return driver.findElements(warningMessage);
 
 	}
 
-	/**
-	 * 
-	 */
-	public void isThereAWarningMessagge() {
-		// TODO Auto-generated method stub
+	public void isWarningMessageShown() {
+		for (WebElement webElement : getWarningMessages()) {
+			Assert.assertTrue(webElement.isDisplayed());
+		}
 
 	}
-
 }

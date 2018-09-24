@@ -1,5 +1,6 @@
 package com.endava;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -17,6 +18,7 @@ public class TestCreativeAndUXPage {
 
 	private HomePage homePage;
 	private CreativeAndUXPage creativeAndUXPage;
+	private By ContactUsButton = By.xpath("//*[@id=\"form-submit\"]");
 
 	@BeforeTest
 	public void beforeTest() {
@@ -28,7 +30,7 @@ public class TestCreativeAndUXPage {
 	}
 
 	@Test
-	public void f() {
+	public void testCreativeAndUXPage() {
 		homePage = new HomePage(new ChromeDriver());
 		homePage.open();
 		new WebDriverWait(homePage.driver, 5)
@@ -41,8 +43,8 @@ public class TestCreativeAndUXPage {
 		creativeAndUXPage.populateCountryNameTextField();
 		creativeAndUXPage.isEmailValid();
 		creativeAndUXPage.isCountryNameValid();
-		creativeAndUXPage.clickOnContactUsButton();
-		creativeAndUXPage.isThereAWarningMessagge();
+		creativeAndUXPage.clickOnButton(ContactUsButton);
+		creativeAndUXPage.isWarningMessageShown();
 	}
 
 	@AfterMethod
