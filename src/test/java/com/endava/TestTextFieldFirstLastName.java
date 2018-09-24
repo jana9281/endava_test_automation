@@ -23,8 +23,10 @@ public class TestTextFieldFirstLastName {
 	}
 
 	/*
-	 * Test validates that home page is opened by checking if contact buttons are
-	 * visible on the page
+	 * Test validates that cloud page is opened by validate URL has changed, in
+	 * "contact us" area populates first and last name field and validates if both
+	 * are correct. validates after click on "contact us" button for all mandatory
+	 * fields there is a warning message
 	 */
 
 	@Test

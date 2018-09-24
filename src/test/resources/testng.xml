@@ -7,6 +7,8 @@
 			<class name="com.endava.TestServicesPage" />
 			<class name="com.endava.TestSuccessStoriesPage" />
 			<class name="com.endava.TestTextFieldFirstLastName" />
+			<class name="com.endava.TestIndustriesPage" />
+			<class name="com.endava.TestSuccessStoriesPage" />
 		</classes>
 	</test> <!-- Test -->
 </suite> <!-- Suite -->
