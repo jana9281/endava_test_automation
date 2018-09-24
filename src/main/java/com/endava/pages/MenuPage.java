@@ -20,5 +20,4 @@ public class MenuPage extends BasePage {
 		driver.findElement(servicesItem).click();
 		return new ServicesPage(driver);
 	}
-
 }

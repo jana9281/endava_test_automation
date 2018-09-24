@@ -43,14 +43,12 @@ public class TestAutomationAndEngineeringPage {
 		new WebDriverWait(homePage.driver, 5)
 				.until(ExpectedConditions.visibilityOfElementLocated(homePage.contactButtons));
 		homePage.scrollDownAtTheBottomOfThePage();
-		homePage.openAutomationAndEngineeringPage();
 		automationAndEngineeringPage = homePage.openAutomationAndEngineeringPage();
 		automationAndEngineeringPage.isUrlChanged();
-		automationAndEngineeringPage.scrollDownToElement();
-		automationAndEngineeringPage.tickCheckBox(automationAndEngineeringPage.signMeUpforNewsletterLabel);
-		automationAndEngineeringPage.isCheckBoxTicked(automationAndEngineeringPage.signMeUpforNewsletterCheckBox);
-		automationAndEngineeringPage.isMessageAppears();
-
+		automationAndEngineeringPage.scrollDownToElement(automationAndEngineeringPage.contactUsArea);
+		automationAndEngineeringPage.clickOnElement(automationAndEngineeringPage.signMeUpforNewsletterLabel);
+		automationAndEngineeringPage.isElementSelected(automationAndEngineeringPage.signMeUpforNewsletterCheckBox);
+		automationAndEngineeringPage.isElementShown(automationAndEngineeringPage.promptMessage);
 	}
 
 	@AfterMethod
