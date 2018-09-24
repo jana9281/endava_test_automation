@@ -45,12 +45,10 @@ public class TestSuccessStoriesPage {
 
 		succesStoriesPage = menuPage.openSuccessStories();
 		succesStoriesPage.validateSSRCGTitle();
-
 	}
 
 	@AfterMethod
 	public void tearDown() {
 		homePage.quit();
 	}
-
 }
