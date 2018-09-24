@@ -41,9 +41,9 @@ public class TestServicesPage {
 	 */
 	@Test
 	public void testStrategyMenuIsShown() {
-		WebDriverUtil.waitUntilElementLocated(homePage.driver, 5, homePage.contactButtons);
+		WebDriverUtil.waitForVisible(homePage.driver, 5, homePage.contactButtons);
 		menuPage = homePage.openMenu();
-		WebDriverUtil.waitUntilElementLocated(menuPage.driver, 5, menuPage.navigationList);
+		WebDriverUtil.waitForVisible(menuPage.driver, 5, menuPage.navigationList);
 
 		servicesPage = menuPage.openServices();
 		servicesPage.strategyIsShown();

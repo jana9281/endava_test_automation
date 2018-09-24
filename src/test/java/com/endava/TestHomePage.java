@@ -39,14 +39,14 @@ public class TestHomePage {
 	 */
 	@Test
 	public void testHomePageIsOpened() {
-		WebDriverUtil.waitUntilElementLocated(homePage.driver, 5, homePage.contactButtons);
+		WebDriverUtil.waitForVisible(homePage.driver, 5, homePage.contactButtons);
 	}
 
 	@Test
 	public void testOpenMenu() {
-		WebDriverUtil.waitUntilElementLocated(homePage.driver, 5, homePage.contactButtons);
+		WebDriverUtil.waitForVisible(homePage.driver, 5, homePage.contactButtons);
 		menuPage = homePage.openMenu();
-		WebDriverUtil.waitUntilElementLocated(menuPage.driver, 5, menuPage.navigationList);
+		WebDriverUtil.waitForVisible(menuPage.driver, 5, menuPage.navigationList);
 	}
 
 	@AfterMethod

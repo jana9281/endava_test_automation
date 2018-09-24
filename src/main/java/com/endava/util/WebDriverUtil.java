@@ -15,7 +15,14 @@ import org.openqa.selenium.support.ui.WebDriverWait;
  */
 public class WebDriverUtil {
 
-	public static WebElement waitUntilElementLocated(WebDriver driver, long time, By locator) {
+	/**
+	 * 
+	 * @param driver  - WebDriver instance
+	 * @param time    in seconds
+	 * @param locator - By instance
+	 * @return
+	 */
+	public static WebElement waitForVisible(WebDriver driver, long time, By locator) {
 		return new WebDriverWait(driver, time).until(ExpectedConditions.visibilityOfElementLocated(locator));
 	}
 }
