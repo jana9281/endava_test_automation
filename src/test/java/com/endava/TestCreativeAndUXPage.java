@@ -29,6 +29,14 @@ public class TestCreativeAndUXPage {
 	public void beforeMethod() {
 	}
 
+	/**
+	 * Go to endava.com. Scroll down to the page footer and from the "Services"
+	 * section click on "Creative & UX". Validate URL has changed. Scroll down to
+	 * the "Contact us" area. Populate Email Address field. Populate Country/Region
+	 * Name field. Validate Email Address and Country/Region name are correct. Click
+	 * on "Contact US" button. Validate that for all mandatory fields there is a
+	 * warning message if it's not populated (e.g. "Please enter First Name").
+	 */
 	@Test
 	public void testCreativeAndUXPage() {
 		homePage = new HomePage(new ChromeDriver());
