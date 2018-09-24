@@ -38,6 +38,9 @@ public class TestHomePage {
 				.until(ExpectedConditions.visibilityOfElementLocated(homePage.contactButtons));
 	}
 
+	/*
+	 * Test validates that menu page can be opened from home page
+	 */
 	@Test
 	public void testOpenMenu() {
 		homePage = new HomePage(new ChromeDriver());
