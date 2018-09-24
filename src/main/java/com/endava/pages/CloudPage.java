@@ -16,10 +16,11 @@ import org.testng.Assert;
 
 public class CloudPage extends BasePage {
 
-	public By firstLastNameErrorLocation = By.xpath("//*[@id=\"contact-form\"]/fieldset/div[2]/div[1]/div/p");
-	public By warningMessage= By.className("error");
-	public By contactUs= By.id("form-submit");
-	
+	public By contactUs = By.id("form-submit");
+	public By warningMessage1 = By.xpath("//*[@class=\"error\"]//p[text()='Please enter Email Address']");
+	public By warningMessage2 = By.xpath("//*[@class=\"error\"]//p[text()='Please enter Company']");
+	public By warningMessage3 = By.xpath("//*[@class=\"error\"]//p[text()='Please enter Country/Region']");
+
 	public CloudPage(WebDriver driver) {
 		super(driver);
 	}
@@ -30,23 +31,29 @@ public class CloudPage extends BasePage {
 
 	public void scrollDownToContacts() {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
-		WebElement contact = driver.findElement(By.xpath("/html/body/section[9]/div/div/div/h2"));
+		WebElement contact = driver.findElement(contactUs);
 		js.executeScript("arguments[0].scrollIntoView();", contact);
 	}
 
 	public void populateFirstLastName() {
 		WebElement firstName = driver.findElement(By.id("firstname"));
 		WebElement lastName = driver.findElement(By.id("lastname"));
-		firstName.sendKeys("petra");
+		firstName.sendKeys("Petar");
 		lastName.sendKeys("Petrovic");
 	}
 
-	public void isPopulatedFirstNameCorrect(By element) {
-		Assert.assertTrue(driver.findElement(element).isSelected());
+	public void isPopulatedFirstNameCorrect() {
+		String firstName = driver.findElement(By.id("firstname")).getAttribute("value");
+		Assert.assertTrue(firstName.matches("^[a-zA-Z]+[\\-'\\s]?[a-zA-Z ]+$"));
+		Assert.assertTrue(35 > firstName.length());
+		Assert.assertTrue(0 < firstName.length());
 	}
 
-	public void isPopulatedLastNameCorrect(By element) {
-		Assert.assertTrue(driver.findElement(element).isSelected());
+	public void isPopulatedLastNameCorrect() {
+		String lastName = driver.findElement(By.id("lastname")).getAttribute("value");
+		Assert.assertTrue(lastName.matches("^[a-zA-Z]+[\\-'\\s]?[a-zA-Z ]+$"));
+		Assert.assertTrue(35 > lastName.length());
+		Assert.assertTrue(0 < lastName.length());
 	}
 
 	public void clikContactUs(By element) {
@@ -54,7 +61,7 @@ public class CloudPage extends BasePage {
 	}
 
 	public void isWarnningMessageExists(By element) {
-		Assert.assertTrue(driver.findElement(element).isSelected());
+		Assert.assertTrue(driver.findElement(element).isDisplayed());
 	}
 
 }

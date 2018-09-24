@@ -6,8 +6,10 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
+
 import com.endava.pages.CloudPage;
 import com.endava.pages.HomePage;
+
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class TestTextFieldFirstLastName {
@@ -36,19 +38,17 @@ public class TestTextFieldFirstLastName {
 		cloudPage.isUrlChanged();
 		cloudPage.scrollDownToContacts();
 		cloudPage.populateFirstLastName();
-		cloudPage.isPopulatedFirstNameCorrect(cloudPage.firstLastNameErrorLocation);
-		//cloudPage.isPopulatedLastNameCorrect(cloudPage.firstLastNameErrorLocation);
-		//cloudPage.clikContactUs(cloudPage.contactUs);
-		cloudPage.isWarnningMessageExists(cloudPage.warningMessage);
-
+		cloudPage.isPopulatedFirstNameCorrect();
+		cloudPage.isPopulatedLastNameCorrect();
+		cloudPage.clikContactUs(cloudPage.contactUs);
+		cloudPage.isWarnningMessageExists(cloudPage.warningMessage1);
+		cloudPage.isWarnningMessageExists(cloudPage.warningMessage2);
+		cloudPage.isWarnningMessageExists(cloudPage.warningMessage3);
 	}
 
 	@AfterMethod
-
 	public void tearDown() {
-
 		homePage.quit();
-
 	}
 
 }
