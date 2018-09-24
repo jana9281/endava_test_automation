@@ -3,7 +3,7 @@
 <suite name="Suite">
   <test thread-count="5" name="TestHomePage">
   	<classes>
-    	<class name="com.endava.TestHomePage" />
+  		<class name="com.endava.TestHomePage" />
   		<class name="com.endava.TestServicesPage" />
   		<class name="com.endava.TestSuccessStoriesPage" />
   	</classes>
