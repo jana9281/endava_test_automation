@@ -7,11 +7,11 @@ import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
 /**
- * @author nadezda.petrovic@endava.com
+ * @author jana.djordjevic@endava.com
  *
  */
 public class BasePage {
-	public final String ENDAVA_URL = "http://www.endava.com";
+	public static final String ENDAVA_URL = "http://www.endava.com";
 	private static final String REGEX = "^[a-zA-Z]+[\\-'\\s]?[a-zA-Z ]+$";
 	public WebDriver driver;
 
@@ -43,7 +43,7 @@ public class BasePage {
 
 	public void isPopulatedElementCorrect(By element) {
 		String model = driver.findElement(element).getAttribute("value");
-		Assert.assertTrue(model.matches(REGEX) && 35 > model.length() && 0 < model.length());
+		Assert.assertTrue(model.matches(REGEX) && 0 < model.length());
 	}
 
 	public void populateElement(By element, String elValue) {
@@ -52,7 +52,7 @@ public class BasePage {
 	}
 
 	public void quit() {
-		if (this != null) {
+		if (this.driver != null) {
 			driver.quit();
 		}
 	}

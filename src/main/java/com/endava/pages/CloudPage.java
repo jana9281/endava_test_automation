@@ -5,15 +5,11 @@ import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
 /**
- * 
  * @author Nadezda.Petrovic
- *
- * 
  * 
  */
 
 public class CloudPage extends BasePage {
-
 	public By contactUs = By.id("form-submit");
 	public By firstName = By.id("firstname");
 	public By lastName = By.id("lastname");
@@ -26,7 +22,7 @@ public class CloudPage extends BasePage {
 	}
 
 	public void isUrlChanged() {
-		Assert.assertFalse(driver.getCurrentUrl().equals(ENDAVA_URL));
+		Assert.assertNotEquals(driver.getCurrentUrl(), ENDAVA_URL);
 	}
 
 }
