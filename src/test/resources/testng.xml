@@ -2,11 +2,14 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Suite">
 	<test thread-count="5" name="TestHomePage">
+	<parameter name="browser" value="firefox"/>
 		<classes>
 			<class name="com.endava.TestHomePage" />
 			<class name="com.endava.TestServicesPage" />
+			<class name="com.endava.TestIndustriesPage" />
 			<class name="com.endava.TestSuccessStoriesPage" />
 			<class name="com.endava.TestAutomationAndEngineeringPage" />
+			<class name="com.endava.TestDigitalPage" />
 		</classes>
 	</test> <!-- Test -->
 </suite> <!-- Suite -->
