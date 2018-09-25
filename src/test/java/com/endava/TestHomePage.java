@@ -1,6 +1,6 @@
 package com.endava;
 
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -24,7 +24,8 @@ public class TestHomePage {
 
 	@BeforeTest
 	public void setUp() {
-		WebDriverManager.chromedriver().setup();
+//		WebDriverManager.chromedriver().setup();
+		WebDriverManager.firefoxdriver().setup();
 	}
 
 	/*
@@ -33,7 +34,8 @@ public class TestHomePage {
 	 */
 	@Test
 	public void testHomePageIsOpened() {
-		homePage = new HomePage(new ChromeDriver());
+//		homePage = new HomePage(new ChromeDriver());
+		homePage = new HomePage(new FirefoxDriver());
 		homePage.open();
 		new WebDriverWait(homePage.driver, 5)
 				.until(ExpectedConditions.visibilityOfElementLocated(homePage.contactButtons));
@@ -42,7 +44,8 @@ public class TestHomePage {
 
 	@Test
 	public void testOpenMenu() {
-		homePage = new HomePage(new ChromeDriver());
+//		homePage = new HomePage(new ChromeDriver());
+		homePage = new HomePage(new FirefoxDriver());
 		homePage.open();
 		new WebDriverWait(homePage.driver, 5)
 				.until(ExpectedConditions.visibilityOfElementLocated(homePage.contactButtons));
