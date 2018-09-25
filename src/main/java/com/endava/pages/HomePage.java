@@ -12,7 +12,7 @@ import org.openqa.selenium.WebDriver;
 public class HomePage extends BasePage {
 
 	private final String ENDAVA_URL = "http://www.endava.com";
-	private static Log log = LogFactory.getLog(ServicesPage.class);
+	private static Log log = LogFactory.getLog(HomePage.class);
 	public By contactButtons = By.id("contact-buttons");
 	public By burgerMenu = By.id("menu-toggle");
 

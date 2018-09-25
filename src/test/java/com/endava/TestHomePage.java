@@ -2,17 +2,16 @@ package com.endava;
 
 import java.util.logging.Logger;
 
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import com.endava.pages.HomePage;
 import com.endava.pages.MenuPage;
-
-import io.github.bonigarcia.wdm.WebDriverManager;
+import com.endava.util.WebDriverUtil;
+import com.endava.util.WebDriverWrapper;
 
 /**
  * @author jana.djordjevic@endava.com
@@ -25,8 +24,16 @@ public class TestHomePage {
 	private static Logger log = Logger.getLogger(TestHomePage.class.getName());
 
 	@BeforeTest
-	public void setUp() {
-		WebDriverManager.chromedriver().setup();
+	@Parameters({ "browser" })
+	public void setUp(String browser) {
+		WebDriverWrapper.setUpDriver(browser);
+	}
+
+	@BeforeMethod
+	@Parameters({ "browser" })
+	public void openBrowser(String browser) {
+		homePage = new HomePage(WebDriverWrapper.createDriver(browser));
+		homePage.open();
 	}
 
 	/*
@@ -35,27 +42,21 @@ public class TestHomePage {
 	 */
 	@Test
 	public void testHomePageIsOpened() {
-		log.info("Open Test Home Page");
-		homePage = new HomePage(new ChromeDriver());
-		homePage.open();
-		new WebDriverWait(homePage.driver, 5)
-				.until(ExpectedConditions.visibilityOfElementLocated(homePage.contactButtons));
-		log.info("Close Test Home Page");
-
+		log.info("Open testHomePageIsOpened");
+		WebDriverUtil.waitForVisible(homePage.driver, 5, homePage.contactButtons);
+		log.info("End Test");
 	}
 
+	/*
+	 * Test validates that menu page can be opened from home page
+	 */
 	@Test
 	public void testOpenMenu() {
-		log.info("Open Test Open Menu");
-
-		homePage = new HomePage(new ChromeDriver());
-		homePage.open();
-		new WebDriverWait(homePage.driver, 5)
-				.until(ExpectedConditions.visibilityOfElementLocated(homePage.contactButtons));
+		log.info("Open testOpenMenu");
+		WebDriverUtil.waitForVisible(homePage.driver, 5, homePage.contactButtons);
 		menuPage = homePage.openMenu();
-		new WebDriverWait(menuPage.driver, 5)
-				.until(ExpectedConditions.visibilityOfElementLocated(menuPage.navigationList));
-		log.info("End Test Open Menu");
+		WebDriverUtil.waitForVisible(menuPage.driver, 5, menuPage.navigationList);
+		log.info("End Test");
 	}
 
 	@AfterMethod

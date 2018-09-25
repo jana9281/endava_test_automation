@@ -1,4 +1,3 @@
-
 package com.endava;
 
 import java.util.logging.Logger;
@@ -9,21 +8,21 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
+import com.endava.pages.DigitalPage;
 import com.endava.pages.HomePage;
 import com.endava.pages.MenuPage;
-import com.endava.pages.SuccessStoriesPage;
 import com.endava.util.WebDriverUtil;
 import com.endava.util.WebDriverWrapper;
 
 /**
- * @author Radovan.Olujic
+ * @author Aleksandar.Zizovic
  *
  */
-public class TestSuccessStoriesPage {
+public class TestDigitalPage {
 	private HomePage homePage;
 	private MenuPage menuPage;
-	private SuccessStoriesPage succesStoriesPage;
-	private static Logger log = Logger.getLogger(TestSuccessStoriesPage.class.getName());
+	private DigitalPage digitalPage;
+	private static Logger log = Logger.getLogger(TestDigitalPage.class.getName());
 
 	@BeforeTest
 	@Parameters({ "browser" })
@@ -39,19 +38,18 @@ public class TestSuccessStoriesPage {
 	}
 
 	/**
-	 * Open "burger" menu option Click on "Success stories" Validate there is
-	 * "Success Story | Retail and Consumer Goods"
+	 * Open "burger" menu option, click on "Digital", validate DIGITAL is selected
+	 * in DIGITAL - AGILE - AUTOMATION menu options
 	 */
-
 	@Test
-	public void testSuccessStoriesPage() {
-		log.info("Open testSuccessStoriesPage ");
+	public void testDigitalPageIsOpened() {
+		log.info("Open testDigitalPageIsOpened");
 		WebDriverUtil.waitForVisible(homePage.driver, 5, homePage.contactButtons);
 		menuPage = homePage.openMenu();
 		WebDriverUtil.waitForVisible(menuPage.driver, 5, menuPage.navigationList);
-		succesStoriesPage = menuPage.openSuccessStories();
-		succesStoriesPage.validateSSRCGTitle();
-		log.info("End test");
+		digitalPage = menuPage.openDigitalPage();
+		digitalPage.isActive();
+		log.info("End Test");
 	}
 
 	@AfterMethod

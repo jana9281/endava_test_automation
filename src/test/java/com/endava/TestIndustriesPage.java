@@ -1,4 +1,3 @@
-
 package com.endava;
 
 import java.util.logging.Logger;
@@ -10,20 +9,21 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import com.endava.pages.HomePage;
+import com.endava.pages.IndustriesPage;
 import com.endava.pages.MenuPage;
-import com.endava.pages.SuccessStoriesPage;
 import com.endava.util.WebDriverUtil;
 import com.endava.util.WebDriverWrapper;
 
 /**
- * @author Radovan.Olujic
+ * @author nadezda.petrovic@endava.com
  *
  */
-public class TestSuccessStoriesPage {
+public class TestIndustriesPage {
+
 	private HomePage homePage;
 	private MenuPage menuPage;
-	private SuccessStoriesPage succesStoriesPage;
-	private static Logger log = Logger.getLogger(TestSuccessStoriesPage.class.getName());
+	private IndustriesPage industriesPage;
+	private static Logger log = Logger.getLogger(TestIndustriesPage.class.getName());
 
 	@BeforeTest
 	@Parameters({ "browser" })
@@ -39,19 +39,19 @@ public class TestSuccessStoriesPage {
 	}
 
 	/**
-	 * Open "burger" menu option Click on "Success stories" Validate there is
-	 * "Success Story | Retail and Consumer Goods"
+	 * Open "burger" menu option and click on "Industries", Validate FINANCE section
+	 * is shown with "Read More" link
 	 */
-
 	@Test
-	public void testSuccessStoriesPage() {
-		log.info("Open testSuccessStoriesPage ");
+	public void testOpenIndustriesPage() {
+		log.info("Open testOpenIndustriesPage");
 		WebDriverUtil.waitForVisible(homePage.driver, 5, homePage.contactButtons);
 		menuPage = homePage.openMenu();
 		WebDriverUtil.waitForVisible(menuPage.driver, 5, menuPage.navigationList);
-		succesStoriesPage = menuPage.openSuccessStories();
-		succesStoriesPage.validateSSRCGTitle();
-		log.info("End test");
+		industriesPage = menuPage.openIndustriesPage();
+		WebDriverUtil.waitForVisible(industriesPage.driver, 5, industriesPage.finance);
+		industriesPage.checkRead();
+		log.info("End Test");
 	}
 
 	@AfterMethod
