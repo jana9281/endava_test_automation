@@ -9,14 +9,14 @@ import org.openqa.selenium.WebDriver;
 public class BasePage {
 
 	public WebDriver driver;
-	protected final String ENDAVA_URL = "http://www.endava.com";
+	protected static final String ENDAVA_URL = "http://www.endava.com";
 
 	protected BasePage(WebDriver driver) {
 		this.driver = driver;
 	}
 
 	public void quit() {
-		if (this != null) {
+		if (this.driver != null) {
 			driver.quit();
 		}
 	}

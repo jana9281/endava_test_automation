@@ -3,6 +3,8 @@
  */
 package com.endava.pages;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import org.openqa.selenium.By;
@@ -20,6 +22,10 @@ public class CreativeAndUXPage extends BasePage {
 	public By emailTextField = By.id("email");
 	public By countryNameTextField = By.id("countryRegion");
 	public By warningMessage = By.xpath("//*[contains(text(), 'Please enter')]");
+	public static final String EMAIL = "Aleksandar.Zizovic@endava.com";
+	public static final String COUNTRY = "Serbia";
+	public static final String REGEX_EMAIL = "^\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*$";
+	public static final String REGEX_COUNTRY = "[a-zA-Z]+[\\-'\\s]?[a-zA-Z ]+$";
 
 	/**
 	 * @param driver - WebDriver instance
@@ -29,7 +35,7 @@ public class CreativeAndUXPage extends BasePage {
 	}
 
 	public void isUrlChanged() {
-		Assert.assertFalse(driver.getCurrentUrl().equals(ENDAVA_URL));
+		Assert.assertNotEquals(driver.getCurrentUrl(), ENDAVA_URL);
 	}
 
 	public void scrollDownToContactUsArea() {
@@ -40,23 +46,21 @@ public class CreativeAndUXPage extends BasePage {
 	}
 
 	public void populateEmailTextField() {
-		driver.findElement(this.emailTextField).sendKeys("Aleksandar.Zizovic@endava.com");
+		driver.findElement(this.emailTextField).sendKeys(EMAIL);
 	}
 
 	public void populateCountryNameTextField() {
-		driver.findElement(this.countryNameTextField).sendKeys("Serbia");
+		driver.findElement(this.countryNameTextField).sendKeys(COUNTRY);
 
 	}
 
 	public void isEmailValid() {
-		Assert.assertTrue(driver.findElement(emailTextField).getAttribute("value")
-				.matches("^\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*$"));
+		Assert.assertTrue(driver.findElement(emailTextField).getAttribute("value").matches(REGEX_EMAIL));
 
 	}
 
 	public void isCountryNameValid() {
-		Assert.assertTrue(driver.findElement(countryNameTextField).getAttribute("value")
-				.matches("[a-zA-Z]+[\\-'\\s]?[a-zA-Z ]+$"));
+		Assert.assertTrue(driver.findElement(countryNameTextField).getAttribute("value").matches(REGEX_COUNTRY));
 
 	}
 
@@ -64,6 +68,8 @@ public class CreativeAndUXPage extends BasePage {
 	 * @param button - By instance
 	 */
 	public void clickOnButton(By button) {
+		driver.findElement(emailTextField).clear();
+		driver.findElement(countryNameTextField).clear();
 		driver.findElement(button).click();
 	}
 
@@ -73,9 +79,20 @@ public class CreativeAndUXPage extends BasePage {
 	}
 
 	public void isWarningMessageShown() {
+		List<String> checkList = new ArrayList<>();
+		checkList.add("Please enter First Name");
+		checkList.add("Please enter Last Name");
+		checkList.add("Please enter Email Address");
+		checkList.add("Please enter Company");
+		checkList.add("Please enter Country/Region");
+
+		List<String> messageList = new ArrayList<>();
 		for (WebElement webElement : getWarningMessages()) {
-			Assert.assertTrue(webElement.isDisplayed());
+			messageList.add(webElement.getText());
 		}
 
+		Collections.sort(checkList);
+		Collections.sort(messageList);
+		Assert.assertTrue(checkList.equals(messageList));
 	}
 }

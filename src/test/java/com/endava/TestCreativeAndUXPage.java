@@ -16,7 +16,7 @@ public class TestCreativeAndUXPage {
 
 	private HomePage homePage;
 	private CreativeAndUXPage creativeAndUXPage;
-	private By ContactUsButton = By.xpath("//*[@id=\"form-submit\"]");
+	private By contactUsButton = By.xpath("//*[@id=\"form-submit\"]");
 
 	@BeforeTest
 	@Parameters({ "browser" })
@@ -50,7 +50,7 @@ public class TestCreativeAndUXPage {
 		creativeAndUXPage.populateCountryNameTextField();
 		creativeAndUXPage.isEmailValid();
 		creativeAndUXPage.isCountryNameValid();
-		creativeAndUXPage.clickOnButton(ContactUsButton);
+		creativeAndUXPage.clickOnButton(contactUsButton);
 		creativeAndUXPage.isWarningMessageShown();
 	}
 
