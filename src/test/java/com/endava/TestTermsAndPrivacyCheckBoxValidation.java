@@ -1,16 +1,15 @@
 package com.endava;
 
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import com.endava.pages.CloudPage;
 import com.endava.pages.HomePage;
-
-import io.github.bonigarcia.wdm.WebDriverManager;
+import com.endava.util.WebDriverUtil;
+import com.endava.util.WebDriverWrapper;
 
 /**
  * @author Denis.Selimovski
@@ -31,21 +30,34 @@ public class TestTermsAndPrivacyCheckBoxValidation {
 	private CloudPage cloudPage;
 
 	@BeforeTest
-	public void setUp() {
-		WebDriverManager.chromedriver().setup();
+	@Parameters({ "browser" })
+	public void setUp(String browser) {
+		WebDriverWrapper.setUpDriver(browser);
+	}
+
+	@BeforeMethod
+	@Parameters({ "browser" })
+	public void openBrowser(String browser) {
+		homePage = new HomePage(WebDriverWrapper.createDriver(browser));
+		homePage.open();
 	}
 
 	@Test
 	public void testTermsAndPrivacyCheckBoxValidation() {
-		homePage = new HomePage(new ChromeDriver());
-		homePage.open();
-		new WebDriverWait(homePage.driver, 5)
-				.until(ExpectedConditions.visibilityOfElementLocated(homePage.contactButtons));
+		WebDriverUtil.waitForVisible(homePage.driver, 5, homePage.contactButtons);
 		homePage.scrollDownAtTheBottomOfThePage();
 		cloudPage = homePage.openCloudPage();
 		cloudPage.isUrlChanged();
 		cloudPage.scrollDownToElement(cloudPage.contactUsArea);
 		cloudPage.clickOnElement(cloudPage.termsAndConditionsLabel);
+
+		try {
+			Thread.sleep(5000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 		cloudPage.isElementSelected(cloudPage.termsAndConditionsCheckBox);
 		cloudPage.isElementShown(cloudPage.suggestion);
 	}
