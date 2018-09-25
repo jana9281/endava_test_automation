@@ -11,23 +11,7 @@ This project includes several Selenium examples:
 * ServicesPage validation
 * IndustriesPage validation
 * SuccessStoriesPage validation
-* Create README.md file
 * Parametrize browser type through TestNG
-* Add logging to test framework
-* Add assertions to test framework
-* Validate page footer
-* Newsletter CheckBox Validation
-* Search bar - type and press enter
-* Search bar - type and click
-* Contact Page - Radio Buttons
-* Set Tets Priority
-* Create Dependencies Using - dependsOnMethods
-* Disable Chrome Is Being Controlled... Message
-* Work With Text Fields - Validate Non Mandatory Fields
-* Work With Text Fields - Enter Incorrect Email
-* Work With Text Fields - Enter Email And Country Name
-* Work With Text Fields - Enter First And Last Name
-* TermsAndPrivacy CheckBox Validation
 
 ## Pre-requisites
 
