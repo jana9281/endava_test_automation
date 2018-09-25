@@ -44,9 +44,7 @@ public class TestDigitalPage {
 		WebDriverUtil.waitForVisible(homePage.driver, 5, homePage.contactButtons);
 		menuPage = homePage.openMenu();
 		WebDriverUtil.waitForVisible(menuPage.driver, 5, menuPage.navigationList);
-
 		digitalPage = menuPage.openDigitalPage();
-
 		digitalPage.isActive();
 	}
 

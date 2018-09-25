@@ -44,7 +44,6 @@ public class TestServicesPage {
 		WebDriverUtil.waitForVisible(homePage.driver, 5, homePage.contactButtons);
 		menuPage = homePage.openMenu();
 		WebDriverUtil.waitForVisible(menuPage.driver, 5, menuPage.navigationList);
-
 		servicesPage = menuPage.openServices();
 		servicesPage.strategyIsShown();
 	}

@@ -7,18 +7,20 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import com.endava.pages.HomePage;
+import com.endava.pages.IndustriesPage;
 import com.endava.pages.MenuPage;
 import com.endava.util.WebDriverUtil;
 import com.endava.util.WebDriverWrapper;
 
 /**
- * @author jana.djordjevic@endava.com
+ * @author nadezda.petrovic@endava.com
  *
  */
-public class TestHomePage {
+public class TestIndustriesPage {
 
 	private HomePage homePage;
 	private MenuPage menuPage;
+	private IndustriesPage industriesPage;
 
 	@BeforeTest
 	@Parameters({ "browser" })
@@ -33,28 +35,22 @@ public class TestHomePage {
 		homePage.open();
 	}
 
-	/*
-	 * Test validates that home page is opened by checking if contact buttons are
-	 * visible on the page
+	/**
+	 * Open "burger" menu option and click on "Industries", Validate FINANCE section
+	 * is shown with "Read More" link
 	 */
 	@Test
-	public void testHomePageIsOpened() {
-		WebDriverUtil.waitForVisible(homePage.driver, 5, homePage.contactButtons);
-	}
-
-	/*
-	 * Test validates that menu page can be opened from home page
-	 */
-	@Test
-	public void testOpenMenu() {
+	public void testOpenIndustriesPage() {
 		WebDriverUtil.waitForVisible(homePage.driver, 5, homePage.contactButtons);
 		menuPage = homePage.openMenu();
 		WebDriverUtil.waitForVisible(menuPage.driver, 5, menuPage.navigationList);
+		industriesPage = menuPage.openIndustriesPage();
+		WebDriverUtil.waitForVisible(industriesPage.driver, 5, industriesPage.finance);
+		industriesPage.checkRead();
 	}
 
 	@AfterMethod
 	public void tearDown() {
 		homePage.quit();
 	}
-
 }
