@@ -13,7 +13,6 @@ import com.endava.util.WebDriverUtil;
 import com.endava.util.WebDriverWrapper;
 
 /**
- * 
  * @author Aleksandar.Zizovic
  *
  */
@@ -36,8 +35,8 @@ public class TestDigitalPage {
 	}
 
 	/**
-	 * Open "burger" menu option Click on "Digital" Validate DIGITAL is selected in
-	 * DIGITAL - AGILE - AUTOMATION menu options
+	 * Open "burger" menu option, click on "Digital", validate DIGITAL is selected
+	 * in DIGITAL - AGILE - AUTOMATION menu options
 	 */
 	@Test
 	public void testDigitalPageIsOpened() {
