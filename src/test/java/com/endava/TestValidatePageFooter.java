@@ -1,10 +1,9 @@
 package com.endava;
 
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import com.endava.pages.AboutPage;
@@ -19,8 +18,8 @@ import com.endava.pages.InvestorsPage;
 import com.endava.pages.MenuPage;
 import com.endava.pages.ServicesPage;
 import com.endava.pages.SuccessStoriesPage;
-
-import io.github.bonigarcia.wdm.WebDriverManager;
+import com.endava.util.WebDriverUtil;
+import com.endava.util.WebDriverWrapper;
 
 /**
  * @author Denis.Selimovski
@@ -42,8 +41,16 @@ public class TestValidatePageFooter {
 	private ContactPage contactPage;
 
 	@BeforeTest
-	public void setUp() {
-		WebDriverManager.chromedriver().setup();
+	@Parameters({ "browser" })
+	public void setUp(String browser) {
+		WebDriverWrapper.setUpDriver(browser);
+	}
+
+	@BeforeMethod
+	@Parameters({ "browser" })
+	public void openBrowser(String browser) {
+		homePage = new HomePage(WebDriverWrapper.createDriver(browser));
+		homePage.open();
 	}
 
 	/**
@@ -54,18 +61,14 @@ public class TestValidatePageFooter {
 	 */
 	@Test
 	public void testValidatePageFooter() {
-		homePage = new HomePage(new ChromeDriver());
-		homePage.open();
-		new WebDriverWait(homePage.driver, 5)
-				.until(ExpectedConditions.visibilityOfElementLocated(homePage.contactButtons));
+		WebDriverUtil.waitForVisible(homePage.driver, 5, homePage.contactButtons);
 		homePage.isElementShown(homePage.footer);
 		homePage.isElementShown(homePage.servicesSection);
 		homePage.isElementShown(homePage.industriesSection);
 		homePage.isElementShown(homePage.companySection);
 		homePage.isElementShown(homePage.endavaLogo);
 		menuPage = homePage.openMenu();
-		new WebDriverWait(menuPage.driver, 5)
-				.until(ExpectedConditions.visibilityOfElementLocated(menuPage.navigationList));
+		WebDriverUtil.waitForVisible(menuPage.driver, 5, menuPage.navigationList);
 
 		digitalPage = menuPage.openDigitalPage();
 		digitalPage.isElementShown(digitalPage.footer);
@@ -74,8 +77,7 @@ public class TestValidatePageFooter {
 		digitalPage.isElementShown(digitalPage.companySection);
 		digitalPage.isElementShown(digitalPage.endavaLogo);
 		menuPage = digitalPage.openMenu();
-		new WebDriverWait(menuPage.driver, 5)
-				.until(ExpectedConditions.visibilityOfElementLocated(menuPage.navigationList));
+		WebDriverUtil.waitForVisible(menuPage.driver, 5, menuPage.navigationList);
 
 		agilePage = menuPage.openAgilePage();
 		agilePage.isElementShown(agilePage.footer);
@@ -84,8 +86,7 @@ public class TestValidatePageFooter {
 		agilePage.isElementShown(agilePage.companySection);
 		agilePage.isElementShown(agilePage.endavaLogo);
 		menuPage = agilePage.openMenu();
-		new WebDriverWait(menuPage.driver, 5)
-				.until(ExpectedConditions.visibilityOfElementLocated(menuPage.navigationList));
+		WebDriverUtil.waitForVisible(menuPage.driver, 5, menuPage.navigationList);
 
 		automationPage = menuPage.openAutomationPage();
 		automationPage.isElementShown(automationPage.footer);
@@ -94,8 +95,7 @@ public class TestValidatePageFooter {
 		automationPage.isElementShown(automationPage.companySection);
 		automationPage.isElementShown(automationPage.endavaLogo);
 		menuPage = automationPage.openMenu();
-		new WebDriverWait(menuPage.driver, 5)
-				.until(ExpectedConditions.visibilityOfElementLocated(menuPage.navigationList));
+		WebDriverUtil.waitForVisible(menuPage.driver, 5, menuPage.navigationList);
 
 		servicesPage = menuPage.openServices();
 		servicesPage.isElementShown(servicesPage.footer);
@@ -104,8 +104,7 @@ public class TestValidatePageFooter {
 		servicesPage.isElementShown(servicesPage.companySection);
 		servicesPage.isElementShown(servicesPage.endavaLogo);
 		menuPage = servicesPage.openMenu();
-		new WebDriverWait(menuPage.driver, 5)
-				.until(ExpectedConditions.visibilityOfElementLocated(menuPage.navigationList));
+		WebDriverUtil.waitForVisible(menuPage.driver, 5, menuPage.navigationList);
 
 		industriesPage = menuPage.openIndustriesPage();
 		industriesPage.isElementShown(industriesPage.footer);
@@ -114,8 +113,7 @@ public class TestValidatePageFooter {
 		industriesPage.isElementShown(industriesPage.companySection);
 		industriesPage.isElementShown(industriesPage.endavaLogo);
 		menuPage = industriesPage.openMenu();
-		new WebDriverWait(menuPage.driver, 5)
-				.until(ExpectedConditions.visibilityOfElementLocated(menuPage.navigationList));
+		WebDriverUtil.waitForVisible(menuPage.driver, 5, menuPage.navigationList);
 
 		successStoriesPage = menuPage.openSuccessStories();
 		successStoriesPage.isElementShown(successStoriesPage.footer);
@@ -124,8 +122,7 @@ public class TestValidatePageFooter {
 		successStoriesPage.isElementShown(successStoriesPage.companySection);
 		successStoriesPage.isElementShown(successStoriesPage.endavaLogo);
 		menuPage = successStoriesPage.openMenu();
-		new WebDriverWait(menuPage.driver, 5)
-				.until(ExpectedConditions.visibilityOfElementLocated(menuPage.navigationList));
+		WebDriverUtil.waitForVisible(menuPage.driver, 5, menuPage.navigationList);
 
 		aboutPage = menuPage.openAboutPage();
 		aboutPage.isElementShown(aboutPage.footer);
@@ -134,8 +131,7 @@ public class TestValidatePageFooter {
 		aboutPage.isElementShown(aboutPage.companySection);
 		aboutPage.isElementShown(aboutPage.endavaLogo);
 		menuPage = aboutPage.openMenu();
-		new WebDriverWait(menuPage.driver, 5)
-				.until(ExpectedConditions.visibilityOfElementLocated(menuPage.navigationList));
+		WebDriverUtil.waitForVisible(menuPage.driver, 5, menuPage.navigationList);
 
 		careersPage = menuPage.openCareersPage();
 		careersPage.isElementShown(careersPage.footer);
@@ -144,8 +140,7 @@ public class TestValidatePageFooter {
 		careersPage.isElementShown(careersPage.companySection);
 		careersPage.isElementShown(careersPage.endavaLogo);
 		menuPage = careersPage.openMenu();
-		new WebDriverWait(menuPage.driver, 5)
-				.until(ExpectedConditions.visibilityOfElementLocated(menuPage.navigationList));
+		WebDriverUtil.waitForVisible(menuPage.driver, 5, menuPage.navigationList);
 
 		menuPage.scrollDownToElement(menuPage.contactItem);
 		contactPage = menuPage.openContactPage();
@@ -155,8 +150,7 @@ public class TestValidatePageFooter {
 		contactPage.isElementShown(contactPage.companySection);
 		contactPage.isElementShown(contactPage.endavaLogo);
 		menuPage = contactPage.openMenu();
-		new WebDriverWait(menuPage.driver, 5)
-				.until(ExpectedConditions.visibilityOfElementLocated(menuPage.navigationList));
+		WebDriverUtil.waitForVisible(menuPage.driver, 5, menuPage.navigationList);
 
 		investorsPage = menuPage.openInvestorsPage();
 		investorsPage.isElementShown(investorsPage.footerInvestors);
