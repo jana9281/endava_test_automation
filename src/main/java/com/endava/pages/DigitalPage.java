@@ -10,7 +10,7 @@ import org.testng.Assert;
  */
 public class DigitalPage extends BasePage {
 
-	public By digitalButton = By.xpath("//*[@id='secondary-nav']//a[text()='Digital']/..");
+	public By digitalItem = By.xpath("//*[@id='secondary-nav']//a[text()='Digital']/..");
 
 	/**
 	 * @param driver - WebDriver instance
@@ -20,6 +20,6 @@ public class DigitalPage extends BasePage {
 	}
 
 	public void isActive() {
-		Assert.assertTrue(driver.findElement(digitalButton).getAttribute("class").contains("active"));
+		Assert.assertTrue(driver.findElement(digitalItem).getAttribute("class").contains("active"));
 	}
 }
