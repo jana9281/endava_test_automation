@@ -10,11 +10,23 @@ import org.openqa.selenium.WebDriver;
 public class MenuPage extends BasePage {
 
 	public By navigationList = By.className("navigation");
+	public By digitalItem = By.xpath("//a[text()='Digital']");
+	public By idustriesItem = By.xpath("//a[text()='Industries']");
 	public By successStoriesItem = By.xpath("//a[text()='Success Stories']");
 	public By servicesItem = By.xpath("//a[text()='Services']");
 
 	public MenuPage(WebDriver driver) {
 		super(driver);
+	}
+
+	public DigitalPage openDigitalPage() {
+		driver.findElement(this.digitalItem).click();
+		return new DigitalPage(driver);
+	}
+
+	public IndustriesPage openIndustriesPage() {
+		driver.findElement(idustriesItem).click();
+		return new IndustriesPage(driver);
 	}
 
 	public SuccessStoriesPage openSuccessStories() {
@@ -26,5 +38,4 @@ public class MenuPage extends BasePage {
 		driver.findElement(servicesItem).click();
 		return new ServicesPage(driver);
 	}
-
 }
