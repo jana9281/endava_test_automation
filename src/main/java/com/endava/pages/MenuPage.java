@@ -2,6 +2,7 @@ package com.endava.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
 
 /**
  * @author jana.djordjevic@endava.com
@@ -25,6 +26,10 @@ public class MenuPage extends BasePage {
 	public ServicesPage openServices() {
 		driver.findElement(servicesItem).click();
 		return new ServicesPage(driver);
+	}
+
+	public void englishIsShown() {
+		Assert.assertTrue(driver.findElement(servicesItem).isDisplayed());
 	}
 
 }
