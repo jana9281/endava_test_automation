@@ -46,7 +46,7 @@ public class TestIndustriesPage {
 		new WebDriverWait(industriesPage.driver, 5)
 				.until(ExpectedConditions.visibilityOfElementLocated(industriesPage.finance));
 		industriesPage.checkRead();
-		Assert.assertEquals(homePage.getPageTitle(), "Industries");
+		Assert.assertEquals(industriesPage.getPageTitle(), "Industries");
 	}
 
 	@AfterMethod

@@ -45,7 +45,7 @@ public class TestServicesPage {
 
 		servicesPage = menuPage.openServices();
 		servicesPage.strategyIsShown();
-		Assert.assertEquals(homePage.getPageTitle(), "Services");
+		Assert.assertEquals(servicesPage.getPageTitle(), "Services");
 	}
 
 	@AfterMethod

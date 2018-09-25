@@ -46,7 +46,7 @@ public class TestSuccessStoriesPage {
 
 		succesStoriesPage = menuPage.openSuccessStories();
 		succesStoriesPage.validateSSRCGTitle();
-		Assert.assertEquals(homePage.getPageTitle(), "Success Stories");
+		Assert.assertEquals(succesStoriesPage.getPageTitle(), "Success Stories");
 	}
 
 	@AfterMethod
