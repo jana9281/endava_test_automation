@@ -5,11 +5,7 @@
 	<parameter name="browser" value="firefox"/>
 		<classes>
 			<class name="com.endava.TestLanguageMenu" />
-			<class name="com.endava.TestHomePage" />
-			<class name="com.endava.TestServicesPage" />
-			<class name="com.endava.TestIndustriesPage" />
-			<class name="com.endava.TestSuccessStoriesPage" />
-			<class name="com.endava.TestDigitalPage" />
+	
 		</classes>
 	</test> <!-- Test -->
 </suite> <!-- Suite -->
