@@ -36,7 +36,6 @@ This project includes several Selenium examples:
 * IE
 * Chrome
 * Maven
-* Spring
 * Selenium Webdriver
 * TestNG
 
@@ -47,3 +46,13 @@ The following steps should get you set up for running Selenium tests locally on 
 1. Clone this repository to your local machine.
 2. Declare this project as Maven
 3. Run as TestNG
+
+## Browser choices
+
+Browsers that are supported:
+* Firefox
+* IE
+* Chrome
+
+Enter the desired browser through testng.xml file.
+
