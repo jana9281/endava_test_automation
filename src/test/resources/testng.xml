@@ -8,8 +8,8 @@
 			<class name="com.endava.TestServicesPage" />
 			<class name="com.endava.TestIndustriesPage" />
 			<class name="com.endava.TestSuccessStoriesPage" />
-			<class name="com.endava.TestAutomationAndEngineeringPage" />
 			<class name="com.endava.TestDigitalPage" />
+			<class name="com.endava.TestAutomationAndEngineeringPage" />
 		</classes>
 	</test> <!-- Test -->
 </suite> <!-- Suite -->

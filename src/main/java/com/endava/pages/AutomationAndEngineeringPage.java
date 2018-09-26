@@ -14,9 +14,9 @@ import org.testng.Assert;
 public class AutomationAndEngineeringPage extends BasePage {
 
 	public By signMeUpforNewsletterCheckBox = By.xpath("//*[@id='newsletter_input']");
-	public By signMeUpforNewsletterLabel = By.xpath("//*[@id=\"contact-form\"]/fieldset/div[3]/div[2]/div[1]/label");
+	public By signMeUpforNewsletterLabel = By.xpath("//label[@for='newsletter_input']");
 	public By promptMessage = By.id("prompt_message2");
-	public By contactUsArea = By.xpath("/html/body/section[7]/div/div/div/h2");
+	public By contactUsArea = By.xpath("//h2[text()='Contact us']");
 
 	protected AutomationAndEngineeringPage(WebDriver driver) {
 		super(driver);
