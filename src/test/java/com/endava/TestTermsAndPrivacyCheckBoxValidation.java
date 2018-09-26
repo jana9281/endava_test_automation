@@ -1,5 +1,6 @@
 package com.endava;
 
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
@@ -48,18 +49,11 @@ public class TestTermsAndPrivacyCheckBoxValidation {
 		homePage.scrollDownAtTheBottomOfThePage();
 		cloudPage = homePage.openCloudPage();
 		cloudPage.isUrlChanged();
-		cloudPage.scrollDownToElement(cloudPage.contactUsArea);
+		cloudPage.scrollToElement(cloudPage.contactUsArea);
 		cloudPage.clickOnElement(cloudPage.termsAndConditionsLabel);
-
-		try {
-			Thread.sleep(5000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
 		cloudPage.isElementSelected(cloudPage.termsAndConditionsCheckBox);
 		cloudPage.isElementShown(cloudPage.suggestion);
+		Assert.assertEquals(cloudPage.getPageTitle(), "Cloud");
 	}
 
 	@AfterMethod
