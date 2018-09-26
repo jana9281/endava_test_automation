@@ -31,6 +31,10 @@ public class BasePage {
 		return driver.findElements(element);
 	}
 
+	public String getPageTitle() {
+		return driver.getTitle();
+	}
+
 	public void quit() {
 		if (this.driver != null) {
 			driver.quit();
