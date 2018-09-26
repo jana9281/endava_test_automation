@@ -3,6 +3,7 @@
  */
 package com.endava;
 
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
@@ -54,6 +55,7 @@ public class TestSearchBarTypeAndPressEnter {
 		searchPage = menuPage.openSearch();
 		WebDriverUtil.waitForVisible(searchPage.driver, 5, searchPage.searchResult);
 		searchPage.noResultsValidation();
+		Assert.assertEquals(searchPage.getPageTitle(), "Search Results");
 	}
 
 	@AfterMethod
