@@ -1,5 +1,6 @@
 package com.endava;
 
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
@@ -49,6 +50,7 @@ public class TestSearchBarTypeAndClick {
 		menuPage.populateField(menuPage.searchBar, "Selimovski");
 		searchPage = menuPage.openSearchPage();
 		searchPage.noResultsValidation();
+		Assert.assertEquals(searchPage.getPageTitle(), "Search Results");
 	}
 
 	@AfterMethod
