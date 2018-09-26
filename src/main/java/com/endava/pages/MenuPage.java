@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
 /**
@@ -20,8 +21,8 @@ public class MenuPage extends BasePage {
 	public By servicesItem = By.xpath("//a[text()='Services']");
 	public By servicesItemDeutsch = By.xpath("//*[@id=\"mCSB_1_container\"]/div[1]/nav/ul/li[4]/a");
 	public By burgerOptions = By.xpath("//*[@id=\"mCSB_1_container\"]");
-	private static final String ON_ENGLISH = "SERVICES";
-	private static final String ON_DEUTSCH = "DIENSTLEISTUNGEN";
+	public By navigationMenu = By.xpath("//*[@id=\"mCSB_1_container\"]/div[1]/nav/ul/li");
+	private static List<String> listWeb = new ArrayList<>();
 	private static List<String> list = new ArrayList<>();
 
 	public MenuPage(WebDriver driver) {
@@ -48,31 +49,20 @@ public class MenuPage extends BasePage {
 		return new ServicesPage(driver);
 	}
 
-	public void englishIsShown() {
-		String text = driver.findElement(servicesItem).getText();
-		Assert.assertEquals(text, ON_ENGLISH);
-	}
+	public void isOnEnglish() {
+		list.add("DIGITAL");
+		list.add("AGILE");
+		list.add("AUTOMATION");
+		list.add("SERVICES");
+		list.add("INVESTORS");
+		list.add("INDUSTRIES");
+		list.add("SUCCESS STORIES");
+		list.add("ABOUT");
 
-	public void deutschIsShown() {
-		String text = driver.findElement(servicesItemDeutsch).getText();
-		Assert.assertEquals(text, ON_DEUTSCH);
-	}
-
-	public static void compareArrays(String[] array1, String[] array2) {
-		boolean b = true;
-		if (array1 != null && array2 != null) {
-			if (array1.length != array2.length)
-				b = false;
-			else
-				for (int i = 0; i < array2.length; i++) {
-					if (array2[i] != array1[i]) {
-						b = false;
-					}
-				}
-		} else {
-			b = false;
+		for (WebElement el : getListOfElements(navigationMenu)) {
+			listWeb.add(el.getText());
 		}
-		System.out.println(b);
+		Assert.assertTrue(listWeb.containsAll(list));
 	}
 
 	public void isOnDeutsch() {
@@ -84,8 +74,11 @@ public class MenuPage extends BasePage {
 		list.add("BRANCHEN");
 		list.add("FALLSTUDIEN");
 		list.add("ÜBER UNS");
-		List<String> list2 = new ArrayList<>();
-		list2.add(driver.findElement(burgerOptions).getText());
-		Assert.assertEquals(list, list2);
+
+		for (WebElement element : getListOfElements(navigationMenu)) {
+			listWeb.add(element.getText());
+		}
+		Assert.assertTrue(listWeb.containsAll(list));
 	}
+
 }

@@ -11,7 +11,11 @@ import com.endava.pages.MenuPage;
 import com.endava.util.WebDriverUtil;
 import com.endava.util.WebDriverWrapper;
 
-public class TestLanguageMenu {
+/**
+ * @author nadezda.petrovic@endava.com
+ *
+ */
+public class TestLanguageMenu1 {
 	private HomePage homePage;
 	private MenuPage menuPage;
 
@@ -44,7 +48,7 @@ public class TestLanguageMenu {
 		homePage.clickOnElement(homePage.languageMenuEn);
 		menuPage = homePage.openMenu();
 		WebDriverUtil.waitForVisible(menuPage.driver, 5, menuPage.navigationList);
-		menuPage.englishIsShown();
+		menuPage.isOnEnglish();
 	}
 
 	@Test(priority = 1)
@@ -54,7 +58,6 @@ public class TestLanguageMenu {
 		homePage.clickOnElement(homePage.languageMenuDe);
 		menuPage = homePage.openMenu();
 		WebDriverUtil.waitForVisible(menuPage.driver, 5, menuPage.navigationList);
-		menuPage.deutschIsShown();
 		menuPage.isOnDeutsch();
 	}
 
