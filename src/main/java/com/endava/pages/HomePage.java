@@ -27,4 +27,9 @@ public class HomePage extends BasePage {
 		driver.findElement(this.burgerMenu).click();
 		return new MenuPage(driver);
 	}
+
+	public ContactUsPage openContactUs() {
+		driver.findElement(contactButtons).click();
+		return new ContactUsPage(driver);
+	}
 }
