@@ -49,7 +49,7 @@ public class TestTermsAndPrivacyCheckBoxValidation {
 		homePage.scrollDownAtTheBottomOfThePage();
 		cloudPage = homePage.openCloudPage();
 		cloudPage.isUrlChanged();
-		cloudPage.scrollToElement(cloudPage.contactUsArea);
+		cloudPage.scrollToElement(cloudPage.contactUsTitle);
 		cloudPage.clickOnElement(cloudPage.termsAndConditionsLabel);
 		cloudPage.isElementSelected(cloudPage.termsAndConditionsCheckBox);
 		cloudPage.isElementShown(cloudPage.suggestion);
