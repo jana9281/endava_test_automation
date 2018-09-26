@@ -1,5 +1,6 @@
 package com.endava;
 
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
@@ -53,6 +54,7 @@ public class TestEnterIncorrectEmail {
 		softwareEngineeringPage.isEmailAddressIncorrect();
 		softwareEngineeringPage.clickOnElement(softwareEngineeringPage.submitButton);
 		softwareEngineeringPage.isElementShown(softwareEngineeringPage.warningMessageEmail);
+		Assert.assertEquals(softwareEngineeringPage.getPageTitle(), "Software Engineering");
 	}
 
 	@AfterMethod
