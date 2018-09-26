@@ -2,6 +2,7 @@ package com.endava;
 
 import java.util.logging.Logger;
 
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
@@ -52,6 +53,7 @@ public class TestIndustriesPage {
 		WebDriverUtil.waitForVisible(industriesPage.driver, 5, industriesPage.finance);
 		industriesPage.checkRead();
 		log.info("End Test");
+		Assert.assertEquals(industriesPage.getPageTitle(), "Industries");
 	}
 
 	@AfterMethod

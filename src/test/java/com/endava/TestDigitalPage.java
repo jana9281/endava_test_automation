@@ -2,6 +2,7 @@ package com.endava;
 
 import java.util.logging.Logger;
 
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
@@ -50,6 +51,7 @@ public class TestDigitalPage {
 		digitalPage = menuPage.openDigitalPage();
 		digitalPage.isActive();
 		log.info("End Test");
+		Assert.assertEquals(digitalPage.getPageTitle(), "Digital");
 	}
 
 	@AfterMethod

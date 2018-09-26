@@ -2,6 +2,7 @@ package com.endava;
 
 import java.util.logging.Logger;
 
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
@@ -51,6 +52,7 @@ public class TestServicesPage {
 		servicesPage = menuPage.openServices();
 		servicesPage.strategyIsShown();
 		log.info("End Test");
+		Assert.assertEquals(servicesPage.getPageTitle(), "Services");
 	}
 
 	@AfterMethod

@@ -2,6 +2,7 @@ package com.endava;
 
 import java.util.logging.Logger;
 
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
@@ -45,6 +46,7 @@ public class TestHomePage {
 		log.info("Open testHomePageIsOpened");
 		WebDriverUtil.waitForVisible(homePage.driver, 5, homePage.contactButtons);
 		log.info("End Test");
+		Assert.assertEquals(homePage.getPageTitle(), "Endava");
 	}
 
 	/*
@@ -57,6 +59,7 @@ public class TestHomePage {
 		menuPage = homePage.openMenu();
 		WebDriverUtil.waitForVisible(menuPage.driver, 5, menuPage.navigationList);
 		log.info("End Test");
+		Assert.assertEquals(homePage.getPageTitle(), "Endava");
 	}
 
 	@AfterMethod

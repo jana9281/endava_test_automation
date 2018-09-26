@@ -1,8 +1,8 @@
-
 package com.endava;
 
 import java.util.logging.Logger;
 
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
@@ -52,6 +52,7 @@ public class TestSuccessStoriesPage {
 		succesStoriesPage = menuPage.openSuccessStories();
 		succesStoriesPage.validateSSRCGTitle();
 		log.info("End test");
+		Assert.assertEquals(succesStoriesPage.getPageTitle(), "Success Stories");
 	}
 
 	@AfterMethod
