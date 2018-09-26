@@ -9,6 +9,7 @@ import org.openqa.selenium.WebDriver;
 public class BasePage {
 
 	public WebDriver driver;
+	public static final String ENDAVA_URL = "http://www.endava.com";
 
 	protected BasePage(WebDriver driver) {
 		this.driver = driver;
