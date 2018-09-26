@@ -4,7 +4,6 @@
 	<test thread-count="5" name="TestHomePage">
 	<parameter name="browser" value="firefox"/>
 		<classes>
-			
 			<class name="com.endava.TestCreativeAndUXPage" />
 		</classes>
 	</test>
