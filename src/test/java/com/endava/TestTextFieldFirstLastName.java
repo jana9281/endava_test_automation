@@ -1,5 +1,6 @@
 package com.endava;
 
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
@@ -46,7 +47,7 @@ public class TestTextFieldFirstLastName {
 		cloudPage = homePage.openCloudPage();
 		WebDriverUtil.waitForVisible(cloudPage.driver, 5, homePage.cloud);
 		cloudPage.isUrlChanged();
-		cloudPage.scrollDownToElement(cloudPage.contactUs);
+		cloudPage.scrollToElement(cloudPage.contactUs);
 		cloudPage.populateElement(cloudPage.firstName, "Petar");
 		cloudPage.populateElement(cloudPage.lastName, "Petrovic");
 		cloudPage.isPopulatedElementCorrect(cloudPage.firstName);
@@ -55,6 +56,7 @@ public class TestTextFieldFirstLastName {
 		cloudPage.isElementShown(cloudPage.warningMessage1);
 		cloudPage.isElementShown(cloudPage.warningMessage2);
 		cloudPage.isElementShown(cloudPage.warningMessage3);
+		Assert.assertEquals(cloudPage.getPageTitle(), "Cloud");
 	}
 
 	@AfterMethod

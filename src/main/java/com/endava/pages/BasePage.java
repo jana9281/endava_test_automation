@@ -24,7 +24,7 @@ public class BasePage {
 		js.executeScript("window.scrollTo(0, document.body.scrollHeight)");
 	}
 
-	public void scrollDownToElement(By element) {
+	public void scrollToElement(By element) {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("arguments[0].scrollIntoView();", driver.findElement(element));
 	}
@@ -49,6 +49,10 @@ public class BasePage {
 	public void populateElement(By element, String elValue) {
 		WebElement firstName = driver.findElement(element);
 		firstName.sendKeys(elValue);
+	}
+
+	public String getPageTitle() {
+		return driver.getTitle();
 	}
 
 	public void quit() {
