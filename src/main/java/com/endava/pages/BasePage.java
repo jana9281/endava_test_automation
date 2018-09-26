@@ -15,6 +15,10 @@ public class BasePage {
 		this.driver = driver;
 	}
 
+	public String getPageTitle() {
+		return driver.getTitle();
+	}
+
 	public void quit() {
 		if (this.driver != null) {
 			driver.quit();
