@@ -11,9 +11,7 @@ This test framework contains tests written for Endava website (https://www.endav
 ## Pre-requisites
 
 * Java 8 or higher
-* Firefox
-* Internet Explorer
-* Chrome
+* Web browser (Firefox, Chrome, Internet Explorer)
 * Maven
 * Selenium Webdriver
 * TestNG
