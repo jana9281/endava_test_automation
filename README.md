@@ -1,11 +1,7 @@
 # Endava test automation
 
 This repository contains simple Selenium tests for the endava.com website.
-
-
-# Examples :
-
-This project includes several Selenium examples:
+Project includes several Selenium examples:
 
 * DigitalPage validation
 * ServicesPage validation
@@ -15,9 +11,9 @@ This project includes several Selenium examples:
 
 ## Pre-requisites
 
-* Java 8..
+* Java 8 or higher
 * Firefox
-* IE
+* Internet Explorer
 * Chrome
 * Maven
 * Selenium Webdriver
@@ -35,7 +31,7 @@ The following steps should get you set up for running Selenium tests locally on 
 
 Browsers that are supported:
 * Firefox
-* IE
+* Internet Explorer
 * Chrome
 
 Enter the desired browser through testng.xml file.
