@@ -1,5 +1,6 @@
 package com.endava;
 
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
@@ -47,6 +48,7 @@ public class TestIndustriesPage {
 		industriesPage = menuPage.openIndustriesPage();
 		WebDriverUtil.waitForVisible(industriesPage.driver, 5, industriesPage.finance);
 		industriesPage.checkRead();
+		Assert.assertEquals(industriesPage.getPageTitle(), "Industries");
 	}
 
 	@AfterMethod

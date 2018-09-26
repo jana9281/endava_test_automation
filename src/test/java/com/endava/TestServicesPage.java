@@ -1,5 +1,6 @@
 package com.endava;
 
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
@@ -46,6 +47,7 @@ public class TestServicesPage {
 		WebDriverUtil.waitForVisible(menuPage.driver, 5, menuPage.navigationList);
 		servicesPage = menuPage.openServices();
 		servicesPage.isElementShown(servicesPage.strategyMenuOption);
+		Assert.assertEquals(servicesPage.getPageTitle(), "Services");
 	}
 
 	@AfterMethod
