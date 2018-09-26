@@ -16,7 +16,7 @@ public class AutomationAndEngineeringPage extends BasePage {
 	public By signMeUpforNewsletterCheckBox = By.xpath("//*[@id='newsletter_input']");
 	public By signMeUpforNewsletterLabel = By.xpath("//label[@for='newsletter_input']");
 	public By promptMessage = By.id("prompt_message2");
-	public By contactUsArea = By.xpath("//h2[text()='Contact us']");
+	public By contactUsTitle = By.xpath("//h2[text()='Contact us']");
 
 	protected AutomationAndEngineeringPage(WebDriver driver) {
 		super(driver);

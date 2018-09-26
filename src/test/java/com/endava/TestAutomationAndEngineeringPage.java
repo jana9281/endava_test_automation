@@ -47,7 +47,7 @@ public class TestAutomationAndEngineeringPage {
 		homePage.scrollDownAtTheBottomOfThePage();
 		automationAndEngineeringPage = homePage.openAutomationAndEngineeringPage();
 		automationAndEngineeringPage.isUrlChanged();
-		automationAndEngineeringPage.scrollToElement(automationAndEngineeringPage.contactUsArea);
+		automationAndEngineeringPage.scrollToElement(automationAndEngineeringPage.contactUsTitle);
 		automationAndEngineeringPage.clickOnElement(automationAndEngineeringPage.signMeUpforNewsletterLabel);
 		automationAndEngineeringPage.isElementSelected(automationAndEngineeringPage.signMeUpforNewsletterCheckBox);
 		automationAndEngineeringPage.isElementShown(automationAndEngineeringPage.promptMessage);
