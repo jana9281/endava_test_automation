@@ -1,6 +1,7 @@
 package com.endava.pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
@@ -30,6 +31,11 @@ public class BasePage {
 
 	public void ElementIsNotSelected(By element) {
 		Assert.assertTrue(!driver.findElement(element).isSelected());
+	}
+
+	public void scrollToElement(By element) {
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("arguments[0].scrollIntoView();", driver.findElement(element));
 	}
 
 	public void quit() {

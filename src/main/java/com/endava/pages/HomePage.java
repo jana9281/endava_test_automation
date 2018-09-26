@@ -11,7 +11,7 @@ public class HomePage extends BasePage {
 
 	private final String ENDAVA_URL = "http://www.endava.com";
 
-	public By contactButtons = By.id("contact-buttons");
+	public By contactButtons = By.xpath("//*[@id=\"contact-buttons\"]/ul/li[1]/a");
 	public By burgerMenu = By.id("menu-toggle");
 
 	public HomePage(WebDriver driver) {

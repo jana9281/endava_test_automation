@@ -9,7 +9,7 @@
 			<class name="com.endava.TestIndustriesPage" />
 			<class name="com.endava.TestServicesPage" />
 			<class name="com.endava.TestSuccessStories" />
-			<class name="com.endava.TestContactUsPageRadioButton" />
+			<class name="com.endava.TestContactUsPageRadioButtons" />
 		</classes>
 	</test> <!-- Test -->
 </suite> <!-- Suite -->
