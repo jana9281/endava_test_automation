@@ -1,13 +1,12 @@
 # Endava test automation
 
-This repository contains simple Selenium tests for the endava.com website.
-Project includes several Selenium examples:
+This test framework contains tests written for Endava website (https://www.endava.com/) and includes:
 
+* HomePage validation
 * DigitalPage validation
 * ServicesPage validation
 * IndustriesPage validation
 * SuccessStoriesPage validation
-* Parametrize browser type through TestNG
 
 ## Pre-requisites
 
