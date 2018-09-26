@@ -42,6 +42,7 @@ public class TestLanguageMenu {
 		homePage = homePage.openHomePage(this.englishLanguageButton);
 		menuPage = homePage.openMenu();
 		WebDriverUtil.waitForVisible(menuPage.driver, 5, menuPage.navigationList);
+		menuPage.isEnglishMenu();
 	}
 
 	@Test(priority = 2)
@@ -52,6 +53,7 @@ public class TestLanguageMenu {
 		homePage.openHomePage(this.deutschLanguageButton);
 		menuPage = homePage.openMenu();
 		WebDriverUtil.waitForVisible(menuPage.driver, 5, menuPage.navigationList);
+		menuPage.isDeutschMenu();
 	}
 
 	@AfterMethod
