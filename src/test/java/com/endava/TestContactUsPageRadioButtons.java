@@ -40,16 +40,14 @@ public class TestContactUsPageRadioButtons {
 	 */
 
 	@Test
-	public void testOpenMenu() {
+	public void testContactUsPage() {
 		WebDriverUtil.waitForVisible(homePage.driver, 5, homePage.contactButtons);
 		contactUs = homePage.openContactUs();
 		contactUs.isPageOpen();
-		contactUs.scrollToElement(contactUs.radioButton1);
-		// contactUs.clickOnRadioButton();
-		// contactUs.clickOnElement(contactUs.radioButton1);
-		// contactUs.isElementSelected(contactUs.radioButton1);
+		contactUs.scrollToElement(contactUs.radioButton);
+		// contactUs.clickOnElement(contactUs.radioButton);
+		// contactUs.isElementSelected(contactUs.radioButton);
 		contactUs.ElementIsNotSelected(contactUs.radioButton2);
-		// Assert.assertEquals(contactUs.getPageTitle(), "Contact");
 	}
 
 	@AfterMethod
