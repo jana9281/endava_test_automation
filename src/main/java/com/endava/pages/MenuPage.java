@@ -14,6 +14,8 @@ public class MenuPage extends BasePage {
 	public By idustriesItem = By.xpath("//a[text()='Industries']");
 	public By successStoriesItem = By.xpath("//a[text()='Success Stories']");
 	public By servicesItem = By.xpath("//a[text()='Services']");
+	public By searchBar = By.id("search-input");
+	public By magnifyingGlass = By.id("searchSubmit");
 
 	public MenuPage(WebDriver driver) {
 		super(driver);
@@ -37,5 +39,10 @@ public class MenuPage extends BasePage {
 	public ServicesPage openServices() {
 		driver.findElement(servicesItem).click();
 		return new ServicesPage(driver);
+	}
+
+	public SearchPage openSearchPage() {
+		driver.findElement(magnifyingGlass).click();
+		return new SearchPage(driver);
 	}
 }
