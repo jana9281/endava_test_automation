@@ -13,6 +13,9 @@ public class BasePage {
 
 	public final String ENDAVA_URL = "http://www.endava.com";
 	public WebDriver driver;
+	public By contactButtons = By.id("contact-buttons");
+	public By burgerMenu = By.id("menu-toggle");
+	public By cloud = By.xpath("//*[@id=\"footer\"]//a[text()='Cloud']");
 
 	protected BasePage(WebDriver driver) {
 		this.driver = driver;
