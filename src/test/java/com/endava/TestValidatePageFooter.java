@@ -158,7 +158,6 @@ public class TestValidatePageFooter {
 		investorsPage.isElementShown(investorsPage.industriesSectionInvestors);
 		investorsPage.isElementShown(investorsPage.companySectionInvestors);
 		investorsPage.isElementShown(investorsPage.endavaLogoInvestors);
-
 	}
 
 	@AfterMethod
