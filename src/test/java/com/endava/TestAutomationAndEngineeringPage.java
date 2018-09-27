@@ -1,6 +1,5 @@
 package com.endava;
 
-import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
@@ -51,7 +50,6 @@ public class TestAutomationAndEngineeringPage {
 		automationAndEngineeringPage.clickOnElement(automationAndEngineeringPage.signMeUpforNewsletterLabel);
 		automationAndEngineeringPage.isElementSelected(automationAndEngineeringPage.signMeUpforNewsletterCheckBox);
 		automationAndEngineeringPage.isElementShown(automationAndEngineeringPage.promptMessage);
-		Assert.assertEquals(automationAndEngineeringPage.getPageTitle(), "Test Automation & Engineering");
 	}
 
 	@AfterMethod

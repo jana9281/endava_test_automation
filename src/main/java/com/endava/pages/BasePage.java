@@ -11,6 +11,9 @@ import org.testng.Assert;
  */
 public class BasePage {
 
+	public By contactButtons = By.id("contact-buttons");
+	public By burgerMenu = By.id("menu-toggle");
+	public By automationAndEngineering = By.xpath("//*[@id=\"footer\"]//a[text()='Test Automation & Engineering']");
 	public final String ENDAVA_URL = "http://www.endava.com";
 
 	public WebDriver driver;
