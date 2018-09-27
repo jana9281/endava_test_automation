@@ -1,6 +1,7 @@
 package com.endava.pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 
 /**
@@ -14,6 +15,7 @@ public class MenuPage extends BasePage {
 	public By idustriesItem = By.xpath("//a[text()='Industries']");
 	public By successStoriesItem = By.xpath("//a[text()='Success Stories']");
 	public By servicesItem = By.xpath("//a[text()='Services']");
+	public By searchBar = By.id("search-input");
 
 	public MenuPage(WebDriver driver) {
 		super(driver);
@@ -37,5 +39,10 @@ public class MenuPage extends BasePage {
 	public ServicesPage openServices() {
 		driver.findElement(servicesItem).click();
 		return new ServicesPage(driver);
+	}
+
+	public SearchPage openSearch() {
+		driver.findElement(searchBar).sendKeys(Keys.ENTER);
+		return new SearchPage(driver);
 	}
 }
