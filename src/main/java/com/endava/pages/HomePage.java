@@ -13,6 +13,9 @@ public class HomePage extends BasePage {
 
 	public By contactButtons = By.id("contact-buttons");
 	public By burgerMenu = By.id("menu-toggle");
+	public By languageOptions = By.id("selected-lang");
+	public By languageMenuEn = By.xpath("//*[@id=\"langList-box\"]//a[text()='English']");
+	public By languageMenuDe = By.xpath("//*[@id=\"langList-box\"]/ul/li[1]/a");
 
 	public HomePage(WebDriver driver) {
 		super(driver);
@@ -27,4 +30,9 @@ public class HomePage extends BasePage {
 		driver.findElement(this.burgerMenu).click();
 		return new MenuPage(driver);
 	}
+
+	public void openLanguageMenu() {
+		driver.findElement(languageOptions).click();
+	}
+
 }
