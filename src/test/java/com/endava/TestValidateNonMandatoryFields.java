@@ -1,6 +1,5 @@
 package com.endava;
 
-import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
@@ -46,18 +45,17 @@ public class TestValidateNonMandatoryFields {
 	@Test
 	public void testValidateNonMandatoryFields() {
 		WebDriverUtil.waitForVisible(homePage.driver, 5, homePage.contactButtons);
-		homePage.scrollDownToElement(homePage.footer);
+		WebDriverUtil.scrollToElement(homePage.driver, homePage.footer);
 		insightsThroughDataPage = homePage.openInsightsThroughDataPage();
 		insightsThroughDataPage.isUrlChanged();
-		insightsThroughDataPage.scrollDownToElement(insightsThroughDataPage.contactUsArea);
-		insightsThroughDataPage.populateField(insightsThroughDataPage.firsNameField, "Rale");
-		insightsThroughDataPage.populateField(insightsThroughDataPage.lastNameField, "BlaBla");
-		insightsThroughDataPage.clearField(insightsThroughDataPage.lastNameField);
+		WebDriverUtil.scrollToElement(insightsThroughDataPage.driver, insightsThroughDataPage.contactUsTitle);
+		WebDriverUtil.populateField(insightsThroughDataPage.driver, insightsThroughDataPage.firsNameField, "Rale");
+		WebDriverUtil.populateField(insightsThroughDataPage.driver, insightsThroughDataPage.lastNameField, "BlaBla");
+		WebDriverUtil.clearField(insightsThroughDataPage.driver, insightsThroughDataPage.lastNameField);
 		insightsThroughDataPage.isFirstNameCorrect();
-		insightsThroughDataPage.clickOnElement(insightsThroughDataPage.contactUsButton);
-		insightsThroughDataPage.isElementShown(insightsThroughDataPage.warningMessageLastName);
+		WebDriverUtil.clickOnElement(insightsThroughDataPage.driver, insightsThroughDataPage.contactUsButton);
+		WebDriverUtil.isElementShown(insightsThroughDataPage.driver, insightsThroughDataPage.warningMessageLastName);
 		insightsThroughDataPage.isWarningMassageNotShown();
-		Assert.assertEquals(insightsThroughDataPage.getPageTitle(), "Insights through Data");
 	}
 
 	@AfterMethod

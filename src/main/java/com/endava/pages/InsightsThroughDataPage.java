@@ -16,9 +16,9 @@ public class InsightsThroughDataPage extends BasePage {
 	public By firsNameField = By.id("firstname");
 	public By lastNameField = By.id("lastname");
 	public By contactUsButton = By.id("form-submit");
-	public By warningMessageLastName = By.xpath("//*[@id=\"contact-form\"]//p[text()='Please enter Last Name']");
-	public By warningMessagePhoneNumber = By.xpath("//*[@id=\"contact-form\"]/fieldset/div[2]/div[4]/div");
-	public By contactUsArea = By.xpath("//h2[text()='Contact us']");
+	public By warningMessageLastName = By.xpath("//*[@id='lastname']/following-sibling::div");
+	public By warningMessagePhoneNumber = By.xpath("//*[@id='phoneNumber']/following-sibling::div");
+	public By contactUsTitle = By.xpath("//h2[text()='Contact us']");
 
 	public InsightsThroughDataPage(WebDriver driver) {
 		super(driver);
