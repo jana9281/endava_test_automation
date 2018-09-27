@@ -19,7 +19,11 @@ public class CreativeAndUXPage extends BasePage {
 
 	public By emailTextField = By.id("email");
 	public By countryNameTextField = By.id("countryRegion");
-	public By warningMessage = By.xpath("//*[contains(text(), 'Please enter')]");
+	public By warningMessageFirstName = By.xpath("//*[@id=\"firstname\"]/following-sibling::div");
+	public By warningMessageLastName = By.xpath("//*[@id=\"lastname\"]/following-sibling::div");
+	public By warningMessageEmail = By.xpath("//*[@id=\"email\"]/following-sibling::div");
+	public By warningMessageCompany = By.xpath("//*[@id=\"company\"]/following-sibling::div");
+	public By warningMessageCountry = By.xpath("//*[@id=\"countryRegion\"]/following-sibling::div");
 	public static final String EMAIL = "Aleksandar.Zizovic@endava.com";
 	public static final String COUNTRY = "Serbia";
 	public static final String REGEX_EMAIL = "^\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*$";
@@ -71,10 +75,10 @@ public class CreativeAndUXPage extends BasePage {
 		driver.findElement(button).click();
 	}
 
-	public List<WebElement> getWarningMessages() {
-		return driver.findElements(warningMessage);
-
-	}
+//	public List<WebElement> getWarningMessages() {
+//		return driver.findElements(warningMessage);
+//
+//	}
 
 	public void isWarningMessageShown() {
 		List<String> checkList = new ArrayList<>();
@@ -85,9 +89,11 @@ public class CreativeAndUXPage extends BasePage {
 		checkList.add("Please enter Country/Region");
 
 		List<String> messageList = new ArrayList<>();
-		for (WebElement webElement : getWarningMessages()) {
-			messageList.add(webElement.getText());
-		}
+		messageList.add(this.driver.findElement(warningMessageFirstName).getText());
+		messageList.add(this.driver.findElement(warningMessageLastName).getText());
+		messageList.add(this.driver.findElement(warningMessageEmail).getText());
+		messageList.add(this.driver.findElement(warningMessageCompany).getText());
+		messageList.add(this.driver.findElement(warningMessageCountry).getText());
 
 		Collections.sort(checkList);
 		Collections.sort(messageList);
