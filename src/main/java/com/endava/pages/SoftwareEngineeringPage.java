@@ -15,8 +15,9 @@ public class SoftwareEngineeringPage extends BasePage {
 
 	public By emailAddressField = By.id("email");
 	public By submitButton = By.id("form-submit");
-	public By warningMessageEmail = By.xpath("//*[@id=\"contact-form\"]//p[text()='Email address is not corect']");
-	public By contactUsArea = By.xpath("//h2[text()='Contact us']");
+	public By warningMessageEmail = By.xpath("//*[@id='contact-form']/following-sibling::div");
+
+	public By contactUsTitle = By.xpath("//h2[text()='Contact us']");
 
 	public SoftwareEngineeringPage(WebDriver driver) {
 		super(driver);

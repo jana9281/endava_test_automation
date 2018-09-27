@@ -1,6 +1,5 @@
 package com.endava;
 
-import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
@@ -46,15 +45,15 @@ public class TestEnterIncorrectEmail {
 	@Test
 	public void testEnterIncorrectEmail() {
 		WebDriverUtil.waitForVisible(homePage.driver, 5, homePage.contactButtons);
-		homePage.scrollDownToElement(homePage.footer);
+		WebDriverUtil.scrollToElement(homePage.driver, homePage.footer);
 		softwareEngineeringPage = homePage.openSoftwareEngineeringPage();
 		softwareEngineeringPage.isUrlChanged();
-		softwareEngineeringPage.scrollDownToElement(softwareEngineeringPage.contactUsArea);
-		softwareEngineeringPage.populateField(softwareEngineeringPage.emailAddressField, "blahblah123");
+		WebDriverUtil.scrollToElement(softwareEngineeringPage.driver, softwareEngineeringPage.contactUsTitle);
+		WebDriverUtil.populateField(softwareEngineeringPage.driver, softwareEngineeringPage.emailAddressField,
+				"blahblah123");
 		softwareEngineeringPage.isEmailAddressIncorrect();
-		softwareEngineeringPage.clickOnElement(softwareEngineeringPage.submitButton);
-		softwareEngineeringPage.isElementShown(softwareEngineeringPage.warningMessageEmail);
-		Assert.assertEquals(softwareEngineeringPage.getPageTitle(), "Software Engineering");
+		WebDriverUtil.clickOnElement(softwareEngineeringPage.driver, softwareEngineeringPage.submitButton);
+		WebDriverUtil.isElementShown(softwareEngineeringPage.driver, softwareEngineeringPage.warningMessageEmail);
 	}
 
 	@AfterMethod

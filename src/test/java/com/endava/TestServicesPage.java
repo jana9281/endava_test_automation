@@ -46,7 +46,7 @@ public class TestServicesPage {
 		menuPage = homePage.openMenu();
 		WebDriverUtil.waitForVisible(menuPage.driver, 5, menuPage.navigationList);
 		servicesPage = menuPage.openServices();
-		servicesPage.isElementShown(servicesPage.strategyMenuOption);
+		WebDriverUtil.isElementShown(servicesPage.driver, servicesPage.strategyMenuOption);
 		Assert.assertEquals(servicesPage.getPageTitle(), "Services");
 	}
 
