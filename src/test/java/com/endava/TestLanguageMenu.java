@@ -1,6 +1,5 @@
 package com.endava;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -19,8 +18,6 @@ public class TestLanguageMenu {
 
 	public HomePage homePage;
 	public MenuPage menuPage;
-	public By englishLanguageButton = By.xpath("//*[@id=\"langList-box\"]//a[text() = 'English']");
-	public By deutschLanguageButton = By.xpath("//*[@id=\"langList-box\"]/ul/li[1]/a");
 
 	@BeforeTest
 	@Parameters({ "browser" })
@@ -38,9 +35,7 @@ public class TestLanguageMenu {
 	@Test(priority = 1)
 	public void TestEnglishManuPage() {
 		WebDriverUtil.waitForVisible(homePage.driver, 5, homePage.languageMenu);
-		new WebDriverWait(homePage.driver, 5)
-				.until(ExpectedConditions.visibilityOfElementLocated(homePage.languageMenu));
-		homePage = homePage.openHomePage(this.englishLanguageButton);
+		homePage = homePage.openHomePage(homePage.englishLanguageButton);
 		menuPage = homePage.openMenu();
 		WebDriverUtil.waitForVisible(menuPage.driver, 5, menuPage.navigationList);
 		menuPage.isEnglishMenu();
@@ -52,7 +47,7 @@ public class TestLanguageMenu {
 		WebDriverUtil.waitForVisible(homePage.driver, 5, homePage.languageMenu);
 		new WebDriverWait(homePage.driver, 5)
 				.until(ExpectedConditions.visibilityOfElementLocated(homePage.languageMenu));
-		homePage.openHomePage(this.deutschLanguageButton);
+		homePage.openHomePage(homePage.deutschLanguageButton);
 		menuPage = homePage.openMenu();
 		WebDriverUtil.waitForVisible(menuPage.driver, 5, menuPage.navigationList);
 		menuPage.isDeutschMenu();
