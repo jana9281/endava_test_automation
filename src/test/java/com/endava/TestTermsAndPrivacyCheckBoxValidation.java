@@ -1,5 +1,6 @@
 package com.endava;
 
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
@@ -45,13 +46,13 @@ public class TestTermsAndPrivacyCheckBoxValidation {
 	@Test
 	public void testTermsAndPrivacyCheckBoxValidation() {
 		WebDriverUtil.waitForVisible(homePage.driver, 5, homePage.contactButtons);
-		homePage.scrollDownAtTheBottomOfThePage();
+		WebDriverUtil.scrollDownAtTheBottomOfThePage(homePage.driver);
 		cloudPage = homePage.openCloudPage();
-		cloudPage.isUrlChanged();
-		cloudPage.scrollToElement(cloudPage.contactUsTitle);
-		cloudPage.clickOnElement(cloudPage.termsAndConditionsLabel);
-		cloudPage.isElementSelected(cloudPage.termsAndConditionsCheckBox);
-		cloudPage.isElementShown(cloudPage.suggestion);
+		cloudPage.validateURL();
+		WebDriverUtil.scrollToElement(cloudPage.driver, cloudPage.contactUsTitle);
+		WebDriverUtil.clickOnElement(cloudPage.driver, cloudPage.termsAndConditionsLabel);
+		Assert.assertTrue(WebDriverUtil.isElementSelected(cloudPage.driver, cloudPage.termsAndConditionsCheckBox));
+		Assert.assertTrue(WebDriverUtil.isElementShown(cloudPage.driver, cloudPage.suggestion));
 	}
 
 	@AfterMethod
