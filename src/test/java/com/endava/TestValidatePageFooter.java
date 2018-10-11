@@ -1,6 +1,5 @@
 package com.endava;
 
-import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
@@ -26,7 +25,7 @@ import com.endava.util.WebDriverWrapper;
  * @author Denis.Selimovski
  *
  */
-public class TestServicesPage {
+public class TestValidatePageFooter {
 
 	private HomePage homePage;
 	private MenuPage menuPage;
@@ -52,20 +51,6 @@ public class TestServicesPage {
 	public void openBrowser(String browser) {
 		homePage = new HomePage(WebDriverWrapper.createDriver(browser));
 		homePage.open();
-	}
-
-	/**
-	 * Open "burger" menu option Click on "Services" Validate STRATEGY menu option
-	 * is shown
-	 */
-	@Test
-	public void testStrategyMenuIsShown() {
-		WebDriverUtil.waitForVisible(homePage.driver, 5, homePage.contactButtons);
-		menuPage = homePage.openMenu();
-		WebDriverUtil.waitForVisible(menuPage.driver, 5, menuPage.navigationList);
-		servicesPage = menuPage.openServices();
-		servicesPage.strategyIsShown();
-		Assert.assertEquals(servicesPage.getPageTitle(), "Services");
 	}
 
 	/**

@@ -22,4 +22,5 @@ public class DigitalPage extends BasePage {
 	public void isActive() {
 		Assert.assertTrue(driver.findElement(digitalItem).getAttribute("class").contains("active"));
 	}
+
 }

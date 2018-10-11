@@ -12,7 +12,6 @@ public class HomePage extends BasePage {
 	private final String ENDAVA_URL = "http://www.endava.com";
 
 	public By contactButtons = By.id("contact-buttons");
-	public By burgerMenu = By.id("menu-toggle");
 
 	public HomePage(WebDriver driver) {
 		super(driver);
@@ -23,8 +22,4 @@ public class HomePage extends BasePage {
 		driver.manage().window().maximize();
 	}
 
-	public MenuPage openMenu() {
-		driver.findElement(this.burgerMenu).click();
-		return new MenuPage(driver);
-	}
 }
