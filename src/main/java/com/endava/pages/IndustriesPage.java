@@ -1,5 +1,6 @@
 package com.endava.pages;
 
+import com.endava.util.WebDriverUtil;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
@@ -13,6 +14,6 @@ public class IndustriesPage extends BasePage {
 	}
 
 	public void checkRead() {
-		Assert.assertTrue(driver.findElement(finance).isDisplayed());
+		Assert.assertTrue(WebDriverUtil.findElement(driver, finance).isDisplayed());
 	}
 }

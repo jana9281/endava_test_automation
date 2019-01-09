@@ -1,5 +1,6 @@
 package com.endava.pages;
 
+import com.endava.util.WebDriverUtil;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
@@ -14,6 +15,6 @@ public class SuccessStoriesPage extends BasePage {
 
 	public void validateSSRCGTitle() {
 		Assert.assertTrue(
-				driver.findElement(textSSRCG).getText().equalsIgnoreCase("Success Story | Retail and Consumer Goods"));
+				WebDriverUtil.findElement(driver, textSSRCG).getText().equalsIgnoreCase("Success Story | Retail and Consumer Goods"));
 	}
 }

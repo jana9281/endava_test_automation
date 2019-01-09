@@ -1,5 +1,6 @@
 package com.endava.pages;
 
+import com.endava.util.WebDriverUtil;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
@@ -13,7 +14,7 @@ public class ServicesPage extends BasePage {
 	}
 
 	public void strategyIsShown() {
-		Assert.assertTrue(driver.findElement(strategyMenuOption).isDisplayed());
+		Assert.assertTrue(WebDriverUtil.findElement(driver, strategyMenuOption).isDisplayed());
 	}
 
 }

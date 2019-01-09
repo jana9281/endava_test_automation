@@ -11,10 +11,6 @@ import com.endava.pages.HomePage;
 import com.endava.util.WebDriverUtil;
 import com.endava.util.WebDriverWrapper;
 
-/**
- * @author Radovan.Olujic
- *
- */
 public class TestAutomationAndEngineeringPage {
 	private HomePage homePage;
 	private AutomationAndEngineeringPage automationAndEngineeringPage;
@@ -37,19 +33,17 @@ public class TestAutomationAndEngineeringPage {
 	 * section click on "Test Automation & Engineering" 3.Validate URL has changed
 	 * 4.Scroll down to the "Contact us" area 5.Tick "Sign me up for the Endava
 	 * newsletter" check box 6.Validate that check box is ticked 7.Validate that
-	 * "How about signing up for our newsletter?" message appears on a screen under
-	 * the Terms of use
+	 * "In order to sign-up for the newsletter, please read Terms & Conditions and
+	 * Privacy Notice and check the box in order to accept them. You can unsubscribe
+	 * at any time." message appears on a screen under the Terms of use
 	 */
 	@Test
 	public void testNewsletterCheckBoxValidation() {
-		WebDriverUtil.waitForVisible(homePage.driver, 5, homePage.contactButtons);
-		homePage.scrollDownAtTheBottomOfThePage();
 		automationAndEngineeringPage = homePage.openAutomationAndEngineeringPage();
-		automationAndEngineeringPage.isUrlChanged();
-		automationAndEngineeringPage.scrollToElement(automationAndEngineeringPage.contactUsTitle);
-		automationAndEngineeringPage.clickOnElement(automationAndEngineeringPage.signMeUpforNewsletterLabel);
-		automationAndEngineeringPage.isElementSelected(automationAndEngineeringPage.signMeUpforNewsletterCheckBox);
-		automationAndEngineeringPage.isElementShown(automationAndEngineeringPage.promptMessage);
+		automationAndEngineeringPage.assertUrlEndsWith("Test-Automation-And-Engineering");
+		automationAndEngineeringPage.clickOnSignMeUpForNewsletterLabel();
+		automationAndEngineeringPage.assertElementIsSelected(automationAndEngineeringPage.signMeUpForNewsletterCheckBox);
+		automationAndEngineeringPage.assertSubscriptionMessage();
 	}
 
 	@AfterMethod
