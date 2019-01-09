@@ -1,11 +1,8 @@
 package com.endava.pages;
 
+import com.endava.util.WebDriverUtil;
 import org.openqa.selenium.WebDriver;
 
-/**
- * @author jana.djordjevic@endava.com
- *
- */
 public class HomePage extends BasePage {
 
 	public HomePage(WebDriver driver) {
@@ -15,15 +12,21 @@ public class HomePage extends BasePage {
 	public void open() {
 		driver.get(ENDAVA_URL);
 		driver.manage().window().maximize();
+		WebDriverUtil.waitForVisible(driver, 5, contactButtons);
 	}
 
 	public MenuPage openMenu() {
-		driver.findElement(this.burgerMenu).click();
+		WebDriverUtil.findElement(driver, burgerMenu).click();
 		return new MenuPage(driver);
 	}
 
+	public AutomationAndEngineeringPage openAutomationAndEngineeringPage() {
+		WebDriverUtil.findElement(driver, automationAndEngineering).click();
+		return new AutomationAndEngineeringPage(driver);
+	}
+
 	public CloudPage openCloudPage() {
-		driver.findElement(cloud).click();
+        WebDriverUtil.findElement(driver, cloud).click();
 		return new CloudPage(driver);
 	}
 

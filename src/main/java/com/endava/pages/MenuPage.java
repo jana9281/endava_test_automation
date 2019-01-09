@@ -1,12 +1,9 @@
 package com.endava.pages;
 
+import com.endava.util.WebDriverUtil;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-/**
- * @author jana.djordjevic@endava.com
- *
- */
 public class MenuPage extends BasePage {
 
 	public By navigationList = By.className("navigation");
@@ -20,22 +17,22 @@ public class MenuPage extends BasePage {
 	}
 
 	public DigitalPage openDigitalPage() {
-		driver.findElement(this.digitalItem).click();
+		WebDriverUtil.findElement(driver, digitalItem).click();
 		return new DigitalPage(driver);
 	}
 
 	public IndustriesPage openIndustriesPage() {
-		driver.findElement(idustriesItem).click();
+		WebDriverUtil.findElement(driver, idustriesItem).click();
 		return new IndustriesPage(driver);
 	}
 
 	public SuccessStoriesPage openSuccessStories() {
-		driver.findElement(successStoriesItem).click();
+		WebDriverUtil.findElement(driver, successStoriesItem).click();
 		return new SuccessStoriesPage(driver);
 	}
 
 	public ServicesPage openServices() {
-		driver.findElement(servicesItem).click();
+		WebDriverUtil.findElement(driver, servicesItem).click();
 		return new ServicesPage(driver);
 	}
 }

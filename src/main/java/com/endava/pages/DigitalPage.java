@@ -1,13 +1,10 @@
 package com.endava.pages;
 
+import com.endava.util.WebDriverUtil;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
-/**
- * @author Aleksandar.Zizovic
- *
- */
 public class DigitalPage extends BasePage {
 
 	public By digitalItem = By.xpath("//*[@id='secondary-nav']//a[text()='Digital']/..");
@@ -20,6 +17,6 @@ public class DigitalPage extends BasePage {
 	}
 
 	public void isActive() {
-		Assert.assertTrue(driver.findElement(digitalItem).getAttribute("class").contains("active"));
+		Assert.assertTrue(WebDriverUtil.findElement(driver, digitalItem).getAttribute("class").contains("active"));
 	}
 }

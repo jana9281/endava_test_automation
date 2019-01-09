@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.endava.util;
 
 import org.openqa.selenium.By;
@@ -10,10 +7,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-/**
- * @author Aleksandar.Zizovic
- *
- */
 public class WebDriverUtil {
 
 	/**
@@ -27,9 +20,12 @@ public class WebDriverUtil {
 		return new WebDriverWait(driver, time).until(ExpectedConditions.visibilityOfElementLocated(locator));
 	}
 
-	public static void scrollDownAtTheBottomOfThePage(WebDriver driver) {
-		JavascriptExecutor js = (JavascriptExecutor) driver;
-		js.executeScript("window.scrollTo(0, document.body.scrollHeight)");
+	public static WebElement findElement(WebDriver driver, By locator) {
+		return driver.findElement(locator);
+	}
+
+	public static void clickOnElement(WebDriver driver, By locator) {
+		findElement(driver, locator).click();
 	}
 
 	public static void scrollToElement(WebDriver driver, By element) {
@@ -37,16 +33,8 @@ public class WebDriverUtil {
 		js.executeScript("arguments[0].scrollIntoView();", driver.findElement(element));
 	}
 
-	public static void clickOnElement(WebDriver driver, By element) {
-		driver.findElement(element).click();
+	public static void scrollDownAtTheBottomOfThePage(WebDriver driver) {
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("window.scrollTo(0, document.body.scrollHeight)");
 	}
-
-	public static boolean isElementSelected(WebDriver driver, By element) {
-		return driver.findElement(element).isSelected();
-	}
-
-	public static boolean isElementShown(WebDriver driver, By element) {
-		return driver.findElement(element).isDisplayed();
-	}
-
 }
