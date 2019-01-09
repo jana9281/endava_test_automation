@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.endava.util;
 
 import org.openqa.selenium.WebDriver;
@@ -10,10 +7,6 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-/**
- * @author Aleksandar.Zizovic
- *
- */
 public class WebDriverWrapper {
 
 	public static void setUpDriver(String browser) {

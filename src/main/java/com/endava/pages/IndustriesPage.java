@@ -4,10 +4,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
-/**
- * @author Nadezda.Petrovic
- *
- */
 public class IndustriesPage extends BasePage {
 
 	public By finance = By.xpath("//a[text()='Finance']");

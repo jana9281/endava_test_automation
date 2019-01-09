@@ -5,10 +5,6 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
-/**
- * @author jana.djordjevic@endava.com
- *
- */
 public class BasePage {
 
 	public By contactButtons = By.id("contact-buttons");

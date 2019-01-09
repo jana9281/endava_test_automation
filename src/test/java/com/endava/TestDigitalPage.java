@@ -13,10 +13,6 @@ import com.endava.pages.MenuPage;
 import com.endava.util.WebDriverUtil;
 import com.endava.util.WebDriverWrapper;
 
-/**
- * @author Aleksandar.Zizovic
- *
- */
 public class TestDigitalPage {
 	private HomePage homePage;
 	private MenuPage menuPage;
