@@ -1,14 +1,9 @@
 package com.endava.pages;
 
-import org.openqa.selenium.By;
+import com.endava.util.WebDriverUtil;
 import org.openqa.selenium.WebDriver;
 
 public class HomePage extends BasePage {
-
-	private final String ENDAVA_URL = "http://www.endava.com";
-
-	public By contactButtons = By.id("contact-buttons");
-	public By burgerMenu = By.id("menu-toggle");
 
 	public HomePage(WebDriver driver) {
 		super(driver);
@@ -17,10 +12,17 @@ public class HomePage extends BasePage {
 	public void open() {
 		driver.get(ENDAVA_URL);
 		driver.manage().window().maximize();
+		WebDriverUtil.waitForVisible(driver, 5, contactButtons);
 	}
 
 	public MenuPage openMenu() {
-		driver.findElement(this.burgerMenu).click();
+		WebDriverUtil.findElement(driver, burgerMenu).click();
 		return new MenuPage(driver);
 	}
+
+	public AutomationAndEngineeringPage openAutomationAndEngineeringPage() {
+		WebDriverUtil.findElement(driver, automationAndEngineering).click();
+		return new AutomationAndEngineeringPage(driver);
+	}
+
 }
