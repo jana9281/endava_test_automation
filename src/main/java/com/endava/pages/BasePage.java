@@ -2,10 +2,6 @@ package com.endava.pages;
 
 import org.openqa.selenium.WebDriver;
 
-/**
- * @author jana.djordjevic@endava.com
- *
- */
 public class BasePage {
 
 	public WebDriver driver;
