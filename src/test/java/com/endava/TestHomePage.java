@@ -12,10 +12,6 @@ import com.endava.pages.MenuPage;
 import com.endava.util.WebDriverUtil;
 import com.endava.util.WebDriverWrapper;
 
-/**
- * @author jana.djordjevic@endava.com
- *
- */
 public class TestHomePage {
 
 	private HomePage homePage;

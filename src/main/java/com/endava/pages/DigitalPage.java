@@ -4,10 +4,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
-/**
- * @author Aleksandar.Zizovic
- *
- */
 public class DigitalPage extends BasePage {
 
 	public By digitalItem = By.xpath("//*[@id='secondary-nav']//a[text()='Digital']/..");

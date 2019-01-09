@@ -13,10 +13,6 @@ import com.endava.pages.ServicesPage;
 import com.endava.util.WebDriverUtil;
 import com.endava.util.WebDriverWrapper;
 
-/**
- * @author Denis.Selimovski
- *
- */
 public class TestServicesPage {
 
 	private HomePage homePage;

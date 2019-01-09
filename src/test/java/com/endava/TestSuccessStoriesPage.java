@@ -13,10 +13,6 @@ import com.endava.pages.SuccessStoriesPage;
 import com.endava.util.WebDriverUtil;
 import com.endava.util.WebDriverWrapper;
 
-/**
- * @author Radovan.Olujic
- *
- */
 public class TestSuccessStoriesPage {
 	private HomePage homePage;
 	private MenuPage menuPage;
