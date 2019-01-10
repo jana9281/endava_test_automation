@@ -10,6 +10,8 @@
 			<class name="com.endava.TestSuccessStoriesPage" />
 			<class name="com.endava.TestDigitalPage" />
 			<class name="com.endava.TestAutomationAndEngineeringPage" />
+			<class name="com.endava.TestDigitalPage" />
+			<class name="com.endava.TestCloudPage" />
 		</classes>
 	</test> <!-- Test -->
 </suite> <!-- Suite -->

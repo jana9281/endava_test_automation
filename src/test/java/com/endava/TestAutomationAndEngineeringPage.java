@@ -8,7 +8,6 @@ import org.testng.annotations.Test;
 
 import com.endava.pages.AutomationAndEngineeringPage;
 import com.endava.pages.HomePage;
-import com.endava.util.WebDriverUtil;
 import com.endava.util.WebDriverWrapper;
 
 public class TestAutomationAndEngineeringPage {

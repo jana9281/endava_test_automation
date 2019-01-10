@@ -2,18 +2,19 @@ package com.endava.pages;
 
 import com.endava.util.WebDriverUtil;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
 public class BasePage {
 
-	public By contactButtons = By.id("contact-buttons");
+    public final String ENDAVA_URL = "https://www.endava.com";
+
+    public WebDriver driver;
+
+    public By contactButtons = By.id("contact-buttons");
 	public By burgerMenu = By.id("menu-toggle");
 	public By automationAndEngineering = By.xpath("//*[@id=\"footer\"]//a[text()='Test Automation & Engineering']");
-	public final String ENDAVA_URL = "http://www.endava.com";
-
-	public WebDriver driver;
+	public By cloud = By.xpath("//*[@id=\"footer\"]//a[text()='Cloud']");
 
 	protected BasePage(WebDriver driver) {
 		this.driver = driver;
@@ -39,5 +40,9 @@ public class BasePage {
 
 	public void assertUrlEndsWith(String ending) {
 		Assert.assertTrue(driver.getCurrentUrl().endsWith(ending));
+	}
+
+	public void assertPageTitle(String title) {
+		Assert.assertEquals(driver.getTitle(), title);
 	}
 }

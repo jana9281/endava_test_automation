@@ -17,12 +17,19 @@ public class HomePage extends BasePage {
 
 	public MenuPage openMenu() {
 		WebDriverUtil.findElement(driver, burgerMenu).click();
-		return new MenuPage(driver);
+		MenuPage menuPage = new MenuPage(driver);
+		WebDriverUtil.waitForVisible(driver, 5, menuPage.navigationList);
+		return menuPage;
 	}
 
 	public AutomationAndEngineeringPage openAutomationAndEngineeringPage() {
 		WebDriverUtil.findElement(driver, automationAndEngineering).click();
 		return new AutomationAndEngineeringPage(driver);
+	}
+
+	public CloudPage openCloudPage() {
+        WebDriverUtil.findElement(driver, cloud).click();
+		return new CloudPage(driver);
 	}
 
 }
