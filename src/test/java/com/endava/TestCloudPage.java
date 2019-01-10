@@ -37,6 +37,12 @@ public class TestCloudPage {
 	}
 
 	@Test
+	public void testPageTitle() {
+		cloudPage = homePage.openCloudPage();
+		cloudPage.assertPageTitle("Cloud");
+	}
+
+	@Test
 	public void testTermsAndPrivacyCheckBoxValidation() {
 		cloudPage = homePage.openCloudPage();
 		cloudPage.assertUrlEndsWith("Cloud");

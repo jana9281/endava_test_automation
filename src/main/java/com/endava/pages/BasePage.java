@@ -42,4 +42,8 @@ public class BasePage {
 	public void assertUrlEndsWith(String ending) {
 		Assert.assertTrue(driver.getCurrentUrl().endsWith(ending));
 	}
+
+	public void assertPageTitle(String title) {
+		Assert.assertEquals(driver.getTitle(), title);
+	}
 }
