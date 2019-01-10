@@ -6,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 
-public class ServicesBasePage extends BasePage {
+public class FooterBasePage extends BasePage {
 
 	public static String NEWSLETTER_SUGGESTION = "Please make our day by signing up for our newsletter.";
 	public static String SUBSCRIPTION_MESSAGE = "In order to sign-up for the newsletter, " +
@@ -20,7 +20,7 @@ public class ServicesBasePage extends BasePage {
 	public By signMeUpForNewsletterLabel = By.xpath("//label[@for='newsletter_input']");
 	public By promptMessage = By.id("prompt_message2");
 
-	public ServicesBasePage(WebDriver driver) {
+	public FooterBasePage(WebDriver driver) {
 		super(driver);
 	}
 
