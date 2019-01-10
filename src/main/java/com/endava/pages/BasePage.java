@@ -8,7 +8,6 @@ import org.testng.Assert;
 public class BasePage {
 
     public final String ENDAVA_URL = "https://www.endava.com";
-    public final String LANGUAGE_ISO = "/en";
 
     public WebDriver driver;
 
