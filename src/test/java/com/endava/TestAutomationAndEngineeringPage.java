@@ -1,5 +1,8 @@
 package com.endava;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
@@ -11,6 +14,9 @@ import com.endava.pages.HomePage;
 import com.endava.util.WebDriverWrapper;
 
 public class TestAutomationAndEngineeringPage {
+
+	private static final Logger logger = LoggerFactory.getLogger(TestAutomationAndEngineeringPage.class);
+
 	private HomePage homePage;
 	private AutomationAndEngineeringPage automationAndEngineeringPage;
 
@@ -38,11 +44,15 @@ public class TestAutomationAndEngineeringPage {
 	 */
 	@Test
 	public void testNewsletterCheckBoxValidation() {
+		logger.info("Test testNewsletterCheckBoxValidation start");
+
 		automationAndEngineeringPage = homePage.openAutomationAndEngineeringPage();
 		automationAndEngineeringPage.assertUrlEndsWith("Test-Automation-And-Engineering");
 		automationAndEngineeringPage.clickOnSignMeUpForNewsletterLabel();
 		automationAndEngineeringPage.assertElementIsSelected(automationAndEngineeringPage.signMeUpForNewsletterCheckBox);
 		automationAndEngineeringPage.assertSubscriptionMessage();
+
+		logger.info("Test testNewsletterCheckBoxValidation end");
 	}
 
 	@AfterMethod

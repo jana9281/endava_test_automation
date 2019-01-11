@@ -45,4 +45,8 @@ public class BasePage {
 	public void assertPageTitle(String title) {
 		Assert.assertEquals(driver.getTitle(), title);
 	}
+
+	public void assertMenuIsOpened() {
+		Assert.assertTrue(WebDriverUtil.findElement(driver, burgerMenu).isDisplayed());
+	}
 }

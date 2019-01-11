@@ -5,7 +5,12 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class IndustriesPage extends BasePage {
+
+    private static final Logger logger = LoggerFactory.getLogger(IndustriesPage.class);
 
 	public By finance = By.xpath("//a[text()='Finance']");
 
@@ -13,7 +18,8 @@ public class IndustriesPage extends BasePage {
 		super(driver);
 	}
 
-	public void checkRead() {
+	public void assertFinanceIsDisplayed() {
+	    logger.info("Validating Finance is displayed");
 		Assert.assertTrue(WebDriverUtil.findElement(driver, finance).isDisplayed());
 	}
 }
