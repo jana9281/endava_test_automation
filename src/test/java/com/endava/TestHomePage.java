@@ -1,8 +1,8 @@
 package com.endava;
 
-import java.util.logging.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
@@ -11,18 +11,14 @@ import org.testng.annotations.Test;
 
 import com.endava.pages.HomePage;
 import com.endava.pages.MenuPage;
-import com.endava.util.WebDriverUtil;
 import com.endava.util.WebDriverWrapper;
 
-/**
- * @author jana.djordjevic@endava.com
- *
- */
 public class TestHomePage {
+
+	private static final Logger logger = LoggerFactory.getLogger(TestHomePage.class);
 
 	private HomePage homePage;
 	private MenuPage menuPage;
-	private static Logger log = Logger.getLogger(TestHomePage.class.getName());
 
 	@BeforeTest
 	@Parameters({ "browser" })
@@ -43,10 +39,11 @@ public class TestHomePage {
 	 */
 	@Test
 	public void testHomePageIsOpened() {
-		log.info("Open testHomePageIsOpened");
-		WebDriverUtil.waitForVisible(homePage.driver, 5, homePage.contactButtons);
-		log.info("End Test");
-		Assert.assertEquals(homePage.getPageTitle(), "Endava");
+		logger.info("Test testHomePageIsOpened start");
+
+		homePage.assertPageTitle("Endava");
+
+		logger.info("Test testHomePageIsOpened end");
 	}
 
 	/*
@@ -54,12 +51,12 @@ public class TestHomePage {
 	 */
 	@Test
 	public void testOpenMenu() {
-		log.info("Open testOpenMenu");
-		WebDriverUtil.waitForVisible(homePage.driver, 5, homePage.contactButtons);
+		logger.info("Test testOpenMenu start");
+
 		menuPage = homePage.openMenu();
-		WebDriverUtil.waitForVisible(menuPage.driver, 5, menuPage.navigationList);
-		log.info("End Test");
-		Assert.assertEquals(homePage.getPageTitle(), "Endava");
+		menuPage.assertMenuIsOpened();
+
+		logger.info("Test testOpenMenu end");
 	}
 
 	@AfterMethod

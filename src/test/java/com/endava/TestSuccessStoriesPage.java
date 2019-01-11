@@ -1,8 +1,8 @@
 package com.endava;
 
-import java.util.logging.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
@@ -12,18 +12,15 @@ import org.testng.annotations.Test;
 import com.endava.pages.HomePage;
 import com.endava.pages.MenuPage;
 import com.endava.pages.SuccessStoriesPage;
-import com.endava.util.WebDriverUtil;
 import com.endava.util.WebDriverWrapper;
 
-/**
- * @author Radovan.Olujic
- *
- */
 public class TestSuccessStoriesPage {
+
+	private static final Logger logger = LoggerFactory.getLogger(TestSuccessStoriesPage.class);
+
 	private HomePage homePage;
 	private MenuPage menuPage;
 	private SuccessStoriesPage succesStoriesPage;
-	private static Logger log = Logger.getLogger(TestSuccessStoriesPage.class.getName());
 
 	@BeforeTest
 	@Parameters({ "browser" })
@@ -45,14 +42,14 @@ public class TestSuccessStoriesPage {
 
 	@Test
 	public void testSuccessStoriesPage() {
-		log.info("Open testSuccessStoriesPage ");
-		WebDriverUtil.waitForVisible(homePage.driver, 5, homePage.contactButtons);
+		logger.info("Test testSuccessStoriesPage start");
+
 		menuPage = homePage.openMenu();
-		WebDriverUtil.waitForVisible(menuPage.driver, 5, menuPage.navigationList);
 		succesStoriesPage = menuPage.openSuccessStories();
 		succesStoriesPage.validateSSRCGTitle();
-		log.info("End test");
-		Assert.assertEquals(succesStoriesPage.getPageTitle(), "Success Stories");
+		succesStoriesPage.assertPageTitle("Success Stories");
+
+		logger.info("Test testSuccessStoriesPage end");
 	}
 
 	@AfterMethod

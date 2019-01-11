@@ -1,34 +1,43 @@
 package com.endava.pages;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.openqa.selenium.By;
+import com.endava.util.WebDriverUtil;
 import org.openqa.selenium.WebDriver;
 
-/**
- * @author jana.djordjevic@endava.com
- *
- */
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class HomePage extends BasePage {
 
-	private final String ENDAVA_URL = "http://www.endava.com";
-	private static Log log = LogFactory.getLog(HomePage.class);
-	public By contactButtons = By.id("contact-buttons");
-	public By burgerMenu = By.id("menu-toggle");
+    private static final Logger logger = LoggerFactory.getLogger(HomePage.class);
 
 	public HomePage(WebDriver driver) {
 		super(driver);
 	}
 
 	public void open() {
-		log.debug("Method open home page ");
+	    logger.info("Opening {}", ENDAVA_URL);
 		driver.get(ENDAVA_URL);
 		driver.manage().window().maximize();
+		WebDriverUtil.waitForVisible(driver, 5, contactButtons);
 	}
 
 	public MenuPage openMenu() {
-		log.debug("Method open menu page ");
-		driver.findElement(this.burgerMenu).click();
-		return new MenuPage(driver);
+        logger.info("Opening burger menu");
+		WebDriverUtil.findElement(driver, burgerMenu).click();
+		MenuPage menuPage = new MenuPage(driver);
+		WebDriverUtil.waitForVisible(driver, 5, menuPage.navigationList);
+		return menuPage;
+	}
+
+	public AutomationAndEngineeringPage openAutomationAndEngineeringPage() {
+        logger.info("Opening Automation And Engineering page");
+	    WebDriverUtil.findElement(driver, automationAndEngineering).click();
+		return new AutomationAndEngineeringPage(driver);
+	}
+
+	public CloudPage openCloudPage() {
+        logger.info("Opening Cloud page");
+        WebDriverUtil.findElement(driver, cloud).click();
+		return new CloudPage(driver);
 	}
 }
