@@ -51,7 +51,7 @@ public class TestSoftwareEngineeringPage {
 		softwareEngineeringPage.enterEmail("invalidemail");
 		softwareEngineeringPage.validateEmail("invalidemail");
 		softwareEngineeringPage.clickOnCotactUsButton();
-		softwareEngineeringPage.assertEmailAddressIncorrectWarningMassageIsShown();
+		softwareEngineeringPage.assertEmailAddressIncorrectWarningMessageIsShown();
 
 		logger.info("Test testEnterIncorrectEmail end");
 	}

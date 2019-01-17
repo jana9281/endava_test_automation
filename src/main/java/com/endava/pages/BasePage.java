@@ -29,7 +29,7 @@ public class BasePage {
 	}
 
 	public void quit() {
-		if (this != null) {
+		if (this.driver != null) {
 			logger.info("Closing browser");
 			driver.quit();
 		}

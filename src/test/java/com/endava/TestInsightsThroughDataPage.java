@@ -54,8 +54,8 @@ public class TestInsightsThroughDataPage {
 		insightsThroughDataPage.clearLastName();
 		insightsThroughDataPage.validateFirstName("Ernest");
 		insightsThroughDataPage.clickOnCotactUsButton();
-        insightsThroughDataPage.assertLastNameWarningMassageIsShown();
-		insightsThroughDataPage.assertPhoneWarningMassageNotShown();
+        insightsThroughDataPage.assertLastNameWarningMessageIsShown();
+		insightsThroughDataPage.assertPhoneWarningMessageNotShown();
 
 		logger.info("Test testValidateNonMandatoryFields end");
 	}

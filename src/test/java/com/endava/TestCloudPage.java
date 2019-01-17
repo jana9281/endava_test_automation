@@ -61,9 +61,41 @@ public class TestCloudPage {
         logger.info("Test testTermsAndPrivacyCheckBoxValidation end");
 	}
 
+	/**
+	* Go to endava.com
+	* Scroll down to the page footer and from the "Services" section click on "Cloud"
+	* Validate URL has changed
+	* Scroll down to the "Contact us" area
+	* Populate First Name field
+	* Populate Second Name field
+	* Validate First and Last name are correct
+	* Click on "Contact US" button
+	* Validate that for all mandatory fields there is a warning message if it's not populated (e.g. "Please enter Email Address")
+	*/
+
+	@Test
+	public void testMandatoryFieldsFormValidation() {
+		logger.info("Test testTextFieldFirstLastName start");
+
+		cloudPage = homePage.openCloudPage();
+		cloudPage.assertUrlEndsWith("Cloud");
+		cloudPage.enterFirstName("Harper");
+		cloudPage.enterLastName("Lee");
+		cloudPage.validateFirstName("Harper");
+		cloudPage.validateLastName("Lee");
+		cloudPage.clickOnCotactUsButton();
+		cloudPage.assertEmailAddressMissingWarningMessageIsShown();
+		cloudPage.assertCompanyMissingWarningMessageIsShown();
+		cloudPage.assertCountryMissingWarningMessageIsShown();
+		cloudPage.assertPhoneWarningMessageNotShown();
+		cloudPage.assertMessageWarningMessageNotShown();
+		cloudPage.assertTermsAndConditionsWarningMessageIsShown();
+
+		logger.info("Test testTextFieldFirstLastName end");
+	}
+
 	@AfterMethod
 	public void tearDown() {
 		homePage.quit();
 	}
-
 }
