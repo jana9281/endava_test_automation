@@ -1,5 +1,8 @@
 package com.endava;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
@@ -8,14 +11,12 @@ import org.testng.annotations.Test;
 
 import com.endava.pages.HomePage;
 import com.endava.pages.InsightsThroughDataPage;
-import com.endava.util.WebDriverUtil;
 import com.endava.util.WebDriverWrapper;
 
-/**
- * @author Radovan.Olujic
- *
- */
-public class TestValidateNonMandatoryFields {
+public class TestInsightsThroughDataPage {
+
+	private static final Logger logger = LoggerFactory.getLogger(TestInsightsThroughDataPage.class);
+
 	private HomePage homePage;
 	private InsightsThroughDataPage insightsThroughDataPage;
 
@@ -44,18 +45,19 @@ public class TestValidateNonMandatoryFields {
 
 	@Test
 	public void testValidateNonMandatoryFields() {
-		WebDriverUtil.waitForVisible(homePage.driver, 5, homePage.contactButtons);
-		WebDriverUtil.scrollToElement(homePage.driver, homePage.footer);
+		logger.info("Test testValidateNonMandatoryFields start");
+
 		insightsThroughDataPage = homePage.openInsightsThroughDataPage();
-		insightsThroughDataPage.isUrlChanged();
-		WebDriverUtil.scrollToElement(insightsThroughDataPage.driver, insightsThroughDataPage.contactUsTitle);
-		WebDriverUtil.populateField(insightsThroughDataPage.driver, insightsThroughDataPage.firsNameField, "Rale");
-		WebDriverUtil.populateField(insightsThroughDataPage.driver, insightsThroughDataPage.lastNameField, "BlaBla");
-		WebDriverUtil.clearField(insightsThroughDataPage.driver, insightsThroughDataPage.lastNameField);
-		insightsThroughDataPage.isFirstNameCorrect();
-		WebDriverUtil.clickOnElement(insightsThroughDataPage.driver, insightsThroughDataPage.contactUsButton);
-		WebDriverUtil.isElementShown(insightsThroughDataPage.driver, insightsThroughDataPage.warningMessageLastName);
-		insightsThroughDataPage.isWarningMassageNotShown();
+		insightsThroughDataPage.assertPageTitle("Insights through Data");
+		insightsThroughDataPage.enterFirstName("Ernest");
+		insightsThroughDataPage.enterLastName("Hemingway");
+		insightsThroughDataPage.clearLastName();
+		insightsThroughDataPage.validateFirstName("Ernest");
+		insightsThroughDataPage.clickOnCotactUsButton();
+        insightsThroughDataPage.assertLastNameWarningMassageIsShown();
+		insightsThroughDataPage.assertPhoneWarningMassageNotShown();
+
+		logger.info("Test testValidateNonMandatoryFields end");
 	}
 
 	@AfterMethod

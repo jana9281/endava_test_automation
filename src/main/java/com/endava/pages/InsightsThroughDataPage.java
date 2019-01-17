@@ -7,35 +7,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
-/**
- * @author Radovan.Olujic
- *
- */
-public class InsightsThroughDataPage extends BasePage {
-
-	public By firsNameField = By.id("firstname");
-	public By lastNameField = By.id("lastname");
-	public By contactUsButton = By.id("form-submit");
-	public By warningMessageLastName = By.xpath("//*[@id='lastname']/following-sibling::div");
-	public By warningMessagePhoneNumber = By.xpath("//*[@id='phoneNumber']/following-sibling::div");
-	public By contactUsTitle = By.xpath("//h2[text()='Contact us']");
+public class InsightsThroughDataPage extends FooterBasePage {
 
 	public InsightsThroughDataPage(WebDriver driver) {
 		super(driver);
-	}
-
-	public void isUrlChanged() {
-		Assert.assertFalse(driver.getCurrentUrl().equals(ENDAVA_URL));
-	}
-
-	public void isFirstNameCorrect() {
-		String str = driver.findElement(firsNameField).getAttribute("value");
-		Pattern p = Pattern.compile("[a-zA-Z '.-]+");
-		Matcher m = p.matcher(str);
-		Assert.assertTrue(m.find());
-	}
-
-	public void isWarningMassageNotShown() {
-		Assert.assertTrue(driver.findElement(warningMessagePhoneNumber).getText().equals(""));
 	}
 }
