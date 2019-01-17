@@ -1,5 +1,8 @@
 package com.endava;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
@@ -8,14 +11,11 @@ import org.testng.annotations.Test;
 
 import com.endava.pages.HomePage;
 import com.endava.pages.SoftwareEngineeringPage;
-import com.endava.util.WebDriverUtil;
 import com.endava.util.WebDriverWrapper;
 
-/**
- * @author Denis.Selimovski
- *
- */
-public class TestEnterIncorrectEmail {
+public class TestSoftwareEngineeringPage {
+
+	private static final Logger logger = LoggerFactory.getLogger(TestSoftwareEngineeringPage.class);
 
 	private HomePage homePage;
 	private SoftwareEngineeringPage softwareEngineeringPage;
@@ -37,28 +37,27 @@ public class TestEnterIncorrectEmail {
 	 * 1) Go to endava.com 2) Scroll down to the page footer and from the "Services"
 	 * section click on "Software Engineering" 3) Validate URL has changed 4) Scroll
 	 * down to the "Contact us" area 5) Populate incorrect Email Address (e.g.
-	 * blahblah123) 6) Validate that Email Address field is populated with the
+	 * "invalidemail") 6) Validate that Email Address field is populated with the
 	 * incorrect email address 7) Click on "Contact US" button 8) Validate there is
 	 * a warning message "Email address is not correct" under the Email Address text
 	 * field
 	 */
 	@Test
 	public void testEnterIncorrectEmail() {
-		WebDriverUtil.waitForVisible(homePage.driver, 5, homePage.contactButtons);
-		WebDriverUtil.scrollToElement(homePage.driver, homePage.footer);
+		logger.info("Test testEnterIncorrectEmail start");
+
 		softwareEngineeringPage = homePage.openSoftwareEngineeringPage();
-		softwareEngineeringPage.isUrlChanged();
-		WebDriverUtil.scrollToElement(softwareEngineeringPage.driver, softwareEngineeringPage.contactUsTitle);
-		WebDriverUtil.populateField(softwareEngineeringPage.driver, softwareEngineeringPage.emailAddressField,
-				"blahblah123");
-		softwareEngineeringPage.isEmailAddressIncorrect();
-		WebDriverUtil.clickOnElement(softwareEngineeringPage.driver, softwareEngineeringPage.submitButton);
-		WebDriverUtil.isElementShown(softwareEngineeringPage.driver, softwareEngineeringPage.warningMessageEmail);
+		softwareEngineeringPage.assertUrlEndsWith("Software-Engineering");
+		softwareEngineeringPage.enterEmail("invalidemail");
+		softwareEngineeringPage.validateEmail("invalidemail");
+		softwareEngineeringPage.clickOnCotactUsButton();
+		softwareEngineeringPage.assertEmailAddressIncorrectWarningMassageIsShown();
+
+		logger.info("Test testEnterIncorrectEmail end");
 	}
 
 	@AfterMethod
 	public void tearDown() {
 		homePage.quit();
 	}
-
 }
