@@ -1,10 +1,10 @@
 package com.endava.pages;
 
-import com.endava.util.WebDriverUtil;
-import org.openqa.selenium.WebDriver;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import com.endava.util.WebDriverUtil;
+import org.openqa.selenium.WebDriver;
 
 public class HomePage extends BasePage {
 
@@ -40,4 +40,11 @@ public class HomePage extends BasePage {
         WebDriverUtil.findElement(driver, cloud).click();
 		return new CloudPage(driver);
 	}
+
+	public InsightsThroughDataPage openInsightsThroughDataPage() {
+        logger.info("Opening Insights Through Data page");
+	    WebDriverUtil.findElement(driver, insightsThroughDataLink).click();
+		return new InsightsThroughDataPage(driver);
+	}
+
 }

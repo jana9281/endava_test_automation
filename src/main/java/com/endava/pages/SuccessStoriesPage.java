@@ -12,7 +12,9 @@ public class SuccessStoriesPage extends BasePage {
 
     private static final Logger logger = LoggerFactory.getLogger(SuccessStoriesPage.class);
 
-	public By textSSRCG = By.xpath("/html/body/section[2]/div/div/div[1]/figure/figcaption/p");
+    public static String SUCCESS_STORY_LABEL = "SUCCESS STORY | RETAIL AND CONSUMER GOODS";
+
+	public By textSSRCG = By.xpath("//figcaption/p");
 
 	protected SuccessStoriesPage(WebDriver driver) {
 		super(driver);
@@ -20,7 +22,6 @@ public class SuccessStoriesPage extends BasePage {
 
 	public void validateSSRCGTitle() {
 	    logger.info("Validating Success Stories title is shown");
-		Assert.assertTrue(
-				WebDriverUtil.findElement(driver, textSSRCG).getText().equalsIgnoreCase("Success Story | Retail and Consumer Goods"));
+		Assert.assertEquals(WebDriverUtil.getElementText(driver, textSSRCG), SUCCESS_STORY_LABEL);
 	}
 }

@@ -1,12 +1,12 @@
 package com.endava.pages;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.endava.util.WebDriverUtil;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public class ServicesPage extends BasePage {
 
@@ -20,7 +20,6 @@ public class ServicesPage extends BasePage {
 
 	public void assertStrategyIsDisplayed() {
 	    logger.info("Validating Strategy menu option is displayed");
-		Assert.assertTrue(WebDriverUtil.findElement(driver, strategyMenuOption).isDisplayed());
+		Assert.assertTrue(WebDriverUtil.isElementDisplayed(driver, strategyMenuOption));
 	}
-
 }

@@ -55,5 +55,4 @@ public class TestServicesPage {
 	public void tearDown() {
 		homePage.quit();
 	}
-
 }
