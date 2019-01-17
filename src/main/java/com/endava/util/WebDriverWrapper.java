@@ -2,6 +2,7 @@ package com.endava.util;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 
@@ -27,7 +28,10 @@ public class WebDriverWrapper {
 		WebDriver driver = null;
 		switch (browser) {
 		case "chrome":
-			driver = new ChromeDriver();
+			ChromeOptions options = new ChromeOptions();
+			options.addArguments("start-maximized");
+			options.addArguments("disable-infobars");
+			driver = new ChromeDriver(options);
 			break;
 		case "firefox":
 			driver = new FirefoxDriver();
