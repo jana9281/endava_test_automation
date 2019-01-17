@@ -11,16 +11,16 @@ import org.testng.annotations.Test;
 
 import com.endava.pages.HomePage;
 import com.endava.pages.MenuPage;
-import com.endava.pages.ServicesPage;
+import com.endava.pages.SuccessStoriesPage;
 import com.endava.util.WebDriverWrapper;
 
-public class TestServicesPage {
+public class TestSuccessStoriesPage {
 
-	private static final Logger logger = LoggerFactory.getLogger(TestServicesPage.class);
+	private static final Logger logger = LoggerFactory.getLogger(TestSuccessStoriesPage.class);
 
 	private HomePage homePage;
 	private MenuPage menuPage;
-	private ServicesPage servicesPage;
+	private SuccessStoriesPage succesStoriesPage;
 
 	@BeforeTest
 	@Parameters({ "browser" })
@@ -36,19 +36,20 @@ public class TestServicesPage {
 	}
 
 	/**
-	 * Open "burger" menu option Click on "Services" Validate STRATEGY menu option
-	 * is shown
+	 * Open "burger" menu option Click on "Success stories" Validate there is
+	 * "Success Story | Retail and Consumer Goods"
 	 */
+
 	@Test
-	public void testStrategyMenuIsShown() {
-		logger.info("Test testStrategyMenuIsShown start");
+	public void testSuccessStoriesPage() {
+		logger.info("Test testSuccessStoriesPage start");
 
 		menuPage = homePage.openMenu();
-		servicesPage = menuPage.openServices();
-		servicesPage.assertPageTitle("Services");
-		servicesPage.assertStrategyIsDisplayed();
+		succesStoriesPage = menuPage.openSuccessStories();
+		succesStoriesPage.validateSSRCGTitle();
+		succesStoriesPage.assertPageTitle("Success Stories");
 
-		logger.info("Test testStrategyMenuIsShown end");
+		logger.info("Test testSuccessStoriesPage end");
 	}
 
 	@AfterMethod

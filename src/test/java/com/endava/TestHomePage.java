@@ -1,29 +1,36 @@
 package com.endava;
 
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import com.endava.pages.HomePage;
 import com.endava.pages.MenuPage;
+import com.endava.util.WebDriverWrapper;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
-
-/**
- * @author jana.djordjevic@endava.com
- *
- */
 public class TestHomePage {
+
+	private static final Logger logger = LoggerFactory.getLogger(TestHomePage.class);
 
 	private HomePage homePage;
 	private MenuPage menuPage;
 
 	@BeforeTest
-	public void setUp() {
-		WebDriverManager.chromedriver().setup();
+	@Parameters({ "browser" })
+	public void setUp(String browser) {
+		WebDriverWrapper.setUpDriver(browser);
+	}
+
+	@BeforeMethod
+	@Parameters({ "browser" })
+	public void openBrowser(String browser) {
+		homePage = new HomePage(WebDriverWrapper.createDriver(browser));
+		homePage.open();
 	}
 
 	/*
@@ -32,21 +39,24 @@ public class TestHomePage {
 	 */
 	@Test
 	public void testHomePageIsOpened() {
-		homePage = new HomePage(new ChromeDriver());
-		homePage.open();
-		new WebDriverWait(homePage.driver, 5)
-				.until(ExpectedConditions.visibilityOfElementLocated(homePage.contactButtons));
+		logger.info("Test testHomePageIsOpened start");
+
+		homePage.assertPageTitle("Endava");
+
+		logger.info("Test testHomePageIsOpened end");
 	}
 
+	/*
+	 * Test validates that menu page can be opened from home page
+	 */
 	@Test
 	public void testOpenMenu() {
-		homePage = new HomePage(new ChromeDriver());
-		homePage.open();
-		new WebDriverWait(homePage.driver, 5)
-				.until(ExpectedConditions.visibilityOfElementLocated(homePage.contactButtons));
+		logger.info("Test testOpenMenu start");
+
 		menuPage = homePage.openMenu();
-		new WebDriverWait(menuPage.driver, 5)
-				.until(ExpectedConditions.visibilityOfElementLocated(menuPage.navigationList));
+		menuPage.assertMenuIsOpened();
+
+		logger.info("Test testOpenMenu end");
 	}
 
 	@AfterMethod

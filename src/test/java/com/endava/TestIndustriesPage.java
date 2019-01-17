@@ -10,17 +10,17 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import com.endava.pages.HomePage;
+import com.endava.pages.IndustriesPage;
 import com.endava.pages.MenuPage;
-import com.endava.pages.ServicesPage;
 import com.endava.util.WebDriverWrapper;
 
-public class TestServicesPage {
+public class TestIndustriesPage {
 
-	private static final Logger logger = LoggerFactory.getLogger(TestServicesPage.class);
+	private static final Logger logger = LoggerFactory.getLogger(TestIndustriesPage.class);
 
 	private HomePage homePage;
 	private MenuPage menuPage;
-	private ServicesPage servicesPage;
+	private IndustriesPage industriesPage;
 
 	@BeforeTest
 	@Parameters({ "browser" })
@@ -36,19 +36,19 @@ public class TestServicesPage {
 	}
 
 	/**
-	 * Open "burger" menu option Click on "Services" Validate STRATEGY menu option
-	 * is shown
+	 * Open "burger" menu option and click on "Industries", Validate FINANCE section
+	 * is shown with "Read More" link
 	 */
 	@Test
-	public void testStrategyMenuIsShown() {
-		logger.info("Test testStrategyMenuIsShown start");
+	public void testOpenIndustriesPage() {
+		logger.info("Test testOpenIndustriesPage start");
 
 		menuPage = homePage.openMenu();
-		servicesPage = menuPage.openServices();
-		servicesPage.assertPageTitle("Services");
-		servicesPage.assertStrategyIsDisplayed();
+		industriesPage = menuPage.openIndustriesPage();
+		industriesPage.assertPageTitle("Industries");
+		industriesPage.assertFinanceIsDisplayed();
 
-		logger.info("Test testStrategyMenuIsShown end");
+		logger.info("Test testOpenIndustriesPage end");
 	}
 
 	@AfterMethod
