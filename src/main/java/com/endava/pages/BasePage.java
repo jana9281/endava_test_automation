@@ -1,63 +1,62 @@
 package com.endava.pages;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.endava.util.WebDriverUtil;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
-/**
- * @author jana.djordjevic@endava.com
- *
- */
 public class BasePage {
-	public static final String ENDAVA_URL = "http://www.endava.com";
-	private static final String REGEX = "^[a-zA-Z]+[\\-'\\s]?[a-zA-Z ]+$";
-	public WebDriver driver;
+
+	private static final Logger logger = LoggerFactory.getLogger(BasePage.class);
+
+    public final String ENDAVA_URL = "https://www.endava.com";
+
+    public WebDriver driver;
+
+    public By contactButtons = By.id("contact-buttons");
+	public By burgerMenu = By.id("menu-toggle");
+	public By automationAndEngineering = By.xpath("//*[@id=\"footer\"]//a[text()='Test Automation & Engineering']");
+	public By cloud = By.xpath("//*[@id=\"footer\"]//a[text()='Cloud']");
+    public By insightsThroughDataLink = By.linkText("Insights through Data");
+	public By softwareEngineeringLink = By.linkText("Software Engineering");
+    public By footer = By.id("footer");
 
 	protected BasePage(WebDriver driver) {
 		this.driver = driver;
 	}
 
-	public void scrollDownAtTheBottomOfThePage() {
-		JavascriptExecutor js = (JavascriptExecutor) driver;
-		js.executeScript("window.scrollTo(0, document.body.scrollHeight)");
-	}
-
-	public void scrollToElement(By element) {
-		JavascriptExecutor js = (JavascriptExecutor) driver;
-		js.executeScript("arguments[0].scrollIntoView();", driver.findElement(element));
-	}
-
-	public void clickOnElement(By element) {
-		driver.findElement(element).click();
-	}
-
-	public void isElementSelected(By element) {
-		Assert.assertTrue(driver.findElement(element).isSelected());
-	}
-
-	public void isElementShown(By element) {
-		Assert.assertTrue(driver.findElement(element).isDisplayed());
-	}
-
-	public void isPopulatedElementCorrect(By element) {
-		String model = driver.findElement(element).getAttribute("value");
-		Assert.assertTrue(model.matches(REGEX) && 0 < model.length());
-	}
-
-	public void populateElement(By element, String elValue) {
-		WebElement firstName = driver.findElement(element);
-		firstName.sendKeys(elValue);
-	}
-
-	public String getPageTitle() {
-		return driver.getTitle();
-	}
-
 	public void quit() {
-		if (this.driver != null) {
+		if (this != null) {
+			logger.info("Closing browser");
 			driver.quit();
 		}
+	}
+
+	public void assertElementIsSelected(By locator) {
+		logger.info("Asserting element {} is selected", locator);
+		Assert.assertTrue(WebDriverUtil.findElement(driver, locator).isSelected());
+	}
+
+	public void assertElementIsDisplayed(By locator) {
+		logger.info("Asserting element {} is displayed", locator);
+		Assert.assertTrue(WebDriverUtil.isElementDisplayed(driver, locator));
+	}
+
+	public void assertUrlEndsWith(String ending) {
+		logger.info("Asserting current URL ends with {}", ending);
+		Assert.assertTrue(WebDriverUtil.getCurrentURL(driver).endsWith(ending));
+	}
+
+	public void assertPageTitle(String title) {
+		logger.info("Asserting page title is {}", title);
+		Assert.assertEquals(WebDriverUtil.getPageTitle(driver), title);
+	}
+
+	public void assertMenuIsOpened() {
+		logger.info("Asserting burger menu is opened");
+		Assert.assertTrue(WebDriverUtil.isElementDisplayed(driver, burgerMenu));
 	}
 }
