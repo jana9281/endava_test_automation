@@ -18,12 +18,15 @@ public class FooterBasePage extends BasePage {
 			"please read Terms & Conditions and Privacy Notice and check the box in order " +
 			"to accept them. You can unsubscribe at any time.";
 	public static String WARNING_MESSAGE_LAST_NAME = "Please enter Last Name";
+	public static String WARNING_MESSAGE_EMAIL_INCORRECT = "Email address is not corect";
 
 	public By firstNameField = By.id("firstname");
 	public By lastNameField = By.id("lastname");
+	public By emailAddressField = By.id("email");
 	public By contactUsButton = By.id("form-submit");
 	public By warningMessageLastName = By.xpath("//*[@id='lastname']/following-sibling::div/p");
 	public By warningMessagePhoneNumber = By.xpath("//*[@id='phoneNumber']/following-sibling::div/p");
+	public By warningMessageEmail = By.xpath("//*[@id='email']/following-sibling::div/p");
 	public By contactUsTitle = By.xpath("//h2[text()='Contact us']");
 	public By termsAndConditionsLabel = By.xpath("//label[@for='terms_input']");
 	public By termsAndConditionsCheckBox = By.xpath("//*[@id='terms_input']");
@@ -63,6 +66,11 @@ public class FooterBasePage extends BasePage {
 		WebDriverUtil.populateField(driver, firstNameField, firstName);
     }
 
+	public void validateFirstName(String firstName) {
+		logger.info("Asserting first name field contains {}", firstName);
+		Assert.assertEquals(WebDriverUtil.getElementAttributeValue(driver, firstNameField), firstName);
+	}
+
 	public void enterLastName(String lastName) {
 		logger.info("Entering {} as last name", lastName);
 		WebDriverUtil.populateField(driver, lastNameField, lastName);
@@ -73,9 +81,20 @@ public class FooterBasePage extends BasePage {
 		WebDriverUtil.clearField(driver, lastNameField);
 	}
 
-	public void validateFirstName(String firstName) {
-		logger.info("Asserting first name field contains {}", firstName);
-		Assert.assertEquals(WebDriverUtil.getElementAttributeValue(driver, firstNameField), firstName);
+	public void enterEmail(String email) {
+		logger.info("Entering {} as email", email);
+		WebDriverUtil.populateField(driver, emailAddressField, email);
+	}
+
+	public void validateEmail(String email) {
+		logger.info("Asserting email field contains {}", email);
+		Assert.assertEquals(WebDriverUtil.getElementAttributeValue(driver, emailAddressField), email);
+	}
+
+	public void assertEmailAddressIncorrectWarningMassageIsShown() {
+		logger.info("Asserting warning message {} is shown", WARNING_MESSAGE_EMAIL_INCORRECT);
+		Assert.assertTrue(WebDriverUtil.isElementPresent(driver, warningMessageEmail));
+		Assert.assertEquals(WebDriverUtil.getElementText(driver, warningMessageEmail), WARNING_MESSAGE_EMAIL_INCORRECT);
 	}
 
 	public void clickOnCotactUsButton() {
@@ -86,7 +105,7 @@ public class FooterBasePage extends BasePage {
 	public void assertLastNameWarningMassageIsShown() {
 		logger.info("Asserting warning message {} is shown", WARNING_MESSAGE_LAST_NAME);
 		Assert.assertTrue(WebDriverUtil.isElementPresent(driver, warningMessageLastName));
-		Assert.assertEquals(WebDriverUtil.findElement(driver, warningMessageLastName).getText(), WARNING_MESSAGE_LAST_NAME);
+		Assert.assertEquals(WebDriverUtil.getElementText(driver, warningMessageLastName), WARNING_MESSAGE_LAST_NAME);
 	}
 
 	public void assertPhoneWarningMassageNotShown() {

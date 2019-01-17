@@ -23,25 +23,25 @@ public class MenuPage extends BasePage {
 
 	public DigitalPage openDigitalPage() {
 	    logger.info("Opening Digital page");
-		WebDriverUtil.findElement(driver, digitalItem).click();
+		WebDriverUtil.clickOnElement(driver, digitalItem);
 		return new DigitalPage(driver);
 	}
 
 	public IndustriesPage openIndustriesPage() {
         logger.info("Opening Industries page");
-		WebDriverUtil.findElement(driver, industriesItem).click();
+		WebDriverUtil.clickOnElement(driver, industriesItem);
 		return new IndustriesPage(driver);
 	}
 
 	public SuccessStoriesPage openSuccessStories() {
         logger.info("Opening Success Stories page");
-		WebDriverUtil.findElement(driver, successStoriesItem).click();
+		WebDriverUtil.clickOnElement(driver, successStoriesItem);
 		return new SuccessStoriesPage(driver);
 	}
 
 	public ServicesPage openServices() {
         logger.info("Opening Services page");
-		WebDriverUtil.findElement(driver, servicesItem).click();
+		WebDriverUtil.clickOnElement(driver, servicesItem);
 		return new ServicesPage(driver);
 	}
 }

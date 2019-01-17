@@ -12,6 +12,7 @@
 			<class name="com.endava.TestCloudPage" />
 			<class name="com.endava.TestAutomationAndEngineeringPage" />
 			<class name="com.endava.TestInsightsThroughDataPage" />
+			<class name="com.endava.TestSoftwareEngineeringPage" />
 		</classes>
 	</test> <!-- Test -->
 </suite> <!-- Suite -->

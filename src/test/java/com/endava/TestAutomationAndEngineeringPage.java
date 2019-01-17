@@ -9,8 +9,8 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
-import com.endava.pages.AutomationAndEngineeringPage;
 import com.endava.pages.HomePage;
+import com.endava.pages.AutomationAndEngineeringPage;
 import com.endava.util.WebDriverWrapper;
 
 public class TestAutomationAndEngineeringPage {

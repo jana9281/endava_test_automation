@@ -23,7 +23,7 @@ public class HomePage extends BasePage {
 
 	public MenuPage openMenu() {
         logger.info("Opening burger menu");
-		WebDriverUtil.findElement(driver, burgerMenu).click();
+		WebDriverUtil.clickOnElement(driver, burgerMenu);
 		MenuPage menuPage = new MenuPage(driver);
 		WebDriverUtil.waitForVisible(driver, 5, menuPage.navigationList);
 		return menuPage;
@@ -31,20 +31,24 @@ public class HomePage extends BasePage {
 
 	public AutomationAndEngineeringPage openAutomationAndEngineeringPage() {
         logger.info("Opening Automation And Engineering page");
-	    WebDriverUtil.findElement(driver, automationAndEngineering).click();
+	    WebDriverUtil.clickOnElement(driver, automationAndEngineering);
 		return new AutomationAndEngineeringPage(driver);
 	}
 
 	public CloudPage openCloudPage() {
         logger.info("Opening Cloud page");
-        WebDriverUtil.findElement(driver, cloud).click();
+        WebDriverUtil.clickOnElement(driver, cloud);
 		return new CloudPage(driver);
 	}
 
 	public InsightsThroughDataPage openInsightsThroughDataPage() {
         logger.info("Opening Insights Through Data page");
-	    WebDriverUtil.findElement(driver, insightsThroughDataLink).click();
+	    WebDriverUtil.clickOnElement(driver, insightsThroughDataLink);
 		return new InsightsThroughDataPage(driver);
 	}
 
+	public SoftwareEngineeringPage openSoftwareEngineeringPage() {
+        WebDriverUtil.clickOnElement(driver, softwareEngineeringLink);
+		return new SoftwareEngineeringPage(driver);
+	}
 }
