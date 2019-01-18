@@ -1,7 +1,8 @@
 package com.endava;
 
-import org.openqa.selenium.By;
-import org.testng.Assert;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
@@ -10,14 +11,14 @@ import org.testng.annotations.Test;
 
 import com.endava.pages.CreativeAndUXPage;
 import com.endava.pages.HomePage;
-import com.endava.util.WebDriverUtil;
 import com.endava.util.WebDriverWrapper;
 
 public class TestCreativeAndUXPage {
 
+	private static final Logger logger = LoggerFactory.getLogger(TestCreativeAndUXPage.class);
+
 	private HomePage homePage;
 	private CreativeAndUXPage creativeAndUXPage;
-	private By contactUsButton = By.xpath("//*[@id=\"form-submit\"]");
 
 	@BeforeTest
 	@Parameters({ "browser" })
@@ -42,23 +43,25 @@ public class TestCreativeAndUXPage {
 	 */
 	@Test
 	public void testCreativeAndUXPage() {
-		WebDriverUtil.waitForVisible(homePage.driver, 5, homePage.contactButtons);
-		homePage.scrollDownAtTheBottomOfThePage();
+		logger.info("Test testCreativeAndUXPage start");
+
 		creativeAndUXPage = homePage.openCreativeAndUXPage();
-		creativeAndUXPage.isUrlChanged();
-		creativeAndUXPage.scrollDownToContactUsArea();
-		creativeAndUXPage.populateEmailTextField();
-		creativeAndUXPage.populateCountryNameTextField();
-		creativeAndUXPage.isEmailValid();
-		creativeAndUXPage.isCountryNameValid();
-		creativeAndUXPage.clickOnButton(contactUsButton);
-		creativeAndUXPage.isWarningMessageShown();
-		Assert.assertEquals(creativeAndUXPage.getPageTitle(), "Creative & UX");
+		creativeAndUXPage.assertUrlEndsWith("Creative-And-UX");
+		creativeAndUXPage.enterEmail("indira.gandhi@delhi.com");
+		creativeAndUXPage.enterCountry("India");
+		creativeAndUXPage.validateEmail("indira.gandhi@delhi.com");
+		creativeAndUXPage.validateCountry("India");
+		creativeAndUXPage.clickOnCotactUsButton();
+		creativeAndUXPage.assertFirstNameWarningMessageIsShown();
+		creativeAndUXPage.assertLastNameWarningMessageIsShown();
+		creativeAndUXPage.assertCompanyMissingWarningMessageIsShown();
+		creativeAndUXPage.assertTermsAndConditionsWarningMessageIsShown();
+
+		logger.info("Test testCreativeAndUXPage end");
 	}
 
 	@AfterMethod
 	public void tearDown() {
 		homePage.quit();
 	}
-
 }

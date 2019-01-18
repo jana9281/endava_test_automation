@@ -1,49 +1,59 @@
 package com.endava.pages;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-/**
- * @author jana.djordjevic@endava.com
- *
- */
+import com.endava.util.WebDriverUtil;
+import org.openqa.selenium.WebDriver;
+
 public class HomePage extends BasePage {
 
-	public By contactButtons = By.id("contact-buttons");
-	public By burgerMenu = By.id("menu-toggle");
-	public By creativeAndUXItem = By.xpath("//*[@id=\"footer\"]/section[1]/div/div[1]/ul/li[6]/a");
+    private static final Logger logger = LoggerFactory.getLogger(HomePage.class);
 
 	public HomePage(WebDriver driver) {
 		super(driver);
 	}
 
 	public void open() {
+	    logger.info("Opening {}", ENDAVA_URL);
 		driver.get(ENDAVA_URL);
 		driver.manage().window().maximize();
+		WebDriverUtil.waitForVisible(driver, 5, contactButtons);
 	}
 
 	public MenuPage openMenu() {
-		driver.findElement(this.burgerMenu).click();
-		return new MenuPage(driver);
+        logger.info("Opening burger menu");
+		WebDriverUtil.clickOnElement(driver, burgerMenu);
+		MenuPage menuPage = new MenuPage(driver);
+		WebDriverUtil.waitForVisible(driver, 5, menuPage.navigationList);
+		return menuPage;
 	}
 
-	/**
-	 * 
-	 */
-	public void scrollDownAtTheBottomOfThePage() {
-		JavascriptExecutor js = (JavascriptExecutor) driver;
-		WebElement element = driver.findElement(creativeAndUXItem);
-		js.executeScript("arguments[0].scrollIntoView();", element);
-
+	public AutomationAndEngineeringPage openAutomationAndEngineeringPage() {
+        logger.info("Opening Automation And Engineering page");
+	    WebDriverUtil.clickOnElement(driver, automationAndEngineering);
+		return new AutomationAndEngineeringPage(driver);
 	}
 
-	/**
-	 * @return
-	 */
+	public CloudPage openCloudPage() {
+        logger.info("Opening Cloud page");
+        WebDriverUtil.clickOnElement(driver, cloud);
+		return new CloudPage(driver);
+	}
+
+	public InsightsThroughDataPage openInsightsThroughDataPage() {
+        logger.info("Opening Insights Through Data page");
+	    WebDriverUtil.clickOnElement(driver, insightsThroughDataLink);
+		return new InsightsThroughDataPage(driver);
+	}
+
+	public SoftwareEngineeringPage openSoftwareEngineeringPage() {
+        WebDriverUtil.clickOnElement(driver, softwareEngineeringLink);
+		return new SoftwareEngineeringPage(driver);
+	}
+
 	public CreativeAndUXPage openCreativeAndUXPage() {
-		driver.findElement(this.creativeAndUXItem).click();
+		WebDriverUtil.clickOnElement(driver, creativeAndUXLink);
 		return new CreativeAndUXPage(driver);
 	}
 }
