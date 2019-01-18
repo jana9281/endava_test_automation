@@ -13,6 +13,7 @@
 			<class name="com.endava.TestAutomationAndEngineeringPage" />
 			<class name="com.endava.TestInsightsThroughDataPage" />
 			<class name="com.endava.TestSoftwareEngineeringPage" />
+			<class name="com.endava.TestCreativeAndUXPage" />
 		</classes>
-	</test> <!-- Test -->
-</suite> <!-- Suite -->
+	</test>
+</suite>

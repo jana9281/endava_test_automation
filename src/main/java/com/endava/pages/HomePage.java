@@ -51,4 +51,9 @@ public class HomePage extends BasePage {
         WebDriverUtil.clickOnElement(driver, softwareEngineeringLink);
 		return new SoftwareEngineeringPage(driver);
 	}
+
+	public CreativeAndUXPage openCreativeAndUXPage() {
+		WebDriverUtil.clickOnElement(driver, creativeAndUXLink);
+		return new CreativeAndUXPage(driver);
+	}
 }

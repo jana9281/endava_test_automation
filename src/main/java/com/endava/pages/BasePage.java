@@ -12,7 +12,7 @@ public class BasePage {
 
 	private static final Logger logger = LoggerFactory.getLogger(BasePage.class);
 
-    public final String ENDAVA_URL = "https://www.endava.com";
+    public static final String ENDAVA_URL = "https://www.endava.com";
 
     public WebDriver driver;
 
@@ -22,6 +22,7 @@ public class BasePage {
 	public By cloud = By.xpath("//*[@id=\"footer\"]//a[text()='Cloud']");
     public By insightsThroughDataLink = By.linkText("Insights through Data");
 	public By softwareEngineeringLink = By.linkText("Software Engineering");
+	public By creativeAndUXLink = By.linkText("Creative & UX");
     public By footer = By.id("footer");
 
 	protected BasePage(WebDriver driver) {
