@@ -48,6 +48,11 @@ public class TestSoftwareEngineeringPage {
 
 		softwareEngineeringPage = homePage.openSoftwareEngineeringPage();
 		softwareEngineeringPage.assertUrlEndsWith("Software-Engineering");
+		softwareEngineeringPage.clickOnTypeOfMessage();
+		softwareEngineeringPage.enterFirstName("Indira");
+		softwareEngineeringPage.validateFirstName("Indira");
+		softwareEngineeringPage.enterLastName("Gandhi");
+		softwareEngineeringPage.validateLastName("Gandhi");
 		softwareEngineeringPage.enterEmail("invalidemail");
 		softwareEngineeringPage.validateEmail("invalidemail");
 		softwareEngineeringPage.clickOnCotactUsButton();

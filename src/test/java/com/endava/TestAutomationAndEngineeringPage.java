@@ -13,7 +13,7 @@ import com.endava.pages.HomePage;
 import com.endava.pages.AutomationAndEngineeringPage;
 import com.endava.util.WebDriverWrapper;
 
-public class TestAutomationAndEngineeringPage {
+public class  TestAutomationAndEngineeringPage {
 
 	private static final Logger logger = LoggerFactory.getLogger(TestAutomationAndEngineeringPage.class);
 
@@ -34,13 +34,17 @@ public class TestAutomationAndEngineeringPage {
 	}
 
 	/**
-	 * 1. Go to endava.com 2.Scroll down to the page footer and from the "Services"
-	 * section click on "Test Automation & Engineering" 3.Validate URL has changed
-	 * 4.Scroll down to the "Contact us" area 5.Tick "Sign me up for the Endava
-	 * newsletter" check box 6.Validate that check box is ticked 7.Validate that
-	 * "In order to sign-up for the newsletter, please read Terms & Conditions and
-	 * Privacy Notice and check the box in order to accept them. You can unsubscribe
-	 * at any time." message appears on a screen under the Terms of use
+	 * 1. Go to endava.com ,
+	 * 2.Scroll down to the page footer and from the "Services",
+	 * section click on "Test Automation & Engineering" ,
+	 * 3.Validate URL has changed,
+	 * 4.Scroll down to the "Contact us" area ,
+	 * 5. Populate first name, last name, email, county,
+	 * 6. Validate first name, last name, email country,
+	 * 7.Tick "Sign me up for the Endava, newsletter" check box,
+	 * 8.Tick "I agree to the Terms and Conditions and Privacy Notice" check box,
+	 * 9.Validate that "I agree to the Terms and Conditions and Privacy Notice" is checked,
+	 * 10. Submit
 	 */
 	@Test
 	public void testNewsletterCheckBoxValidation() {
@@ -48,9 +52,20 @@ public class TestAutomationAndEngineeringPage {
 
 		automationAndEngineeringPage = homePage.openAutomationAndEngineeringPage();
 		automationAndEngineeringPage.assertUrlEndsWith("Test-Automation-And-Engineering");
+		automationAndEngineeringPage.clickOnTypeOfMessage();
+		automationAndEngineeringPage.enterFirstName("Indira");
+		automationAndEngineeringPage.enterLastName("Gandhi");
+		automationAndEngineeringPage.enterEmail("indira.gandhi@delhi.com");
+		automationAndEngineeringPage.enterCountry("India");
+		automationAndEngineeringPage.validateFirstName("Indira");
+		automationAndEngineeringPage.validateLastName("Gandhi");
+		automationAndEngineeringPage.validateEmail("indira.gandhi@delhi.com");
+		automationAndEngineeringPage.validateCountry("India");
+		automationAndEngineeringPage.clickOnCotactUsButton();
+		automationAndEngineeringPage.assertTermsAndConditionsWarningMessageIsShown();
+		automationAndEngineeringPage.clickOnTermsAndConditionsCheckbox();
 		automationAndEngineeringPage.clickOnSignMeUpForNewsletterLabel();
-		automationAndEngineeringPage.assertElementIsSelected(automationAndEngineeringPage.signMeUpForNewsletterCheckBox);
-		automationAndEngineeringPage.assertSubscriptionMessage();
+		automationAndEngineeringPage.clickOnCotactUsButton();
 
 		logger.info("Test testNewsletterCheckBoxValidation end");
 	}

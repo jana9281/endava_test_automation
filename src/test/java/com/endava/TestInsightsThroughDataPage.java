@@ -49,13 +49,13 @@ public class TestInsightsThroughDataPage {
 
 		insightsThroughDataPage = homePage.openInsightsThroughDataPage();
 		insightsThroughDataPage.assertPageTitle("Insights through Data");
+		insightsThroughDataPage.clickOnTypeOfMessage();
 		insightsThroughDataPage.enterFirstName("Ernest");
 		insightsThroughDataPage.enterLastName("Hemingway");
 		insightsThroughDataPage.clearLastName();
 		insightsThroughDataPage.validateFirstName("Ernest");
 		insightsThroughDataPage.clickOnCotactUsButton();
         insightsThroughDataPage.assertLastNameWarningMessageIsShown();
-		insightsThroughDataPage.assertPhoneWarningMessageNotShown();
 
 		logger.info("Test testValidateNonMandatoryFields end");
 	}

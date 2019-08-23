@@ -12,7 +12,8 @@ public class IndustriesPage extends BasePage {
 
     private static final Logger logger = LoggerFactory.getLogger(IndustriesPage.class);
 
-	public By finance = By.xpath("//a[text()='Finance']");
+    //Find fix for xpath
+    public By finance = By.xpath("//a[text()='Finance']");
 
 	public IndustriesPage(WebDriver driver) {
 		super(driver);

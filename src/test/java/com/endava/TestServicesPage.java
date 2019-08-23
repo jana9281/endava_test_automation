@@ -52,7 +52,6 @@ public class TestServicesPage {
 	}
 
 	@AfterMethod
-	public void tearDown() {
-		homePage.quit();
+	public void tearDown() {homePage.quit();
 	}
 }
