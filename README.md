@@ -7,6 +7,7 @@ This test framework contains tests written for Endava website (https://www.endav
 * ServicesPage validation
 * IndustriesPage validation
 * SuccessStoriesPage validation
+* Create README.md file
 
 ## Pre-requisites
 
