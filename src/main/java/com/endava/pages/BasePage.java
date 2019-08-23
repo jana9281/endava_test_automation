@@ -18,7 +18,6 @@ public class BasePage {
     public By burgerMenu = By.id("menu-toggle");
     public By automationAndEngineering = By.xpath("//*[@id=\"footer\"]//a[text()='Test Automation & Engineering']");
     public By cloud = By.linkText("Cloud");
-    //public By cloud = By.xpath("//*[@id=\"footer\"]//a[text()='Cloud']");
     public By insightsThroughDataLink = By.linkText("Insights through Data");
     public By softwareEngineeringLink = By.linkText("Software Engineering");
     public By creativeAndUXLink = By.linkText("Creative & UX");
