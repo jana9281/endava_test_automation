@@ -1,17 +1,11 @@
 package com.endava;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Parameters;
-import org.testng.annotations.Test;
-
 import com.endava.pages.CloudPage;
 import com.endava.pages.HomePage;
 import com.endava.util.WebDriverWrapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.testng.annotations.*;
 
 public class TestCloudPage {
 
@@ -40,9 +34,9 @@ public class TestCloudPage {
     }
 
     /**
-     * 1) Go to endava.com 2) Scroll down to the page footer and from the "Services"
-     * section click on "Cloud" 3) Validate URL has changed 4) Scroll down to the
-     * "Contact us" area 5) Tick "I agree to the Terms and Conditions and Privacy
+     * Go to endava.com, Scroll down to the page footer and from the "Services"
+     * section click on "Cloud", Validate URL has changed, Scroll down to the
+     * "Contact us" area, Tick "I agree to the Terms and Conditions and Privacy
      * Ncheck bootice" check box.
      */
     @Test
@@ -58,15 +52,10 @@ public class TestCloudPage {
     }
 
     /**
-     * Go to endava.com
-     * Scroll down to the page footer and from the "Services" section click on "Cloud"
-     * Validate URL has changed
-     * Scroll down to the "Contact us" area
-     * Populate First Name field
-     * Populate Second Name field
-     * Validate First and Last name are correct
-     * Click on "Contact US" button
-     * Validate that for all mandatory fields there is a warning message if it's not populated (e.g. "Please enter Email Address")
+     * Go to endava.com, Scroll down to the page footer and from the "Services" section click on "Cloud"
+     * Validate URL has changed, Scroll down to the "Contact us" area, Populate First Name field
+     * Populate Second Name field, Validate First and Last name are correct
+     * Click on "Contact US" button, Validate that for all mandatory fields there is a warning message if it's not populated (e.g. "Please enter Email Address")
      */
 
     @Test

@@ -23,9 +23,10 @@ public class FooterBasePage extends BasePage {
     private static final String WARNING_MESSAGE_EMAIL_INCORRECT = "Must be valid email.\n" +
             "example@yourdomain.com";
     private static final String WARNING_MESSAGE_EMAIL_MISSING = "Must be valid email.\n" +
-            "example@yourdomain.com";// "Please enter Email Address";
+            "example@yourdomain.com";
     private static final String WARNING_MESSAGE_COMPANY_MISSING = "Please enter Company";
     private static final String WARNING_MESSAGE_COUNTRY_MISSING = "Please enter Country/Region";
+    private static final String SUCCESS_SEND_MESSAGE = "";
 
     public By clickOnTermsAndConditions = By.xpath("/html/body/form[1]/div[5]/div[2]/div[1]/div[2]/label");
     public By suggestion = By.id("suggestion");
@@ -45,6 +46,7 @@ public class FooterBasePage extends BasePage {
     private By termsAndConditionsLabel = By.xpath("/html/body/form[1]/div[5]/div[2]/div[1]/div[2]/label");
     private By typeOfMessage = By.xpath("/html/body/form[1]/div[1]/div[1]/div[2]/div[2]/label[1]");
     private By termsAndConditionsWarningMessage = By.xpath("/html/body/form[1]/div[5]/div[2]/div[1]/div[2]/div[3]/div[2]");
+    private By successSendMessage = By.xpath("//form[@id='mktoForm_1173']/div[6]/div/div[2]/div");
     private By signMeUpForNewsletterLabel = By.xpath("/html/body/form[1]/div[5]/div[1]/div[1]/div[2]/label/span[3]");
     private By promptMessage = By.id("prompt_message2");
 
@@ -181,6 +183,12 @@ public class FooterBasePage extends BasePage {
         logger.info("Asserting warning message {} is shown", TERMS_AND_CONDITIONS_MESSAGE);
         Assert.assertTrue(WebDriverUtil.isElementPresent(driver, termsAndConditionsWarningMessage));
         Assert.assertEquals(WebDriverUtil.getElementText(driver, termsAndConditionsWarningMessage), TERMS_AND_CONDITIONS_MESSAGE);
+    }
+
+    public void assertSuccessSendMessage() {
+        logger.info("Asserting message {} is shown", SUCCESS_SEND_MESSAGE);
+        Assert.assertTrue(WebDriverUtil.isElementPresent(driver, successSendMessage));
+        Assert.assertEquals(WebDriverUtil.getElementText(driver, successSendMessage), SUCCESS_SEND_MESSAGE);
     }
 
 

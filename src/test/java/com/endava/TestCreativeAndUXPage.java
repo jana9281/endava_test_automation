@@ -1,17 +1,11 @@
 package com.endava;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Parameters;
-import org.testng.annotations.Test;
-
 import com.endava.pages.CreativeAndUXPage;
 import com.endava.pages.HomePage;
 import com.endava.util.WebDriverWrapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.testng.annotations.*;
 
 public class TestCreativeAndUXPage {
 
@@ -37,7 +31,7 @@ public class TestCreativeAndUXPage {
      * Go to endava.com. Scroll down to the page footer and from the "Services"
      * section click on "Creative & UX". Validate URL has changed. Scroll down to
      * the "Contact us" area. Populate Country/Region and Email.
-	 * Validate Email Address and Country/Region name are correct. Click
+     * Validate Email Address and Country/Region name are correct. Click
      * on "Contact US" button. Validate that for all mandatory fields there is a
      * warning message if it's not populated (e.g. "Please enter First Name").
      */
@@ -59,14 +53,14 @@ public class TestCreativeAndUXPage {
     }
 
 
-	/**
-	 * Go to endava.com. Scroll down to the page footer and from the "Services"
-	 * section click on "Creative & UX". Validate URL has changed. Scroll down to
-	 * the "Contact us" area. Populate First name, Country/Region and Email.
-	 * Validate first name, Email Address and Country/Region name are correct. Click
-	 * on "Contact US" button. Validate that for all mandatory fields there is a
-	 * warning message if it's not populated (e.g. "Please enter Last Name").
-	 */
+    /**
+     * Go to endava.com. Scroll down to the page footer and from the "Services"
+     * section click on "Creative & UX". Validate URL has changed. Scroll down to
+     * the "Contact us" area. Populate First name, Country/Region and Email.
+     * Validate first name, Email Address and Country/Region name are correct. Click
+     * on "Contact US" button. Validate that for all mandatory fields there is a
+     * warning message if it's not populated (e.g. "Please enter Last Name").
+     */
     @Test
     public void testCreativeAndUXPage2() {
         logger.info("Test testCreativeAndUXPage start");
@@ -86,14 +80,14 @@ public class TestCreativeAndUXPage {
         logger.info("Test testCreativeAndUXPage end");
     }
 
-	/**
-	 * Go to endava.com. Scroll down to the page footer and from the "Services"
-	 * section click on "Creative & UX". Validate URL has changed. Scroll down to
-	 * the "Contact us" area. Populate Last name, Country/Region and Email.
-	 * Validate last name, Email Address and Country/Region name are correct. Click
-	 * on "Contact US" button. Validate that for all mandatory fields there is a
-	 * warning message if it's not populated (e.g. "Please enter First Name").
-	 */
+    /**
+     * Go to endava.com. Scroll down to the page footer and from the "Services"
+     * section click on "Creative & UX". Validate URL has changed. Scroll down to
+     * the "Contact us" area. Populate Last name, Country/Region and Email.
+     * Validate last name, Email Address and Country/Region name are correct. Click
+     * on "Contact US" button. Validate that for all mandatory fields there is a
+     * warning message if it's not populated (e.g. "Please enter First Name").
+     */
     @Test
     public void testCreativeAndUXPage3() {
         logger.info("Test testCreativeAndUXPage start");
@@ -109,20 +103,18 @@ public class TestCreativeAndUXPage {
         creativeAndUXPage.validateLastName("Gandhi");
         creativeAndUXPage.clickOnCotactUsButton();
         creativeAndUXPage.assertFirstNameWarningMessageIsShown();
-        //creativeAndUXPage.assertCompanyMissingWarningMessageIsShown();
-        //creativeAndUXPage.assertTermsAndConditionsWarningMessageIsShown();
 
         logger.info("Test testCreativeAndUXPage end");
     }
 
-	/**
-	 * Go to endava.com. Scroll down to the page footer and from the "Services"
-	 * section click on "Creative & UX". Validate URL has changed. Scroll down to
-	 * the "Contact us" area. Populate First name, last name, Country/Region and Email.
-	 * Validate first name, last name, Email Address and Country/Region name are correct. Click
-	 * on "Contact US" button. Validate that for all mandatory fields there is a
-	 * warning message if it's not populated (e.g. Terms and Conditions check box).
-	 */
+    /**
+     * Go to endava.com. Scroll down to the page footer and from the "Services"
+     * section click on "Creative & UX". Validate URL has changed. Scroll down to
+     * the "Contact us" area. Populate First name, last name, Country/Region and Email.
+     * Validate first name, last name, Email Address and Country/Region name are correct. Click
+     * on "Contact US" button. Validate that for all mandatory fields there is a
+     * warning message if it's not populated (e.g. Terms and Conditions check box).
+     */
     @Test
     public void testCreativeAndUXPage4() {
         logger.info("Test testCreativeAndUXPage start");
@@ -144,14 +136,14 @@ public class TestCreativeAndUXPage {
         logger.info("Test testCreativeAndUXPage end");
     }
 
-	/**
-	 * Go to endava.com. Scroll down to the page footer and from the "Services"
-	 * section click on "Creative & UX". Validate URL has changed. Scroll down to
-	 * the "Contact us" area. Populate First name, last name, Country/Region and Email.
-	 * Validate first name, last name, Email Address and Country/Region name are correct. Click
-	 * on "Contact US" button. Validate that for all mandatory fields there is a
-	 * warning message if it's not populated, if it's populated send message.
-	 * */
+    /**
+     * Go to endava.com. Scroll down to the page footer and from the "Services"
+     * section click on "Creative & UX". Validate URL has changed. Scroll down to
+     * the "Contact us" area. Populate First name, last name, Country/Region and Email.
+     * Validate first name, last name, Email Address and Country/Region name are correct. Click
+     * on "Contact US" button. Validate that for all mandatory fields there is a
+     * warning message if it's not populated, if it's populated send message.
+     */
     @Test
     public void testCreativeAndUXPage5() {
         logger.info("Test testCreativeAndUXPage start");

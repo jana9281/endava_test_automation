@@ -12,15 +12,14 @@ public class IndustriesPage extends BasePage {
 
     private static final Logger logger = LoggerFactory.getLogger(IndustriesPage.class);
 
-    //Find fix for xpath
     public By finance = By.xpath("//a[text()='Finance']");
 
-	public IndustriesPage(WebDriver driver) {
-		super(driver);
-	}
+    public IndustriesPage(WebDriver driver) {
+        super(driver);
+    }
 
-	public void assertFinanceIsDisplayed() {
-	    logger.info("Validating Finance is displayed");
-		Assert.assertTrue(WebDriverUtil.findElement(driver, finance).isDisplayed());
-	}
+    public void assertFinanceIsDisplayed() {
+        logger.info("Validating Finance is displayed");
+        Assert.assertTrue(WebDriverUtil.findElement(driver, finance).isDisplayed());
+    }
 }
