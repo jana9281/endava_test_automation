@@ -1,67 +1,60 @@
 package com.endava;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Parameters;
-import org.testng.annotations.Test;
-
 import com.endava.pages.HomePage;
 import com.endava.pages.MenuPage;
 import com.endava.util.WebDriverWrapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.testng.annotations.*;
 
 public class TestHomePage {
 
-	private static final Logger logger = LoggerFactory.getLogger(TestHomePage.class);
+    private static final Logger logger = LoggerFactory.getLogger(TestHomePage.class);
 
-	private HomePage homePage;
-	private MenuPage menuPage;
+    private HomePage homePage;
+    private MenuPage menuPage;
 
-	@BeforeTest
-	@Parameters({ "browser" })
-	public void setUp(String browser) {
-		WebDriverWrapper.setUpDriver(browser);
-	}
+    @BeforeTest
+    @Parameters({"browser"})
+    public void setUp(String browser) {
+        WebDriverWrapper.setUpDriver(browser);
+    }
 
-	@BeforeMethod
-	@Parameters({ "browser" })
-	public void openBrowser(String browser) {
-		homePage = new HomePage(WebDriverWrapper.createDriver(browser));
-		homePage.open();
-	}
+    @BeforeMethod
+    @Parameters({"browser"})
+    public void openBrowser(String browser) {
+        homePage = new HomePage(WebDriverWrapper.createDriver(browser));
+        homePage.open();
+    }
 
-	/*
-	 * Test validates that home page is opened by checking if contact buttons are
-	 * visible on the page
-	 */
-	@Test
-	public void testHomePageIsOpened() {
-		logger.info("Test testHomePageIsOpened start");
+    /*
+     * Test validates that home page is opened by checking if contact buttons are
+     * visible on the page
+     */
+    @Test
+    public void testHomePageIsOpened() {
+        logger.info("Test testHomePageIsOpened start");
 
-		homePage.assertPageTitle("Endava");
+        homePage.assertPageTitle("Endava");
+        logger.info("Test testHomePageIsOpened end");
+    }
 
-		logger.info("Test testHomePageIsOpened end");
-	}
+    /*
+     * Test validates that menu page can be opened from home page
+     */
+    @Test
+    public void testOpenMenu() {
+        logger.info("Test testOpenMenu start");
 
-	/*
-	 * Test validates that menu page can be opened from home page
-	 */
-	@Test
-	public void testOpenMenu() {
-		logger.info("Test testOpenMenu start");
+        menuPage = homePage.openMenu();
+        menuPage.assertMenuIsOpened();
 
-		menuPage = homePage.openMenu();
-		menuPage.assertMenuIsOpened();
+        logger.info("Test testOpenMenu end");
+    }
 
-		logger.info("Test testOpenMenu end");
-	}
-
-	@AfterMethod
-	public void tearDown() {
-		homePage.quit();
-	}
+    @AfterMethod
+    public void tearDown() {
+        homePage.quit();
+    }
 
 }

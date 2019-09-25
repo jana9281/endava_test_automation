@@ -9,7 +9,7 @@ import org.testng.Assert;
 
 public class InsightsThroughDataPage extends FooterBasePage {
 
-	public InsightsThroughDataPage(WebDriver driver) {
-		super(driver);
-	}
+    public InsightsThroughDataPage(WebDriver driver) {
+        super(driver);
+    }
 }
