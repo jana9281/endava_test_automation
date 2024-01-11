@@ -12,16 +12,16 @@ public class SuccessStoriesPage extends BasePage {
 
     private static final Logger logger = LoggerFactory.getLogger(SuccessStoriesPage.class);
 
-    public static String SUCCESS_STORY_LABEL = "SUCCESS STORY | RETAIL AND CONSUMER GOODS";
+    public static String SUCCESS_STORY_LABEL = "SUCCESS STORIES";
 
-	public By textSSRCG = By.xpath("//figcaption/p");
+    public By textSSRCG = By.xpath("/html/body/section[1]/div/div/div/div[1]/div/div/div/div[1]/div/h2");
 
-	protected SuccessStoriesPage(WebDriver driver) {
-		super(driver);
-	}
+    protected SuccessStoriesPage(WebDriver driver) {
+        super(driver);
+    }
 
-	public void validateSSRCGTitle() {
-	    logger.info("Validating Success Stories title is shown");
-		Assert.assertEquals(WebDriverUtil.getElementText(driver, textSSRCG), SUCCESS_STORY_LABEL);
-	}
+    public void validateSSRCGTitle() {
+        logger.info("Validating Success Stories title is shown");
+        Assert.assertEquals(WebDriverUtil.getElementText(driver, textSSRCG), SUCCESS_STORY_LABEL);
+    }
 }

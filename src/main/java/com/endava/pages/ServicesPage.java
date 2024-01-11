@@ -12,14 +12,14 @@ public class ServicesPage extends BasePage {
 
     private static final Logger logger = LoggerFactory.getLogger(ServicesPage.class);
 
-	public By strategyMenuOption = By.xpath("//a[text()='Strategy']");
+    public By strategyMenuOption = By.xpath("//a[text()='Strategy']");
 
-	public ServicesPage(WebDriver driver) {
-		super(driver);
-	}
+    public ServicesPage(WebDriver driver) {
+        super(driver);
+    }
 
-	public void assertStrategyIsDisplayed() {
-	    logger.info("Validating Strategy menu option is displayed");
-		Assert.assertTrue(WebDriverUtil.isElementDisplayed(driver, strategyMenuOption));
-	}
+    public void assertStrategyIsDisplayed() {
+        logger.info("Validating Strategy menu option is displayed");
+        Assert.assertTrue(WebDriverUtil.isElementDisplayed(driver, strategyMenuOption));
+    }
 }
